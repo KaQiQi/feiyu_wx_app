@@ -1,0 +1,106 @@
+/* pages/my/afterSale/orderService.wxss */
+page {
+  background-color: #f2f2f2;
+}
+
+.order_shop {
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx 32rpx;
+  background-color: #fff;
+  margin-top: 20rpx;
+}
+.shop_name {
+  font-size: 26rpx;
+  color: #333;
+  font-family: FZLTXHK;
+}
+.order_talk {
+  display: flex;
+  font-size: 26rpx;
+  color: #e72e4b;
+  align-items: center;
+}
+
+.order_talk image {
+  width: 34rpx;
+  height: 31rpx;
+  margin-right: 10rpx;
+}
+.order_talk text{
+  font-size: 26rpx;
+}
+.order_product {
+  height: 180rpx;
+  display: flex;
+  padding: 20rpx 32rpx;
+  background-color: #fff;
+  border-bottom: 1rpx solid #f2f2f2;
+  border-top: 1rpx solid #f2f2f2;
+}
+
+.product_image {
+  width:180rpx;
+  height:180rpx;
+  display: block;
+  margin: auto 0;
+  background-color: #fff;
+}
+.product_detial {
+ 
+  width: 500rpx;
+  margin-left: 20rpx;
+}
+.product_name_price, .product_sku_id{
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.product_name_price text {
+  color: #333;
+  font-size:26rpx;
+  font-family: FZLTXHK;
+}
+.product_sku_id text {
+  color: #666;
+  font-size:22rpx;
+  font-family: FZLTXHK;
+}
+.order_price {
+  background-color: #fff;
+  padding: 30rpx 32rpx;
+}
+.order_price view {
+  display: flex;
+  /* justify-content: space-between; */
+  color: #333;
+  font-size: 26rpx;
+  font-family: FZLTXHK;
+}
+.pay_price {
+  background-color: #fff;
+  border-top: 1rpx solid #f2f2f2;
+  text-align: right;
+  padding: 0 32rpx;
+  color: #333;
+  font-size: 28rpx;
+  font-family: FZLTXHK;
+  line-height: 100rpx;
+}
+.pay_price text {
+  color: #e72e4b;
+}
+.order_none {
+  width: 200rpx;
+  height: 200rpx;
+  display: block;
+  margin: 0 auto;
+  margin-top: 150rpx;
+  margin-bottom: 50rpx;
+}
+.none_tips {
+  color: #666666;
+  font-size:26rpx;
+  font-family: FZLTXHK;
+  text-align: center;
+}

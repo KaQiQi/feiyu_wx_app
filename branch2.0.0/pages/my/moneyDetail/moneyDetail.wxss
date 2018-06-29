@@ -1,0 +1,114 @@
+
+.cash_detail_logo {
+  width: 100rpx;
+  height: 98rpx;
+  margin: auto;
+  margin-top: 80rpx;
+  display: block;
+}
+
+.cash_detail_have_commit {
+  margin-top:38rpx;
+  color: #333333;
+  text-align: center;
+  font-size: 32rpx;
+  font-family: FZLTXHK;
+  width: 100%;
+}
+
+.alert_view {
+  margin-top:40rpx;
+  height: 32rpx;
+  /*父元素居中 子元素不设置left会自动去居中  */
+  display:block; 
+  text-align: center;
+}
+
+
+.cash_detail_wechat_logo {
+  width: 32rpx;
+  height: 27rpx;
+  vertical-align: middle;  
+}
+
+.cash_detail_alert {
+  margin-left: 10rpx;
+  margin-top: 0;
+  color: #333333;
+  font-size: 24rpx;
+  font-family: FZLTXHK;
+  height: 24rpx;
+  line-height: 24rpx;
+   display: inline-block;
+  vertical-align: middle;
+}
+
+.cash_detail_row_one {
+  margin-top: 46rpx;
+  height: 102rpx;
+  margin-left: 28rpx;
+  margin-right: 28rpx;
+  margin-bottom:0rpx;
+  border-bottom: 1rpx solid #f2f2f2;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.cash_detail_row_two {
+  height: 102rpx;
+  margin-top: 0rpx;
+  margin-left: 28rpx;
+  margin-right: 28rpx;
+  border-bottom: 1rpx solid #f2f2f2;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.cash_detail_row_three {
+  height: 102rpx;
+  margin-top: 0rpx;
+  margin-left: 28rpx;
+  margin-right: 28rpx;
+  border-bottom: 1rpx solid #f2f2f2;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.row_one_title {
+  color: #666666;
+  font-size: 28rpx;
+  font-family: FZLTXHK;
+  height: 28rpx;
+  line-height: 28rpx;
+  margin-top: 37rpx;
+  margin-bottom: 37rpx;
+}
+
+.row_one_detail {
+  color: #333333;
+  font-size: 28rpx;
+  font-family: FZLTXHK;
+  height: 28rpx;
+  line-height: 28rpx;
+  margin-top: 37rpx;
+  margin-bottom: 37rpx;
+}
+
+.next_btn {
+  margin-top: 68rpx;
+  margin-left: 28rpx;
+  margin-right: 28rpx;
+  background-color: #e72e4b;
+  height: 80rpx;
+  border-radius:12rpx;
+  text-align: center;
+  color: #ffffff;
+  font-size:32rpx;
+  font-family: FZLTXHK;
+  line-height: 80rpx;
+}

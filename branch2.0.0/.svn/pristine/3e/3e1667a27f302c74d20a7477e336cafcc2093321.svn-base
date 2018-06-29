@@ -1,0 +1,37 @@
+<template name="textimageheader_default">
+  <view style='padding-bottom:{{data.bottom_gap}}rpx; background-color: #f2f2f2;'>
+    <view class="top_banner">
+      <image class="main_img" bindtap='feiyu_btn_imageHead' data-url='{{data.data.app_url}}' src="{{data.data.header_img}}"></image>
+      <view class="describe">
+        <view class="title">{{data.data.title}}</view>
+        <view class="sale_point">{{data.data.sub_title}}</view>
+      </view>
+      <view class="words_desc">{{data.data.text}}</view>
+    </view>
+    <view class="palceholder"></view>
+  </view>
+</template>
+
+<template name="imageheader_default">
+  <view style='margin-bottom:{{data.bottom_gap}}rpx'>
+    <view>
+      <image class='imageheader'  bindtap='feiyu_btn_imageHead' data-url='{{data.data.app_url}}' mode='widthFix'  src="{{data.data.header_img}}"></image>
+    </view>
+  </view>
+</template>
+
+
+<template name="netredinfo_default">
+  <!-- 用户信息 -->
+  <view style='margin-bottom:{{data.bottom_gap}}rpx' data-url="{{data.data.app_url}}" bindtap="clickJump">
+    <view class='user_info'>
+      <view class='my_avater_new'>
+        <image src='{{data.data.avatar}}'></image>
+      </view>
+      <view class='user_name'>{{data.data.shop_name}} 推荐</view>
+      <view class='user_text'>{{data.data.tags}}</view>
+
+      <!-- <view class='user_title'>黑色和白色印花小牛皮手提包黑色和白色印花小牛皮手提包Guesc 推荐logis黑色和白色印花小牛皮手提包</view> -->
+    </view>
+  </view>
+</template>

@@ -1,0 +1,106 @@
+.banner_img{
+  width: 750rpx;
+  height: 320rpx;
+  display: block;
+}
+.content{
+  width: 100%;
+  padding: 0 30rpx;
+}
+.top_title{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30rpx;
+}
+.line_icon{
+  width: 49rpx;
+  height: 6rpx;
+}
+.title_desc{
+  color: #333333;
+  font-size: 28rpx;
+  margin: 0 10rpx;
+}
+
+
+.main_title{
+  display: flex;
+  align-items: center;
+  color: #333333;
+  font-size: 24rpx;
+  margin-top: 24rpx;
+}
+.s_icon1{
+  width: 28rpx;
+  height: 23rpx;
+  margin-right: 10rpx;
+}
+
+
+.main_desc{
+  color: #666666;
+  font-size: 22rpx;
+  margin-left: 38rpx;
+  line-height: 32rpx;
+  margin-top: 4rpx;
+}
+.recruit_detail{
+  display: flex;
+  width: 611rpx;
+  height: 134rpx;
+  margin: 0 auto;
+  margin-top: 50rpx;
+  position: relative;
+}
+.bg_img{
+  width: 611rpx;
+  height: 134rpx;
+}
+.three_word{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.items{
+  padding-top: 45rpx;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.items>view{
+  color: #333333;
+  font-size: 24rpx;
+  margin-top: 10rpx;
+}
+.enroll_btn{
+  color: #333333;
+  font-size: 28rpx;
+  background-color: #f5ca3a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 60rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 690rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+}
+.go_index{
+  width: 70rpx;
+  height: 70rpx;
+  position: fixed;
+  top: 30rpx;
+  right: 30rpx;
+}
+.gray{
+  color: #ccc;
+  background-color: #f2f2f2;
+}

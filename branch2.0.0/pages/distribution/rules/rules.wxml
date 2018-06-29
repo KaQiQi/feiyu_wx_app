@@ -1,0 +1,19 @@
+<block wx:if="{{isShow==1}}">
+  <view class='top'  wx:if='{{isFx==1}}'>
+    <image class='top_image1' src='{{fxData.avater}}'></image>
+    <text>{{fxData.nick_name}}邀请你</text>
+    <image class='top_image2' src='/images/distribution/invite.png'></image>
+  </view>
+
+  <view class="container">
+    <image class="image" wx:for="{{images}}" wx:key="{{index}}" mode="widthFix" src="{{item}}"></image>
+  </view>
+  <image class="go_index" src='/images/index/backIndex.png' bindtap='jump_index'></image>
+  <view class="palce"></view>
+  <view class='invite' wx:if='{{isFx==1}}' bindtap='getInvite'>
+    <view>接受邀请</view>
+  </view>
+</block>
+<block wx:else>
+    <image class='loading_image' src='/images/index/empty.gif'></image>
+</block>

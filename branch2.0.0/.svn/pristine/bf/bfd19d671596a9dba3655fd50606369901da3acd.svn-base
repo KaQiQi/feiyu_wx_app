@@ -1,0 +1,29 @@
+
+<view wx:if="{{!mobile && hasData==1}}">
+    <view class="top_tip">
+        <!-- <text>为了确保您的账户安全,请绑定手机号!</text> -->
+    </view>
+    <view class="phone_input">
+        <view class="phone_number">
+            <view class="left_tips">手机号</view>
+            <input type="number" class="telphone" focus='true' placeholder="请输入手机号" maxlength="11" bindinput="getPhoneNum"></input>
+            <view wx:if="{{!sendding}}" class="getCode" catchtap="getCode" id="{{phoneNumber?'':'disable_get'}}">获取验证码</view>
+            <view wx:if="{{sendding}}" class="getCode">重新发送({{time}})</view>
+        </view>
+        <view class="phone_number">
+            <view class="left_tips">验证码</view>
+            <input type="number" class="telphone" placeholder="请输入验证码" bindinput="verCode"></input>
+        </view>
+    </view>
+
+    <view wx:if="{{verificationCode}}" class="bind_btn" bindtap="bindPhone">绑定手机号</view>
+    <view wx:if="{{!verificationCode}}" class="bind_btn" id="gray">绑定手机号</view>
+</view>
+
+<view wx:if="{{mobile && hasData==1}}">
+    <view class="phone_number" style="margin-top:32rpx;">
+        <view class="left_tips">手机号</view>
+        <view class="mobile_num">{{mobile}}</view>
+    </view>
+    <view class="bind_btn" bindtap="chagePhone">更改手机号</view>
+</view>

@@ -1,0 +1,30 @@
+<template name="rollproduct_default">
+    <view class='block_title'>
+        <image src='../../../../images/index/block_icon.png' class='block_icon'></image>
+        <text>精选专题</text>
+    </view>
+    
+    <view class="special">
+        <view class="s_c_container"  wx:for="{{data.data}}" wx:key="{{index}}">
+            <view class='live_block'>
+                <image class='live_bg_img' bindtap="clickJump" data-url="{{item.url}}" mode="widthFix" src='{{item.image}}'></image>
+                <!-- <view class='live_layer'></view>
+                <view class="live_shop_desc">
+                    <view class='sale_title'>{{item.title}}</view>
+                    <view class="content_desc">{{item.sub_title}}</view>
+                </view> -->
+            </view>
+            <scroll-view class="products" scroll-x>
+                <view class="pro_container" wx:for="{{item.products}}" wx:key="{{index}}" bindtap="clickJump" data-url="{{item.page_url}}">
+                    <image src="{{item.image}}" data-url='{{item.page_url}}' class="products_img"></image>
+                    <view class="p_brand_name">{{item.title}}</view>
+                    <view class="p_pro_price main_color">￥{{item.price}}</view>
+                    <view class="time_container" wx:if="{{item.entity_type==1}}">
+                        <image class="time_icon" src="../../../../images/index/time_icon.png"></image>
+                        <text class="time_num">{{item.duration_time}}</text>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</template>

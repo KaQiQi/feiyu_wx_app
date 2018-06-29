@@ -1,0 +1,261 @@
+
+.top_tips{
+  display: flex;
+  padding: 0 20rpx;
+  background-color: #fffbe2;
+  height: 76rpx;
+  justify-content: space-between;
+}
+.tips_left,.tips_right{
+  display: flex;
+  align-items: center;
+  color: #e3281b;
+  font-size: 24rpx;
+}
+.tips_icon_left{
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 10rpx;
+}
+.tips_icon{
+  width: 11rpx;
+  height: 20rpx;
+  margin-left: 10rpx;
+}
+.vip_text{
+  width:98rpx;
+  height:28rpx;
+  margin-left:8rpx;
+}
+
+.top_container{
+  width: 100%;
+  height: 176rpx;
+  position: relative;
+}
+.top_bgc{
+  width: 750rpx;
+  height: 176rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.user_info{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20rpx;
+}
+.avatar_container{
+  width: 116rpx;
+  height: 116rpx;
+  display: flex;
+  position: relative;
+}
+.vip_icon{
+  width: 32rpx;
+  height: 30rpx;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.info_left,.info_right{
+  display: flex;
+  align-items: center;
+}
+.avatar{
+  width: 116rpx;
+  height: 116rpx;
+  border-radius: 50%;
+}
+.my_name{
+  color: #666666;
+  font-size: 28rpx;
+  margin-left: 20rpx;
+}
+.change_icon{
+  width: 28rpx;
+  height: 22rpx;
+}
+.change_title{
+  color: #666666;
+  font-size: 24rpx;
+  margin-left: 12rpx;
+}
+.my_title{
+  height: 72rpx;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16rpx 20rpx;
+}
+.title_l{
+  color: #333333;
+  font-size:28rpx;
+}
+.look_all{
+  color: #666666;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+}
+.right_icon{
+  width: 11rpx;
+  height: 20rpx;
+  margin-left: 12rpx;
+}
+
+
+
+.my_order {
+  margin-bottom: 12rpx;
+  background-color: #fff;
+}
+
+.order_type_s {
+  display: flex;
+  padding: 20rpx 0 0;
+}
+
+.order_type {
+  display: flex;
+  width: 20%;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 112rpx;
+}
+.info_btn{
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.order_types {
+  flex: 2;
+  text-align: center;
+}
+
+.wait_icon {
+  width: 56rpx;
+  height: 56rpx;
+}
+
+.wait_icon image {
+  width: 56rpx;
+  height: 56rpx;
+}
+
+.wait_title {
+  display: flex;
+  font-size: 22rpx;
+  color: #666;
+}
+
+/* 优惠券 */
+.scroll_container {
+  width: 100%;
+  overflow: scroll;
+  white-space: nowrap;
+  display: flex;
+  box-sizing: border-box;
+  margin-top: 40rpx;
+  padding-right: 20rpx;
+}
+.c_money{
+  color: #666666;
+  font-size: 24rpx;
+}
+.coupon_use_desc{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 22;
+  padding-left: 20rpx;
+  justify-content: center;
+  padding-top: 20rpx;
+}
+.c_time{
+  font-size: 20rpx;
+  color: #999999;
+  margin-top: 10rpx;
+}
+.coupon_desc {
+  width: 210rpx;
+  height: 120rpx;
+  position: relative;
+  display: inline-block;
+  margin-left: 20rpx;
+}
+.coupon_bg{
+  width: 210rpx;
+  height: 120rpx;
+  display: block;
+}
+
+.t_coupon{
+  margin-top: 20rpx;
+  padding-bottom: 0;
+}
+
+.server{
+  font-size: 28rpx;
+  color: #333333;
+  margin: 40rpx 0;
+  padding-left: 20rpx;
+}
+
+.item_container{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.item_detail{
+  display: flex;
+  width: 25%;
+  position: relative;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+  height: 160rpx;
+  margin-bottom: 24rpx;
+}
+.item_icon{
+  width: 60rpx;
+  height: 60rpx;
+}
+.item_name{
+  color: #666666;
+  font-size: 24rpx;
+  margin-top: 18rpx;
+}
+.show_num{
+  color: #e72f4b;
+  font-size: 22rpx;
+  margin-top: 5rpx;
+}
+.invitation_btn{
+  position: fixed;
+  width: 390rpx;
+  height: 48rpx;
+  bottom: 30rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.invitation_icon{
+  width: 390rpx;
+  height: 48rpx;
+  display: block;
+}

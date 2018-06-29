@@ -1,0 +1,46 @@
+<block wx:if="{{hasData}}">
+    <view class="container" wx:if="{{status == 0 && isfromscan != 1}}">
+        <image class="image" src="{{pageData.result_image+'?t=22'}}"></image>
+        <view class="big_font">报名成功!</view>
+        <image class="small_icon" src="/images/activity/down.png"></image>
+        <view style="margin-top:36rpx">我们已经收到您的报名申请</view>
+        <!-- <view style="margin-top:20rpx">报名结果将在2个小时内公布</view> -->
+        <view class="main_color" style="margin-top:36rpx">审核时间:10:00 - 20:00</view>
+        <view style="margin-top:20rpx">非审核时间内报名</view>
+        <view style="margin-top:20rpx">报名结果可能会延迟公布喔</view>
+    </view>
+    <view class="container" wx:if="{{status == -1 && isfromscan != 1}}">
+        <image class="image" src="{{pageData.result_image+'?t=22'}}"></image>
+        <view class="big_font">报名未通过!</view>
+        <image class="small_icon" src="/images/activity/down.png"></image>
+        <view style="margin-top:36rpx">感谢您的参与</view>
+        <view class="main_color" style="margin-top:20rpx">本期招募名额已满</view>
+        <view style="margin-top:56rpx">敬请关注妃鱼小程序</view>
+        <view style="margin-top:20rpx">参与下期招募活动</view>
+    </view>
+    <view wx:if="{{status==1 || status==2 || isfromscan == 1}}" id="bg_color">
+        <view class="top_banner">
+            <image class="banner_img" src="{{pageData.header_image+'?t=22'}}"></image>
+            <view class="contact_container">
+                <image class="contact_icon" src="/images/activity/contact_icon.png"></image>
+                <button open-type="contact" class="contact_btn"></button>
+            </view>
+        </view>
+        <view class="bm_container">
+            <view class="top_tips">激活你的权益</view>
+            <input type="number" cursor-spacing="10" class="card_num" placeholder="输入您的Club会员卡号" bindinput="cardNum" />
+            <view class="mobile_num" wx:if="{{mobileNumber}}">{{pageData.mobile}}</view>
+            <input wx:else type="number" class="mobile_num" placeholder="输入您的手机号" bindinput="mobile" cursor-spacing="10"/>
+            <view class="verification">
+                <input type="number" class="verification_code" placeholder="验证码" bindinput="get_code" cursor-spacing="10"/>
+                <view wx:if="{{!sendding}}" class="send_btn" bindtap="getCode">获取验证码</view>
+                <view wx:else class="send_btn" id="sendding">重新发送({{time}})</view>
+            </view>
+            <view class="btn_container">
+                <view class="activation_btn" bindtap="activation">立即激活</view>
+                <button wx:if="{{is_auth == 0}}" class="info_btn" open-type="getUserInfo" bindgetuserinfo="setInfo"></button>
+            </view>
+        </view>
+    </view>
+</block>
+<image class="go_index" src='/images/index/backIndex.png' bindtap='jump_index'></image>

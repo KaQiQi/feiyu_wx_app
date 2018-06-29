@@ -1,0 +1,27 @@
+<block wx:if="{{hasData}}">
+  <view class="container">
+    <image src="../../../images/my/money_icon.png" class="money_icon"></image>
+    <view class="cashback_title">可提现</view>
+    <view class="total_money">¥{{returnData.my_return_money}}</view>
+    <!-- <navigator url="../../my/myCashBack/cashBackDetail/cashBackDetail" hover-class="none" open-type="navigate"> -->
+      <form bindsubmit="sendFormId" report-submit="true" data-url='../../my/myCashBack/cashBackDetail/cashBackDetail'>
+        <button class="form_button" form-type="submit">
+          <view class="cashback_btn" >提现</view>
+        </button>
+      </form>
+    <!-- </navigator> -->
+    <view class='right_icon_view' bindtap='btn_getSure'>
+      <view class="describle">确认收货 增加{{returnData.freez_return_money}}元返现</view>
+      <image src="../../../images/my/right_icon.png" class="right_icon"></image>
+    </view>
+    <view class='right_icon_view'>
+      <view class="describle gray">其中淘宝订单返现{{returnData.freez_return_taobao_money}}元，需在淘宝确认收货后领取</view>
+    </view>
+  </view>
+  <navigator url="../../my/myCashBack/specific/specific?id=58" hover-class="none" open-type="navigate">
+    <view class="look_detail">查看提现明细</view>
+  </navigator>
+</block>
+<block wx:else>
+  <image class='loading_image' src='/images/index/empty.gif'></image>
+</block>

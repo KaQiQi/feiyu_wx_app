@@ -1,0 +1,494 @@
+<!--pages/livePlayer/videoPlayer/videoPlayer.wxml-->
+<view class='noplayer' wx:if='{{isShow==0}}'>
+  <image src='../../../images/live/loading.gif'></image>
+</view>
+<view wx:else class="live_play">
+
+  <video controls='true' bindtimeupdate='controls' src="{{live_url}}" muted="{{is_hide}}" direction='0' autoplay="true" object-fit="fillCrop" class="{{is_show_play == 0? 'live_play_fill' : '' }} {{is_show_play == 1? 'live_play_small' : '' }} {{is_show_play == 2? 'live_play_say' : '' }}">
+
+
+    <!-- <cover-view class='live_view' wx:if="{{live_status == 6&&is_show_play==0}}">本场直播已结束! </cover-view> -->
+
+    <!-- <cover-view class='live_view' wx:if="{{live_status == 2&&is_show_play==0}}">主播开小差去了,稍等片刻哦　 </cover-view> -->
+
+
+    <!-- <cover-view class='live_view' wx:if="{{live_status == 7&&is_show_play==0}}">本场直播已结束!</cover-view> -->
+
+
+    <!-- <cover-view class='live' wx:if="{{live_status == 0&&is_show_play==0}}">
+      <cover-view class='live_view'>本场直播尚未开始!</cover-view>
+    </cover-view> -->
+
+    <!-- <cover-image src='../../images/live/goshopcar.png' wx:if="{{is_show_play==0}}" class='jump_shopcar' catchtap='goToShopCar' style='width:72rpx;height:72rpx;'></cover-image> -->
+
+    <cover-image src='../../../images/index/index.png' wx:if="{{is_show_play==0}}" class='jump_index' catchtap='jump_index' style='width:42rpx;height:42rpx;'></cover-image>
+
+    <cover-view class='live_shadows' wx:if="{{is_style_full_view==1}}" bindtap='btn_full'>
+    </cover-view>
+
+    <cover-view class='live_shadow' wx:if="{{is_full_view==1}}" bindtap='btn_full'>
+
+    </cover-view>
+
+
+    <cover-image wx:if="{{is_full_view==1}}" class='full_view' src='../../../images/live/full.png' bindtap='btn_full'></cover-image>
+
+
+    <cover-view class='top_view' wx:if="{{is_show_play==0||is_full_view==1}}">
+      <!-- <cover-view class='top_view_left'> -->
+      <cover-image src='{{avatar}}' class='avatar' catchtap='toShop' data-app_url="{{netred.shop_app_url}}"></cover-image>
+      <cover-view class='center_view'>
+        <cover-view class='top_center_view'>
+          <cover-view class='top_name'>{{rednet_name}}</cover-view>
+          <!-- <cover-image wx:if='{{is_follow == 0}}' catchtap='follow' class='follow_image' src='../../images/live/follow.png'></cover-image> -->
+        </cover-view>
+        <cover-view class='bot_center_view'>
+          <cover-image class='bot_center_eyes' src='../../../images/live/eyes.png'></cover-image>
+          <cover-view class='top_location'>{{live_num}}</cover-view>
+          <cover-view class='bottom'>
+            <cover-image class='bot_center_location' src='../../../images/live/locations.png'></cover-image>
+            <cover-view class='top_location'>{{location}}</cover-view>
+          </cover-view>
+        </cover-view>
+        <!-- </cover-view> -->
+      </cover-view>
+      <!-- <cover-view class='top_follow' wx:if='{{is_follow == 0}}'>
+        <cover-image class='top_follow_image' src='../../images/live/follows.png' catchtap='follow' style='margin-right:20rpx;'></cover-image>
+      </cover-view> -->
+    </cover-view>
+
+
+    <!-- 直播观看消息 -->
+    <!-- <cover-view class='top_message' wx:if="{{is_show_play==0||is_full_view==1}}">
+      <cover-view class='online_num_join' wx:if='{{live_num!=null}}'>
+        <cover-view class='online_num' wx:if="{{live_num}}">{{live_num}} 观看</cover-view>
+        <cover-view class='join_user_tips' wx:if="{{join_user}}">{{join_user}}来了
+        </cover-view>
+      </cover-view>
+      <cover-view class='online_num_join' wx:else></cover-view>
+    </cover-view> -->
+
+
+    <!-- 直播聊天消息 -->
+    <cover-view class='content_view' wx:if='{{is_show_play==0}}'>
+       <cover-image class='bg_img' src='https://static.topshopstv.com/wxapp/img/bg_0.png'></cover-image> 
+      <cover-view id="talk_{{index}}" wx:for="{{latest}}" wx:key="{{index}}">
+        <cover-view wx:if="{{!item.type || item.type == 0}}" class='talk_content '>
+          <cover-image class='vip' wx:if="{{item.vip==-1}}" src='../../../images/live/vip.png'></cover-image>
+          <cover-view class='talk_contents'>
+            <cover-view class='talk_contents_name'>{{item.user_name}}
+              <cover-view class='talk_content_views'>{{item.content}}　 </cover-view>
+            </cover-view>
+
+          </cover-view>
+        </cover-view>
+      </cover-view>
+    </cover-view>
+
+
+    <cover-view class='add_goods' wx:if="{{is_add_messge==1&&is_show_play==0}}">
+      <cover-image class='add_image' src='{{video_product_list[0].main_image}}'></cover-image>
+      <cover-view class='add_content'>
+        <cover-view class='content_text'>{{video_product_list[0].name}}</cover-view>
+        <cover-view class='content_price'>¥{{video_product_list[0].min_price}}</cover-view>
+      </cover-view>
+    </cover-view>
+
+    <!-- 聊天和商品信息 -->
+    <!-- <cover-view class='top_send' wx:if='{{is_show_play==0}}'>
+      <cover-view class='click_goods' catchtap='btn_goods'>
+        <cover-image src='../../images/live/buy.png' class='top_sends '></cover-image>
+        <cover-view class='goods_num'>{{video_product_list.length}}</cover-view>
+      </cover-view>
+      <cover-view class='bg'>
+        <cover-view class='send_bg' catchtap='btn_talk'>跟主播聊点什么呢</cover-view>
+        <cover-view class='line'></cover-view>
+      </cover-view>
+
+      <cover-image class="img_discount" wx:if='{{is_show_play==0}}' catchtap='btn_discount' wx:if='{{is_show_discount>0}}' src="../../images/live/btn_view.png" />
+    </cover-view> -->
+
+
+    <cover-view class='new_send_view' catchtap='btn_talk' wx:if='{{is_show_play==0}}'>
+      <cover-image src='../../../images/live/message.png' class='new_send_view_cover_image'></cover-image>
+      <cover-view class='new_send_view_text'>跟主播聊点什么呢</cover-view>
+    </cover-view>
+
+
+    <cover-view class='new_goods_view' wx:if='{{is_show_play==0}}'>
+
+      <cover-image class='new_goods' wx:if='{{is_show_play==0}}' catchtap='btn_tuan' wx:if='{{live_info.group_url}}' data-appurl='{{live_info.group_url}}' src='../../../images/live/tuan.png'></cover-image>
+
+      <cover-view class='good_num'>
+        <cover-view class='new_goods_num'>{{video_product_list.length}}</cover-view>
+      </cover-view>
+      <cover-image class='new_goods' catchtap='btn_goods' src='../../../images/live/buys.png'></cover-image>
+      <cover-image class='new_goods' wx:if='{{is_show_play==0}}' catchtap='btn_discount' wx:if='{{is_show_discount>0}}' src='../../images/live/quan.png'></cover-image>
+
+      <cover-image class='new_goods' wx:if='{{is_show_play==0}}' catchtap='other_intoShare' src='../../../images/index/live_share.png'></cover-image>
+    </cover-view>
+
+
+
+    <cover-view class="share_mask" wx:if="{{other_shareMaskShow==1}}">
+      <cover-view class="share_img_container">
+        <cover-image src="{{share_image_url}}" class="ewm_img"></cover-image>
+        <cover-view class="tips" catchtap="saveImgToPhotosAlbumTap">
+          <cover-view class='tips_view'>保存图片</cover-view>
+        </cover-view>
+        <cover-view class="close_mask" bindtap="other_closeMask">
+          <cover-image src="../../images/live/close.png"></cover-image>
+        </cover-view>
+      </cover-view>
+    </cover-view>
+
+    <cover-view id="mask" wx:if="{{other_maskShow}}" bindtap="other_close">
+    </cover-view>
+
+
+
+  </video>
+
+
+
+
+  <view class="shareDetail" id="{{other_shareMask?'s_mask':''}}">
+    <view class='btn_views'>
+      分享到微信好友
+      <button bindtap='onShareAppMessage' open-type='share' id="share_btn"></button>
+    </view>
+    <view class='btn_view' bindtap="other_btnShare">
+      <text>分享到朋友圈</text>
+    </view>
+    <view bindtap="other_close" class='btn_cancel'>
+      <text>取消</text>
+    </view>
+  </view>
+  <scroll-view wx:if="{{is_show_play==2}}" scroll-y scroll-into-view="talk_{{content_length}}" scroll-top="{{scrollTop}}" style='height:{{(0.25*winHeight-44)*100/winHeight}}%' class="test">
+
+    <view id="talk_{{index}}" wx:for="{{content_list}}" wx:key="{{index}}" class="{{index==content_length?'last_content':' '}}">
+      <view wx:if="{{!item.type || item.type == 0}}" class='talk_content'>
+        <image class='vip' src='../../../images/live/vip.png' wx:if="{{item.vip==-1}}"></image>
+        <view class='talk_contents'>
+
+          <view class='talk_contents_name'>{{item.user_name}}
+            <view class='talk_content_views'>{{item.content}}　 </view>
+          </view>
+
+        </view>
+      </view>
+    </view>
+
+  </scroll-view>
+
+
+
+
+
+  <!-- 直播消息 -->
+  <cover-view class='buy_message' wx:if="{{is_show_play==0}}">
+    <cover-view class='message_buy' wx:if="{{is_buy_messge==1}}">
+      <cover-image src='../../images/live/car.png' class='buy_car' wx:if='{{isBuyRemind==1}}'></cover-image>
+      <cover-view wx:if='{{isBuyRemind==1}}'>{{buy_user_name}}正在去买</cover-view>
+      <!-- <cover-view wx:if='{{isBuyRemind==1}}'>恭喜{{buy_user_name}}购买了{{num}}号商品</cover-view> -->
+      <cover-view wx:elif='{{isBuyRemind==2}}'>恭喜{{buy_user_name}}购买了{{goods_code}}号商品</cover-view>
+      <cover-view wx:elif='{{isBuyRemind==3}}'>{{join_user}}来了</cover-view>
+      <!-- <cover-view wx:else>{{buy_user_name}}关注了主播</cover-view> -->
+    </cover-view>
+
+    <!-- <cover-view class="list_item_content" >
+      <cover-view style=' background:#e72f4b;display: inline-block;padding:0 10rpx;border-radius:6rpx; '>
+        <cover-image src='../../images/live/car.png ' class='user_buy_car ' wx:if='{{isBuyRemind==1}} '></cover-image>
+        <cover-view wx:if='{{isBuyRemind==1}} '>{{item.name}} 正在去买</cover-view>
+        <cover-view wx:elif='{{isBuyRemind==2}} '>恭喜{{item.name}}购买了{{item.content}}号商品</cover-view>
+        <cover-view wx:else>{{item.name}}关注了主播</cover-view>
+      </cover-view>
+    </cover-view> -->
+  </cover-view>
+
+
+
+  <!-- 商品 -->
+  <!-- <view class='product_view ' wx:if='{{is_show_goods==1 }} '>
+  <view  class='product_view_title '>
+  <image class='product_ig ' src='../../images/live/cart.png '></image>
+  <text>全部宝贝</text> 
+  <text>168</text>
+  </view>
+  </view> -->
+  <view class='order_shadow_bottom' wx:if="{{is_show_goods == 1&&is_go_order==1}}" bindtap='close_x_order'></view>
+  <view class='order_shadow' wx:if="{{is_show_goods == 1}}">
+    <scroll-view scroll-y class='confirm_order' style='z-index: 999999;height:{{winHeight-220}}px'>
+
+      <view class='product_view_title'>
+        <image class='product_ig' src='../../../images/live/cart.png '></image>
+        <text class='title_top'>全部宝贝</text>
+        <text class='title_num'>{{video_product_list.length}}</text>
+        <view class='confirm_close' bindtap='close_goods'>
+          <image src='../../../images/order/delete.png'></image>
+        </view>
+      </view>
+      <view wx:for="{{video_product_list}}" wx:key="{{index}}" data-num="{{item.sequence_number}}" data-index="{{index}}">
+        <!-- bindtap='btn_productDetail' -->
+        <view class='goods_list' data-id='{{item.id}}'>
+          <view class='goods_img'>
+            <image class='main_img' catchtap="look_img" data-img="{{item.ori_main_image}}" src='{{item.main_image}}'></image>
+            <text class='text_code'>{{item.sequence_number}}</text>
+            <image class='main_code' src='../../images/live/code_img.png '></image>
+          </view>
+          <view class='goods_right'>
+            <text class='goods_titles'>{{item.name}}</text>
+            <text class='goods_price'>¥{{item.min_price}}</text>
+            <view class='gbuy'>
+              <view class='goods_buy' data-id='{{item.id}}' data-data_id='{{item.data_id}}' catchtap='btn_add_goods'>加入购物车</view>
+              <view class='goods_buy' data-data_id='{{item.data_id}}' data-id='{{item.id}}' catchtap='btn_buy_goods'>立即购买</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+
+
+
+<view class='goods_discount_shadow' wx:if="{{is_close_discount_goods == 1}}" bindtap='close_dicount_goods'></view>
+<view class='goods_discount' wx:if="{{is_close_discount_goods == 1}}">
+  <scroll-view scroll-y class='confirm_order' style='z-index: 999999;height:{{winHeight-220}}px '>
+    <view class='product_buy_detial' style='z-index:9999;height:{{winHeight-220}}px' wx:if="{{is_close_discount_goods == 1}}">
+      <!-- <cover-view class='product_choose' style='z-index:9999;'> -->
+      <view class='close' bindtap='close_dicount_goods'>
+        <image src='../../images/order/delete.png' wx:if="{{is_order == 0}}" class='close_image'></image>
+      </view>
+      <!-- 优惠券 -->
+      <view class="couponDetail">
+        <scroll-view scroll-y class="scroll-view">
+          <view class="couponTitle">店铺优惠券</view>
+
+          <view class="coupon_desc" wx:for="{{discount_list}}" wx:key="{{index}}">
+            <view class="left_content">
+              <view class="coupon_sum">
+                <text class="big_num">{{item.money}}</text>
+                <text>RMB</text>
+              </view>
+              <view class="coupon_time">
+                <text>满{{item.condition_money}}使用</text>
+                <text>有效期：{{item.duration_day}}天</text>
+              </view>
+            </view>
+            <!-- 还没领取 -->
+            <view class="right_content" bindtap='btn_getDiscount' data-id='{{item.id}}' data-position='{{index}}' data-is_taken='{{item.is_taken}}' data-limit_num='{{item.limit_num}}' data-sendout_num='{{item.sendout_num}}' wx:if="{{item.is_taken==0&&item.limit_num > item.sendout_num}}">立即领取</view>
+            <!-- 已领取 -->
+            <view id="gray" class="right_content" bindtap='btn_getDiscount' data-id='{{item.id}}' data-position='{{index}}' data-is_taken='{{item.is_taken}}' data-limit_num='{{item.limit_num}}' data-sendout_num='{{item.sendout_num}}' wx:if="{{item.is_taken==1}}">已领取</view>
+            <!-- 领完了 -->
+            <view id="gray" class="right_content" bindtap='btn_getDiscount' data-id='{{item.id}}' data-position='{{index}}' data-is_taken='{{item.is_taken}}' data-limit_num='{{item.limit_num}}' data-sendout_num='{{item.sendout_num}}' wx:if="{{item.is_taken==0 &&item.limit_num <= item.sendout_num}}">已抢完</view>
+            <image src="{{item.is_taken==0&&item.limit_num>item.sendout_num?'../../images/productDetail/coupon_bg_red.png':'../../images/productDetail/coupon_bg_gray.png'}}"></image>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+
+
+
+
+
+
+<view class='goods_detail_shadow' wx:if="{{is_close_buy_goods == 1&&is_go_order==2}}" bindtap='close_x_order'></view>
+<view class='goods_detail' wx:if="{{is_close_buy_goods == 1}}">
+  <scroll-view scroll-y class='confirm_order' style="z-index: 999999;height:{{winHeight-220}}px">
+
+    <view class='product_buy_detial' style='z-index:9999;height:{{winHeight-220}}px' wx:if="{{is_buy == 1}}">
+      <!-- <cover-view class='product_choose ' style='z-index:9999; '> -->
+      <view class='close' bindtap='close_buy_goods'>
+        <image src='../../images/order/delete.png' style='width:34rpx;height:34rpx' wx:if="{{is_order == 0}}" class='close_image'></image>
+      </view>
+
+      <view class='product_show' bindtap='productDetail' data-app_url='{{result.app_url}}' wx:if='{{isSelectType==0}}'>
+        <image src='{{main_image}}' class='product_image'></image>
+
+        <view class='product_name'>
+          <view class='num_close' bindtap='close_buy'>
+            <view class='product_code'>{{result.name}}</view>
+          </view>
+          <view style='white-space: pre-wrap; margin-top:10rpx;' bindtap='close_buy'>{{result.product_name}}</view>
+          <view class='product_price'>¥{{result.price}}</view>
+        </view>
+      </view>
+      <view class='product_show' wx:else>
+        <image src='{{type_list[index].image}}' class='product_image'></image>
+        <view class='product_name'>
+          <view class='num_close' bindtap='close_buy'>
+            <view class='product_code'>{{result.name}}</view>
+          </view>
+          <view style='white-space: pre-wrap; margin-top:10rpx;' bindtap='close_buy'>{{result.product_name}}</view>
+          <view class='product_price'>¥{{type_list[index].price}}</view>
+        </view>
+
+
+      </view>
+      <view class='block_line_top'></view>
+
+      <!-- <view style='margin-top:10rpx;' wx:if="{{result.product_type == 2 && color_list}}">
+        <view class='choose_name' wx:if="{{color_list.attr_name}}">{{color_list.attr_name}}:</view>
+        <view class='choose_list'>
+          <view wx:for="{{color_list.vals}}" wx:key='{{index}}'>
+            <view class="btn_color {{item.val==currentItemColor?'btn_color_select ':' '}}" data-id="{{item.val}}" data-image='{{item.image}} ' bindtap='change_color'>{{item.val}}</view>
+          </view>
+        </view>
+      </view> -->
+
+      <view style='margin-top:18rpx;' wx:if="{{result.product_type == 2 && type_list}}">
+        <view class='choose_name' wx:if="{{result.sale_attr_names}}">{{result.sale_attr_names}}:</view>
+        <view class='choose_list_view'>
+          <view wx:for="{{type_list}}" wx:key='{{index}}'>
+            <view wx:if="{{item.stock!=0}}" class="btn_color {{item.id==currentItemType?'btn_color_select ':' '}}" data-id="{{item.id}}" data-num="{{item.stock}}" data-index='{{index}}' bindtap='change_type'>{{item.specification}}</view>
+            <view wx:if="{{item.stock==0}}" class="btn_color}}" data-id="{{item.id}}" data-index='{{index}}' id="noStock">{{item.specification}}</view>
+          </view>
+        </view>
+      </view>
+
+      <view style='margin-top:18rpx;'>
+        <view class='choose_name'>数量:</view>
+        <view class='choose_list' style='border: 1rpx solid #eee;border-radius: 6rpx;width:282rpx;margin-left:20rpx;'>
+          <view class="reduce_num {{is_reduce==0 ? 'on_reduce_num': ' '}}" bindtap='reduce_num'>-</view>
+          <view class='pro_num' wx:if='{{result.is_deposit==1}}'>
+            <input class='pro_num' type='number' bindinput='bindinput' bindchange="bindChange" value="{{pro_num}}"></input>
+          </view>
+          <view class='pro_num' wx:else>{{pro_num}}
+          </view>
+          <view class="add_num {{is_add==0 ? 'on_reduce_num ': ' '}}" bindtap='add_num'>+</view>
+          <!-- <view class='line_left'></view>
+          <view class='line_right'></view> -->
+        </view>
+      </view>
+      <view class='block_line'></view>
+      <view class="right_now {{isCanBuy == 1 ? 'commmit ' : 'commmit '}}" bindtap='confirm_order' wx:if="{{is_order == 0}}">
+        {{canMessage}}
+      </view>
+    </view>
+  </scroll-view>
+</view>
+
+
+
+<!-- 订单 -->
+<view class='order_shadow_list' wx:if="{{is_order == 1&&is_go_order==3}}" bindtap='close_x_order'></view>
+<view class='order_list' wx:if="{{is_order == 1}}">
+  <scroll-view scroll-y class='confirm_order' style="z-index: 999999;height:{{winHeight-220}}px">
+    <view class='confirm_title'>
+      <text>确定订单</text>
+      <view class='confirm_close' bindtap='close_order'>
+        <image src='../../images/order/delete.png'></image>
+      </view>
+    </view>
+    <view class='order_info' wx:if="{{address_id}}" bindtap='wx_address'>
+      <image src='../../images/order/location.png' style='width:34rpx;height:36rpx'></image>
+      <view class='content'>
+        <view class='user_info'>
+          <view class='order_name'>收货人: {{buy_user_names}}</view>
+          <view class='order_phone'>{{buy_user_mobile}}</view>
+        </view>
+        <view class='order_address'> 收货地址:{{buy_user_address}}</view>
+      </view>
+      <image src='../../images/order/go.png' style='width:26rpx;height:26rpx '></image>
+    </view>
+
+    <view class='address_choose' bindtap='wx_address' wx:else>
+      <image src='../../images/order/location.png ' style='width:34rpx;height:36rpx;margin:auto 0; '></image>
+      <view style='padding-left:15rpx;'>请选择收货地址</view>
+    </view>
+    <image src='../../images/order/orderline.png' style='width:100%;height:9rpx '></image>
+    <view class='product_page'>
+      <view class='shop_title'>{{result.shop_name}}</view>
+      <!-- <view class='contact '>
+          <view class='contact_icon '>
+            <image src='../../images/order/wx.png ' style='width:26rpx;height:26rpx '></image>
+          </view>
+          <view class='text_title '>联系商家</view>
+        </view> -->
+    </view>
+    <view class='list_product'>
+      <view class='product_img' style='width:160rpx;height:160rpx;margin-right:15rpx;'>
+        <image src='{{result.main_image}} ' style='width:160rpx;height:160rpx'></image>
+      </view>
+      <view class='order_description'>
+        <view class='description '>{{product_result.name}}</view>
+        <view class='product_order_num'>
+          <view>{{product_result.product_sku_attr}}</view>
+          <view class='product_num'>x{{pro_num}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='express' wx:if="{{product_result.discount_left_text}}" style="border-bottom:none;">
+      <view>{{product_result.discount_left_text}}:</view>
+      <view class="main_color">{{product_result.discount_right_text}}</view>
+    </view>
+    <view class='express' style="border-bottom:none;" wx:if="{{product_result.member_coupon_id}}">
+      <view>{{product_result.coupon_left_text}}:</view>
+      <view class="main_color">{{product_result.coupon_right_text}}</view>
+    </view>
+  <view class="server_item" wx:if="{{product_result.coupon_left_text_g}}">
+      <view>{{product_result.coupon_left_text_g}}</view>
+      <view class="main_color">{{product_result.coupon_right_text_g}}</view>
+    </view>
+    <!-- <view wx:if='{{show_give_money_to_shop==1}}'>
+      <checkbox-group bindchange="checkboxChange">
+        <label class="label" wx:for="{{items}}">
+          <checkbox value="{{item.name}}" checked="{{item.checked}}" />支付采购金到商家
+        </label>
+      </checkbox-group>
+      <text class='check_text'>采购金直接进入商家账户,若发生纠纷平台不提供维权</text>
+    </view> -->
+
+    <view class="paytoshop" wx:if="{{need_procurement==1}}">
+      <view class="user_choose">
+        <image src="../../images/shopCar/{{isChoose?'choosed':'no_choose'}}.png" class="choose_icon" bindtap="choose_btn"></image>
+        <text>直接支付采购金到商家</text>
+      </view>
+      <text class='check_text'>采购金直接进入商家账户,若发生纠纷平台不提供维权</text>
+    </view>
+    <view class='express' style="margin-top:0">
+      <view>快递运费:</view>
+      <view>全国包邮</view>
+    </view>
+    <!-- <view class='express ' bindtap='btn_AddIdCard ' style="margin-top:0">
+        <view>支付人信息:</view>
+        <view class='view_right '>
+          <text class='text_right '>添加支付人信息便于清关</text>
+          <image class='id_card_right ' src='../../../images/my/go.png '></image>
+        </view>
+      </view> -->
+    <view class='buy_tips'>
+      <view>买家留言:</view>
+      <input placeholder='{{phValue}}' bindinput='getInput'></input>
+    </view>
+    <view style='height:98rpx;'></view>
+  </scroll-view>
+  <view class='order_sure' style='z-index:999999;' wx:if="{{is_order == 1}}">
+    <view class='message_order'>
+      <view class='price '>总价：</view>
+      <view class='price_color'>¥{{product_result.price}}</view>
+    </view>
+    <view class="commmit_order" bindtap='commit_order'>提交订单</view>
+  </view>
+</view>
+
+
+
+
+<form bindsubmit="sendFormId" report-submit="true">
+  <view class='send_msg' wx:if='{{is_show_play==1||is_show_play==2 }}'>
+    <!-- <image src='../../images/live/talk.png ' class='talk_send ' ></image> -->
+    <view class='talk_bottom' wx:if="{{is_say == 1}}">
+      <input class='input_talk' placeholder=' ' bindinput="contentInputEvent" bindblur="close_talk" focus='true'></input>
+      <view class="button_container" bindtap="{{is_auth?'check_send':''}}">
+        <button class='input_btn' style="font-size:26rpx;" form-type="submit">发送</button>
+        <button class="info_btn" open-type="getUserInfo" bindgetuserinfo="setInfo" wx:if="{{!is_auth}}"></button>
+      </view>
+    </view>
+
+    <!-- <button class="info_btn" catchtap="getUserInfo"></button> -->
+  </view>
+</form>

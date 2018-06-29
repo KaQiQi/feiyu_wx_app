@@ -1,0 +1,20 @@
+<!--pages/order/idCard/idCard.wxml-->
+
+<view class='id_card' bindtap='btn_IdCard'>
+      <view class='id_card_left'>
+        <image class='id_card_left_icon' src='../../../images/order/idcard.png'></image>
+        <text class='id_card_left_text'>请上传身份证信息,便于清关</text>
+      </view>
+      <!-- <image class='id_card_right' src='../../../images/my/go.png'></image> -->
+    </view>
+<view class='idcard'>
+<text class='idcard_name'>身份证姓名</text>
+<input class='idcard_name_input' bindinput='getInputName' type='text' placeholder="请输入身份证姓名"></input>
+</view>
+
+<view class='idcard'>
+<text class='idcard_name'>身份证号码</text>
+<input class='idcard_name_input' bindinput='getInputIdCard' type='idcard' placeholder="请输入身份证号码"></input>
+</view>
+
+<view class='upload' bindtap='upload_idcard'>保存</view>

@@ -1,0 +1,16 @@
+<!--pages/activity/vipHome/myInvitation/myInvitation.wxml-->
+<view class='my_invitation'>
+  <image></image>
+  <text>扫码成为窖主</text>
+  <view class='save_img'>保存二维码到相册</view>
+</view>
+
+<view class='line'></view>
+
+<view class='consume_invitation'>
+  <view class='consume_item' wx:for="{{12}}" wx:key="{{index}}">
+    <image></image>
+    <text>5万</text>
+  </view>
+
+</view>

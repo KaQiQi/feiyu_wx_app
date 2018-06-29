@@ -1,0 +1,25 @@
+<view class='img_backgroung'>
+  <image src='/images/order/order_detail_bg.png' style='width:100%;height:200rpx '></image>
+</view>
+<view class="{{isBindPhone==1? 'status_title_view': 'status_title'}}">
+  <view class='status_code'>提酒成功</view>
+  <view class='status_go'>您的包裹正整装待发</view>
+</view>
+<view class='detail'>
+  <image src='/images/order/location.png' style='width:34rpx;height:36rpx;margin:auto 0;'></image>
+  <view class='detail_address'>
+    <view class='name'>收货人: {{ name}}</view>
+    <view class='address'> 收货地址: {{ address}}</view>
+  </view>
+</view>
+
+<view class='price_order'>
+  <view class='total'>
+    <view class='price'> 总价:</view>
+    <view class='cash'>¥{{price}}</view>
+  </view>
+  <view class='order_look'>
+    <view class='look' bindtap='lookOrder' data-id='{{order_id}}'>查看订单</view>
+    <view class='look' bindtap='go_back' bindtap="goMyWine">前往我的酒窖</view>
+  </view>
+</view>

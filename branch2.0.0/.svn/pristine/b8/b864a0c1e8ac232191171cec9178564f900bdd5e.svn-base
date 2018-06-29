@@ -1,0 +1,21 @@
+<view class="specific_desc" wx:for="{{returnDataList}}" wx:key="{{index}}">
+
+
+
+  <view class="left_view">
+ <image wx:if="{{item.display_type==1}}" src='../../../../images/my/tixian.png'></image>
+     <image wx:elif="{{item.display_type==3}}" src='../../../../images/my/bohui.png'></image>
+      <image wx:else src='../../../../images/my/xiadan.png'></image>
+    <view class='left'>
+      <view class="title">{{item.desc}}</view>
+      <view class="time">{{item.add_time}}</view>
+    </view>
+  </view>
+
+
+  <view class='right_view'>
+    <view class="title">{{item.status}}</view>
+    <view class="right main_color" wx:if="{{item.type==1}}">{{item.money}}</view>
+    <view class="right" wx:else>{{item.money}}</view>
+  </view>
+</view>

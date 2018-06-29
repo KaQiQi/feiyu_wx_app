@@ -1,0 +1,33 @@
+<block wx:if="{{hasData}}">
+<view class="topbanner">
+    <image class="banner_img" src="{{pageData.header_image}}"></image>
+</view>
+<view class="content">
+    <view class="top_title">
+        <image class="line_icon" src="/images/activity/left_line.png"></image>
+        <view class="title_desc">Club权益</view>
+        <image class="line_icon" src="/images/activity/right_line.png"></image>
+    </view>
+    <block wx:for="{{pageData.rightInfo}}" wx:key="{{index}}">
+        <view class="main_title">
+            <image class="s_icon1" src="/images/activity/s_icon_1.png"></image>
+            <view>{{item.title}}</view>
+        </view>
+        <view class="main_desc">{{item.des}}</view>
+    </block>
+    <view class="recruit_detail">
+        <image class="bg_img" src="/images/activity/desc_bg.png"></image>
+        <view class="three_word">
+            <view class="items" wx:for="{{pageData.joinInfo}}" wx:key="{{index}}">
+                <view>{{item.title}}</view>
+                <view>{{item.des}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="enroll_btn gray" wx:if="{{pageData.btn_need_gray == 1}}">{{pageData.btn_title}}</view>
+<view class="enroll_btn" bindtap="jump_next" wx:else>{{pageData.btn_title}}</view>
+    
+<image class="go_index" src='/images/index/backIndex.png' bindtap='jump_index'></image>
+</block>
+

@@ -1,0 +1,209 @@
+<!-- 顶部轮播 -->
+<block wx:if="{{isShow==1}}">
+<view class="{{noscroll?'noscroll':''}}" sytle="position:relative" wx:if="{{hasData}}">
+  <view class="{{noscroll?'noscroll':''}} out_container">
+    <view class="share_mask" wx:if="{{shareMaskShow==1}}">
+      <view class="img_container">
+        <image src="{{share_image_url}}" class="ewm_img"></image>
+        <view class="tips" bindtap="saveImgToPhotosAlbumTap">
+          <text>保存图片</text>
+        </view>
+        <view class="close_mask" bindtap="closeMask">
+          <image src="/images/live/close.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class='share'>
+      <form bindsubmit="sendFormId" report-submit="true">
+        <button class="form_button" form-type="submit">
+          <image class="share_icon" src='../../images/index/backIndex.png' bindtap='jump_index'></image>
+        </button>
+      </form>
+      <form bindsubmit="sendFormId" report-submit="true">
+        <button class="form_button" form-type="submit">
+          <image class="share_icon" src='../../images/live/shareicon.png' bindtap="intoShare"></image>
+        </button>
+      </form>
+    </view>
+    <view class="topCarousel">
+      <swiper autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" indicator-active-color="#ffffff" indicator-color="#333">
+        <block wx:for="{{banner_images}}" wx:key="{{index}}">
+          <swiper-item>
+            <image src="{{item}}" class="slide-image" />
+          </swiper-item>
+        </block>
+      </swiper>
+      <!-- <video wx:if="{{show}}" class="video-style" src="{{videoUrl}}" autoplay="true"></video> -->
+    </view>
+    <view class='taobao' wx:if="{{is_taobao==1}}" bindtap='btnCopy'>
+      <view class='tao_left'>
+        <text class='taotitle'>本场为『淘宝直播』</text>
+        <text class='app'>请复制淘口令打开淘宝APP</text>
+      </view>
+      <view class='copy'>复制淘口令</view>
+    </view>
+
+
+    <!-- 优惠券 -->
+    <view class="trailer">
+      <view class="gray_border"></view>
+      <view class="trailer_title">
+        <view class='title_view' wx:if="{{live_info.live_status==0}}">『预告』</view>
+        <view class='title_views'>{{live_info.title}}</view>
+      </view>
+      <view class="getCoupon" wx:if="{{coupons.length>0}}" bindtap="couponShow" data-id="{{live_info.shop_id}}">
+        <view class="cou_left">
+          <block wx:for="{{coupons}}" wx:key="{{index}}">
+            <view class="small_coupon" wx:if="{{index<3}}">{{item.condition_money}}减{{item.money}}</view>
+          </block>
+        </view>
+        <view class="into">
+          <text>领券</text>
+        </view>
+      </view>
+      <view class="trailer_body" wx:if="{{sell_point}}">
+        <text>{{sell_point}}</text>
+        <text>{{sell_point}}</text>
+      </view>
+      <view class="trailer_content clearfix" wx:if="{{live_info.desc}}">
+        <text class="fl words">{{live_info.desc}}</text>
+      </view>
+    </view>
+
+    <!-- 店铺信息 -->
+    <form bindsubmit="sendFormId" report-submit="true">
+      <button class="form_button" form-type="submit" open-type="getUserInfo">
+        <view class="shop_desc" catchtap="goToShop" data-url="{{netred.shop_app_url}}">
+          <view class="avatar">
+            <image src="{{netred.avatar_full}}"></image>
+          </view>
+          <view class="shop_info">
+            <view class="shops_name">{{netred.name}}</view>
+            <view class="position">
+              <image wx:if="{{netred.location!=' '}}" class="location_icon" src="../../images/productDetail/location_icon_gray.png"></image>
+              <text>{{netred.location}}</text>
+              <view class="go_look">
+                <text>去逛逛</text>
+                <image src="../../images/index/go.png"></image>
+              </view>
+            </view>
+          </view>
+        </view>
+      </button>
+    </form>
+
+    <view class="pre_sale" wx:if="{{productList.length>0}}">
+      <image src="../../images/live/liveproduct.png"></image>
+    </view>
+    <!-- 商品 -->
+    <view class="product_coupon" wx:if="{{productList.length>0}}">
+      <view class="product_detail clearfix" wx:for="{{productList}}" wx:key="{{index}}" data-app_url="{{item.app_url}}" bindtap="productDetail">
+        <view class="logo_img fl">
+          <view class="serial_number">{{item.serial_number}}</view>
+          <image src="{{item.main_image}}"></image>
+        </view>
+        <view class="detail_content fl">
+          <view class="deposit">{{item.name}}</view>
+          <!-- <view class="coupon_require">库存：{{item.stock_num}}</view> -->
+        </view>
+        <view class="buy">
+          <view class="price">￥{{item.price}}</view>
+          <view class="buy_btn">查看详情</view>
+        </view>
+      </view>
+    </view>
+    <view class="none"></view>
+    <!-- 底部 -->
+    <view class="footer">
+      <view class="collection">
+        <image src="../../images/productDetail/{{live_info.is_remind==1?'like':'dontlike'}}.png"></image>
+        <text>{{live_info.like_num}}</text>
+      </view>
+      <block wx:if="{{is_taobao != 1}}">
+        <block wx:if="{{live_status==0 && is_start==0}}">
+          <view class="right_content_f">
+            <view class="countdown">{{timeData.day}} 天 {{timeData.hr}} 时 {{timeData.min}} 分 {{timeData.sec}} 秒</view>
+            <view class="remind">
+              <form bindsubmit="sendFormId" report-submit="true">
+                <button class="form_button" form-type="submit">
+                  <text class="care_btn" bindtap="{{live_info.is_remind==0?'alert_btn':'cancelAlert'}}" id="{{live_info.is_remind==1?'gray':''}}">{{live_info.is_remind==1?'已提醒':'开播提醒'}}</text>
+                </button>
+              </form>
+            </view>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="right_content_f">
+            <view class="countdown" wx:if="{{live_status!=3}}">直播即将开始请稍后..</view>
+            <view class="remind">
+              <form bindsubmit="sendFormId" report-submit="true">
+                <button class="form_button" form-type="submit">
+                  <text wx:if="{{live_status==3}}" class="care_btn"  id="{{live_status==3?'gray':''}}">直播已结束</text>
+                   <text wx:else class="care_btn" bindtap="{{live_info.is_remind==0?'alert_btn':'cancelAlert'}}" id="{{live_info.is_remind==1?'gray':''}}">{{live_info.is_remind==1?'已提醒':'开播提醒'}}</text>
+                </button>
+              </form>
+            </view>
+          </view>
+        </block>
+      </block>
+      <block wx:else>
+        <view class="right_content_f">
+          <view class="countdown">直播已开始，请复制淘口令前往淘宝观看</view>
+          <view class="remind">
+            <form bindsubmit="sendFormId" report-submit="true">
+              <button class="form_button" form-type="submit">
+                <text bindtap="copyPassWord" id="care_btn">复制口令</text>
+              </button>
+            </form>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view id="mask" wx:if="{{maskShow}}" bindtap="close">
+  </view>
+
+  <view class="shareDetail" id="{{shareMask?'s_mask':''}}">
+    <view class='btn_views'>
+      分享到微信好友
+      <button bindtap='onShareAppMessage' open-type='share' id="share_btn"></button>
+    </view>
+    <view class='btn_view' bindtap="btnShare">
+      <text>分享到朋友圈</text>
+    </view>
+    <view bindtap="close" class='btn_cancel'>
+      <text>取消</text>
+    </view>
+  </view>
+
+  <view class="couponDetail" id="{{couponMask?'coupon_mask':''}}">
+    <scroll-view scroll-y class="scroll-view">
+      <view class="couponTitle">店铺优惠券</view>
+      <view class="coupon_desc" wx:for="{{discount_list}}" wx:key="{{index}}">
+        <view class="left_content">
+          <view class="coupon_sum">
+            <text class="big_num">{{item.money}}</text>
+            <text>RMB</text>
+          </view>
+          <view class="coupon_time">
+            <text>满{{item.condition_money}}使用</text>
+            <text>有效期：{{item.duration_day}}天</text>
+          </view>
+        </view>
+        <!-- 还没领取 -->
+        <view class="right_content" bindtap='btn_getDiscount' data-id='{{item.id}}' data-position='{{index}}' data-is_taken='{{item.is_taken}}' data-limit_num='{{item.limit_num}}' data-sendout_num='{{item.sendout_num}}' wx:if="{{item.is_taken==0&&item.limit_num>item.sendout_num}}">立即领取</view>
+
+        <!-- 已领取 -->
+        <view id="gray_c" class="right_content" bindtap='btn_getDiscount' data-id='{{item.id}}' data-position='{{index}}' data-is_taken='{{item.is_taken}}' data-limit_num='{{item.limit_num}}' data-sendout_num='{{item.sendout_num}}' wx:elif="{{item.is_taken==1&&item.limit_num>item.sendout_num}}">已领取</view>
+        <!-- 领完了 -->
+        <view id="gray_c" class="right_content" bindtap='btn_getDiscount' data-id='{{item.id}}' data-position='{{index}}' data-is_taken='{{item.is_taken}}' data-limit_num='{{item.limit_num}}' data-sendout_num='{{item.sendout_num}}' wx:else>已抢完</view>
+        <image src="{{item.is_taken==0&&item.limit_num>item.sendout_num?'../../images/productDetail/coupon_bg_red.png':'../../images/productDetail/coupon_bg_gray.png'}}"></image>
+      </view>
+    </scroll-view>
+    <view class="finish" bindtap='close'>完成</view>
+  </view>
+</view>
+<block wx:else>
+  <image class='loading_image' src='../../images/index/empty.gif'></image>
+</block>
+</block>

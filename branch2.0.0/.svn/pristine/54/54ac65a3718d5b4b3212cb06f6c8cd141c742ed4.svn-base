@@ -1,0 +1,51 @@
+<block wx:if="{{show && pageData.total_income!=0}}">
+<view class="header">
+    <view class="top">
+        <view class="title">总收入(元)</view>
+        <view class="money_num">{{pageData.total_income}}</view>
+    </view>
+    <view class="bottom">
+        <view class="border"></view>
+        <navigator class="left_con" url="../accountDetail/accountDetail?model=1" open-type="navigate" hover-class="none">
+            <view class="into">
+                <view class="s_title">已到账</view>
+                <view class="b_money">{{pageData.already2Account}}</view>
+            </view>
+            <view class="click_btn">提现<image class="right_icon" src="/images/distribution/right_icon.png"></image>
+    
+            </view>
+        </navigator>
+        <navigator url="../accountDetail/accountDetail?model=2" open-type="navigate" hover-class="none"  class="left_con">
+            <view class="into">
+                <view class="s_title">待到账</view>
+                <view class="b_money">{{pageData.waiting2Account}}</view>
+            </view>
+            <view class="click_btn">
+                查看<image class="right_icon" src="/images/distribution/right_icon.png"></image>
+            </view>
+        </navigator>
+    </view>
+</view>
+<view class="records">
+    <view class="record_desc" wx:for="{{pageData.data}}" wx:key="{{index}}">
+    <view class="left">
+        <view class="des">{{item.product_info}}</view>
+        <view class="nick_name">{{item.nick_name}}</view>
+        <!-- <view class="nick_name" wx:if="{{item.stock_num}}">数量: {{item.stock_num}}</view> -->
+        <view class="time">{{item.add_time}}</view>
+    </view>
+    <view class="right">
+        <view class="money">{{item.money}}</view>
+        <view class="small_words" wx:if="{{item.desc}}">{{item.desc}}</view>
+        <!-- <view class="small_words" wx:if="{{item.detail_price}}">单价: {{item.detail_price}}</view> -->
+        <view class="small_words" wx:if="{{item.status_des}}">{{item.status_des}}</view>
+    </view>
+    </view>
+</view>
+</block>
+<block wx:else>
+    <view class="nothing_container">
+        <image class="no_icon" src="/images/distribution/nothing.png"></image>
+        <view class="tips">暂无记录</view>
+    </view>
+</block>

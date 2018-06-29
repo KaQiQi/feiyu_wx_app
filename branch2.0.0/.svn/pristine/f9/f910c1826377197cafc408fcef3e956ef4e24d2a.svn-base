@@ -1,0 +1,75 @@
+/* pages/myPhone/myPhone.wxss */
+page{
+    width: 100%;
+    height: 100%;
+    background-color: #f2f2f2;
+}
+.top_tip{
+    width: 100%;
+    padding-left: 32rpx;
+}
+.top_tip text{
+    display: block;
+    color: #4c4c4c;
+    font-size: 24rpx;
+    height: 66rpx;
+    line-height: 66rpx;
+}
+
+.phone_number{
+    padding: 0 32rpx;
+    width: 100%;
+    height: 112rpx;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    position: relative;
+    border-bottom: 1rpx solid #f2f2f2;
+}
+.left_tips{
+    font-size: 28rpx;
+    color: #333333;
+    width: 120rpx;
+}
+.telphone{
+    display: flex;
+    height: 56rpx;
+    min-height: 56rpx;
+    align-items: center;
+    padding-left: 8rpx;
+    font-size: 28rpx;
+    color: #333333;
+    width: 320rpx;
+}
+.phone_number .getCode,.phone_number .mobile_num{
+    position: absolute;
+    top: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    right: 32rpx;
+    transform: translateY(-50%);
+    font-size: 24rpx;
+    color: #e72f4b;
+    z-index: 9999;
+}
+
+#disable_get{
+    opacity: 0.5;
+}
+.bind_btn{
+    width: 688rpx;
+    height: 76rpx;
+    line-height: 76rpx;
+    font-size: 28rpx;
+    background-color: #e72f4b;
+    margin: 0 auto;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 48rpx;
+    border-radius: 10rpx;
+}
+#gray{
+    color: #fff;
+    background-color: #dddddd;
+}

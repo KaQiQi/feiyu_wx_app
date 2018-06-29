@@ -1,0 +1,16 @@
+<!--pages/h5/loginAuthorized/loginAuthorized.wxml-->
+<view class='page_type'>
+
+  <view class='view_icon'>
+    <image class='notice_icon' src='/images/index/notice.png'></image>
+  </view>
+
+  <!-- <view class='view_content'> -->
+  <view class='notice_content'>开启【用户信息】才能参与拼团</view>
+  <!-- </view> -->
+
+  <view class='btn_view'>开启用户信息
+    <button class='info_btn' open-type="getUserInfo" bindgetuserinfo="setInfo"></button>
+  </view>
+
+</view>

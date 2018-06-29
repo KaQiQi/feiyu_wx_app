@@ -1,0 +1,60 @@
+<!--pages/distribution/membersRights/membersRights.wxml-->
+<block wx:if="{{isShow}}">
+  <view class='top'>
+    <image src='{{pageData.avater}}'></image>
+    <view class='top_right'>
+      <text class='top_name'>{{pageData.nick_name}}</text>
+      <text class='top_level'>分销等级:{{pageData.kilner_show}}</text>
+    </view>
+  </view>
+  <view class='resume'>当前累计金额:
+    <text class='resume_level'>{{pageData.all_cost_money_show}}</text>
+  </view>
+  <view class='top_resume_level'>
+    <view class='level_left'>
+      <text class='level_money'>{{pageData.left_name}}</text>
+      <text class='level_text'>{{pageData.left_des}}</text>
+    </view>
+    <progress class='progress' activeColor='#ffdda7' backgroundColor='#bd3541' percent='{{progress}}' stroke-width="1" active></progress>
+    <view class='level_right'>
+      <text class='level_money'>{{pageData.right_name}}</text>
+      <text class='level_text'>{{pageData.right_des}}</text>
+    </view>
+  </view>
+
+  <block wx:if="{{images.length>0}}">
+    <view class="top_big_title">
+      <view class="left_border"></view>
+      <text>窖主权益</text>
+    </view>
+    <view class="desc_detail">
+      <image wx:for="{{images}}" wx:key="{{index}}" class="desc_img" src="{{item}}"></image>
+    </view>
+  </block>
+  <!-- <view class='my_invitation'>
+    <image src="{{pageData.qrcode}}"></image>
+    <text>扫码成为窖主</text>
+    <form bindsubmit="sendFormId" report-submit="true">
+      <button class="form_button" form-type="submit">
+        <view class='save_img' bindtap="saveImgToPhotosAlbumTap">保存二维码到相册</view>
+      </button>
+    </form>   
+  </view> -->
+  <view class='ruler1'>
+    <image src='{{pageData.introduce1}}'></image>
+  </view>
+  <view class='line'></view>
+
+
+  <view class='ruler'>
+    <image src='{{pageData.introduce2}}' mode='widthFix'></image>
+  </view>
+
+  <!-- <button class='invite1' open-type='share'>
+    <text>邀请好友免费加入分销</text>
+  </button> -->
+  <view class="palce"></view>
+  <button class='invite2' wx:if='{{pageData.is_kilner==1}}' open-type='share'>
+    <text>邀请好友直升窖主(需充值5万)</text>
+  </button>
+</block>

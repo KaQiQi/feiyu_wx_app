@@ -1,0 +1,88 @@
+/* pages/distribution/accountRecharge/accountRecharge.wxss */
+
+page {
+  background: #f2f2f2;
+}
+
+.recharge {
+  background: #fff;
+  margin: 40rpx 30rpx;
+  padding-bottom: 21rpx;
+}
+
+.recharge_style {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 40rpx 50rpx;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+
+.recharge_style text {
+  color: #333;
+  font-size: 28rpx;
+}
+
+.recharge_money {
+  color: #333;
+  font-size: 28rpx;
+  padding: 40rpx 50rpx;
+}
+
+.input_view {
+  padding: 0 0 40rpx 50rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+
+.input_view text {
+  color: #333;
+  font-size: 52rpx;
+}
+
+.input_money {
+  margin-left: 10rpx;
+  color: #333;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 52rpx;
+}
+
+.recharge_explain {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 20rpx 50rpx;
+}
+.recharge_wx {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 20rpx 50rpx;
+   color: #888;
+  font-size: 24rpx;
+}
+
+.recharge_explain_text {
+  color: #888;
+  font-size: 24rpx;
+}
+
+.recharge_explain_money {
+  color: #455a90;
+  font-size: 28rpx;
+  margin-left: 20rpx;
+}
+
+.btn_recharge {
+  margin: 19rpx 50rpx;
+  display: flex;
+  justify-content: center;
+  background: #ac1630;
+  padding: 30rpx;
+  color: #fff;
+  font-size: 30rpx;
+  border-radius: 6rpx;
+}

@@ -1,0 +1,120 @@
+/* pages/distribution/saleRecord/saleRecord.wxss */
+.product_container{
+    width: 100%;
+    display: flex;
+    padding: 20rpx;
+    border-bottom: 12rpx solid #f2f2f2;
+    border-top: 1rpx solid #f2f2f2;
+}
+.img{
+    width: 168rpx;
+    height: 168rpx;
+    margin-right: 20rpx;
+}
+
+.desc_content{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.pro_name{
+    margin-top: 8rpx;
+    font-size: 24rpx;
+    color: #333333;
+}
+.product_img{
+    width: 168rpx;
+    height: 168rpx;
+    display: block;
+}
+.stock_desc{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #666666;
+    font-size: 22rpx;
+}
+.pro_price{
+    display: flex;
+    color: #333333;
+    font-size: 22rpx;
+    margin: 14rpx 0;
+}
+.sale_price{
+    color: #ac1630;
+}
+#active{
+    color: #ac1630;
+}
+.tabbar{
+    display: flex;
+    width: 100%;
+    height: 98rpx;
+    color: #333333;
+    font-size: 26rpx;
+    padding: 0 22rpx;
+    border-bottom: 1rpx solid #f2f2f2;
+    align-items: center;
+}
+.items{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.records{
+    width: 100%;
+    padding: 0 20rpx;
+}
+.record_desc{
+    display: flex;
+    justify-content: space-between;
+    padding: 30rpx 0;
+    font-size: 24rpx;
+    color: #333333;
+    border-bottom: 1rpx solid #f2f2f2;
+}
+.right{
+    text-align: right;
+}
+.left{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.money{
+    margin-bottom: 14rpx;
+    font-weight: 700;
+}
+.time{
+    color: #666666;
+    font-size: 24rpx;
+    margin-top: 14rpx;
+}
+.small_words{
+    color: #666666;
+    font-size: 24rpx;
+    margin-top: 10rpx;
+}
+.red{
+    color: #ac1630;
+}
+
+.no_icon{
+    width: 200rpx;
+    height: 200rpx;
+    margin-bottom: 20rpx;
+}
+.nothing_container{
+    margin-top: 80rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333333;
+    font-size: 24rpx;
+    flex-direction: column;
+}

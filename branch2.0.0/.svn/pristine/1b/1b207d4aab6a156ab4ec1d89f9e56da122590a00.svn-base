@@ -1,0 +1,48 @@
+<!-- <view>
+  <view class='live_gap'></view>
+  <view class='view_one'>
+    <view class='my_point' bindtap='userPointBtnClick' data-id=''>{{score}}</view>
+    <view class='use_point' bindtap='userPointBtnClick' data-id=''>消费积分 ></view>
+    <view class='alert_view'>{{str_desc}}</view>
+  </view>
+  <view class='view_two' bindtap='sureReceiveBtnClick' data-id=''>
+    <view class='wait_view_left'>
+       <image src='../../../images/my/welfare_redline.png' class='red_line_logo'></image>
+       <text class='wait_receive_alert'>{{freez_return_score}}</text>
+    </view>
+    <view class='wait_view_right'>
+      <text class='wait_receive_alert'>确认收货 ></text>
+    </view>
+  </view>
+  <view class='live_gap'></view>
+  <view class='wait_view_left'>
+    <image src='../../../images/my/welfare_redline.png' class='red_line_logo'></image>
+    <text class='wait_receive_alert'>积分明细</text>
+  </view>
+  <view class='gap_line'></view>
+  <view class='point_cell' wx:for="{{scoreDetails}}" wx:key='point_cell' wx:for-item="item" wx:for-index="itemIdx">
+     <view class='cell_left_subview'>
+        <view class="left_title">{{item.desc}}</view>
+        <view class='left_time'>{{item.add_time}}</view>
+     </view>
+     <view class="cell_right_normal {{item.color==1?'cell_right_selected':''}}">{{item.score}}</view>
+  </view>
+</view> -->
+
+
+<view class="container">
+    <image src="../../../images/my/score.png" class="money_icon"></image>
+    <view class="cashback_title">可用积分</view>
+    <view class="total_money">{{return_score}}</view>
+    <!-- <navigator url="../../my/myCashBack/cashBackDetail/cashBackDetail" hover-class="none" open-type="navigate">
+        <view class="cashback_btn">使用积分</view>
+    </navigator> -->
+    <view class='right_icon_view' bindtap='btn_getSure'>
+     <view class="describle">确认收货 增加积分</view>
+      <!-- <image src="../../../images/my/right_icon.png" class="right_icon"></image> -->
+    </view>
+   
+</view>
+<!-- <navigator url="../../my/myScore/myDetailScore/myDetailScore?id=18" hover-class="none" open-type="navigate">
+    <view class="look_detail">查看积分明细</view>
+</navigator> -->

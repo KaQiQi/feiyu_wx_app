@@ -1,0 +1,26 @@
+<view>
+   
+       <!--cell第二部分  -->
+  <view class='adress_list_cell' wx:for="{{adressList}}" wx:key="{{index}}">
+     <view class='cell_left'>
+        <view class='icon_view'>
+            <image src="{{index==0?'../../../images/my/red_point.png':'../../../images/my/black_point.png'}}" class='here_icon_s'></image>
+        </view>
+     </view>
+     <view class="cell_adress_view">
+        <view class="adree_title {{index==0?red:''}}"> {{item.content}}</view>
+        <view class="time_des {{index==0?red:''}}">{{item.time}}</view>
+     </view>
+  </view>
+
+ 
+  
+   
+
+    <!-- 空状态下的提示  -->
+  <!-- <view wx:if="{{adressList.length==0 && !au_info.url}}">
+    <image src='../../../images/my/nodata_icon.png' class='nodata_icon'></image>
+    <text class='nodata_text'>订单待录入,请稍后查看</text>
+  </view> -->
+
+</view>

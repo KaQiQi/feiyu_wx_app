@@ -1,0 +1,21 @@
+<image class='bg' src='https://static.topshopstv.com/wxapp/img/tjcg.jpg'></image>
+<view class='detail'>
+  <image src='/images/distribution/jiu.png' style='width:33rpx;height:44rpx;margin:auto 0;'></image>
+  <view class='detail_address'>
+    <view class='name'>囤酒人: {{nick_name}}</view>
+    <view class='address'>{{ name}}<text> {{specification}} X{{num}}</text></view>
+  </view>
+</view>
+
+<view class='price_order'>
+  <view class='total'>
+    <view class='price'> 商品总价:</view>
+    <view class='cash'>¥{{price}}</view>
+  </view>
+  <view class='order_look'>
+    <view class='look'>推荐好酒给朋友
+        <button bindtap='onShareAppMessage' open-type='share' class="button"></button>
+    </view>
+    <view class='look' bindtap='goMyIndex'>返回我的首页</view>
+  </view>
+</view>

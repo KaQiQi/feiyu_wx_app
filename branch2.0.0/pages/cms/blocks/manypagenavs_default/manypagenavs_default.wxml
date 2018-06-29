@@ -1,0 +1,11 @@
+<template name="manypagenavs_default"> 
+    <view class="tabbar" data-enen="{{currentTab}}">
+        <block wx:for="{{data.data}}" wx:key="{{index}}">
+            <view class="content" data-current="{{index}}" bindtap="currentChange" id="{{currentTab==item.page_id?'active':''}}" data-pageid="{{item.page_id}}">
+                <text>{{item.text}}</text>
+                <view data-enen="{{currentTab}}" class="border {{currentTab==item.page_id?'active':''}}"></view>
+            </view>
+        </block>
+    </view>
+    <view class="placeholder"></view>
+</template>

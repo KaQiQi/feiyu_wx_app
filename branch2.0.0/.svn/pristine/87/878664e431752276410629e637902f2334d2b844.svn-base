@@ -1,0 +1,74 @@
+<!-- <view class="product_video"> -->
+  <video wx:if="{{!isCrossScreen}}" class="vertical_scr" bindwaiting="videoErrorCallback" src="{{shopInfo.path}}" objectFit="cover" autoplay="true" custom-cache="{{false}}" loop="true" controls  bindtap="isShow" show-fullscreen-btn="false"  show-center-play-btn="false">
+    
+    <cover-view class='click_place' bindtap="isShow">
+    </cover-view>
+    <cover-view class='share'>
+      <cover-image class="go_index" src='../../images/index/backIndex.png' bindtap='jump_index'></cover-image>
+      <!-- <image src='../../images/live/shareicon.png' class="share_icon" bindtap='jump_share'></image> -->
+    </cover-view>
+    <!-- <cover-view class="container" bindtap="isShow"> -->
+      <cover-view class="shop_info" wx:if="{{isShow}}" bindtap="isShow">
+        <!-- <cover-image class="info_bg" src="../../images/video/bg-top.png"></cover-image> -->
+        <cover-view class="flex_left">
+          <cover-image class="avator" src="{{shopInfo.avatar}}" catchtap="toShop" data-url="{{shopInfo.shop_app_url}}"></cover-image>
+        </cover-view>
+        <cover-view class="flex_right_all">
+          <cover-view class="shop_name">{{shopInfo.shop_name}}</cover-view>
+          <cover-view class="shop_desc">{{shopInfo.location}}</cover-view>
+        </cover-view>
+      </cover-view>
+      <cover-view class="product_desc" wx:if="{{isShow}}">
+        <block wx:for="{{products}}" wx:key="{{index}}">
+          <cover-view class="product_info" bindtap="productDetail" data-app_url='{{item.app_url}}' data-id="{{item.id}}">
+            <cover-image class="pro_bg" src="../../images/video/bg-bottom.png"></cover-image>
+            <cover-view class="pro_brand">{{item.product_title}}</cover-view>
+            <cover-image class="pro_img" src="{{item.image}}"></cover-image>
+            <cover-image class="shopcar" src="../../images/video/shopcar.png"></cover-image>
+            <cover-view class="price">¥ {{item.price}}</cover-view>
+          </cover-view>
+        </block>
+      </cover-view>
+    <!-- </cover-view> -->
+    <!-- <cover-view wx:if="{{isCrossScreen}}" class="mask" catchtap="isShow"></cover-view> -->
+  </video>
+
+  <video wx:if="{{isCrossScreen}}" class="cross_scr" src="{{shopInfo.path}}" objectFit="cover" autoplay="true" loop="true" controls="{{isShow}}" catchtap="isShow" show-fullscreen-btn="false" show-center-play-btn="false"></video>
+  <view wx:if="{{isCrossScreen && dataloaded==1}}">
+    <view class="shop_info" style="position:fixed;">
+      <!-- <image class="info_bg" src="../../images/video/bg-top.png"></image> -->
+      <view class="flex_left">
+        <image class="avator" src="{{shopInfo.avatar}}" catchtap="toShop" data-url="{{shopInfo.shop_app_url}}"></image>
+      </view>
+      <view class="flex_right">
+        <view class="shop_name">{{shopInfo.shop_name}}</view>
+        <view class="shop_desc">{{shopInfo.location}}</view>
+      </view>
+      <!-- <form bindsubmit="formSubmit" report-submit="true" wx:if="{{is_follow==0 && dataloaded==1}}">
+        <button class="form_button" form-type="submit">
+          <image src="../../images/video/follow.png" class="follow" ></image>
+        </button>
+      </form>
+      <form bindsubmit="cancelFollow" report-submit="true" wx:if="{{is_follow==1 && dataloaded==1}}">
+        <button class="form_button" form-type="submit">
+          <image src="../../images/video/cancelfollow.png" class="follow" ></image>
+        </button>
+      </form> -->
+    </view>
+    <view class="pro_btm">
+      <block wx:for="{{products}}" wx:key="{{index}}">
+        <view class="product_info" data-app_url='{{item.app_url}}' bindtap="productDetail" style="position:relative;" data-id="{{item.id}}">
+          <image class="pro_bg" src="../../images/video/bg-bottom.png"></image>
+          <view class="pro_brand">{{item.product_title}}</view>
+          <image class="pro_img" src="{{item.image}}"></image>
+          <image class="shopcar" src="../../images/video/shopcar.png"></image>
+          <view class="price">¥ {{item.price}}</view>
+        </view>
+      </block>
+    </view>
+    <view class='share'>
+      <image class="go_index" src='../../images/index/backIndex.png' bindtap='jump_index'></image>
+        <!-- <image src='../../images/live/shareicon.png' class="share_icon" bindtap='jump_share'></image> -->
+    </view>
+  </view>
+<!-- </view> -->

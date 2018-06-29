@@ -1,0 +1,13 @@
+<template name="textimage_default">
+  <!-- 图文说明 -->
+  <view style='margin-bottom:{{data.bottom_gap}}rpx'>
+  <block wx:for="{{data.data}}" wx:key="{{index}}" >
+    <view class='image_text'>
+      <view class='text_view'  wx:if="{{item.text}}">{{item.text}}</view>
+      <image src='{{item.image}}' bindtap='btnTextImage' data-appurl='{{item.app_url}}'  mode='widthFix'  wx:if="{{item.image}}"></image>
+  
+        <!-- <text class='user_title'>的萨达十大是待付款撒旦画风景可怜后方就可视电话房间里卡电话费逻辑肯定撒谎放链接KA回复都是敬老卡回复框的健身房</text>   -->
+    </view>
+  </block>
+  </view>
+</template>

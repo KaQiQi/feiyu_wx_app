@@ -1,0 +1,26 @@
+<!--pages/activity/vipClub/vipGetRights/vipGetRights.wxml-->
+<view wx:if="{{isShow}}">
+<view class='line'></view>
+
+<view class='vip_get'>
+<image  src='{{clubData.avater}}'></image>
+<text>{{clubData.nick_name}}</text>
+</view>
+<view class='vip_line'></view>
+<view class='vip_list' wx:for="{{clubData.rights}}" wx:key="{{index}}">
+  <text>{{item.title}}</text>
+  <view class='vip_content'>
+    <image src='{{item.image}}'></image>
+    <view class='vip_text'>
+      <view class='vip_text1'>.{{item.sub_title}}</view>
+      <view class='vip_text1'>.{{item.sub_title2}}</view>
+    </view>
+  </view>
+</view>
+
+<view class='btn_get' bindtap='btnGet'>免费领取</view>
+
+<view class='bot_icon'>
+<image src='{{clubData.bottom_img}}'></image>
+</view>
+</view>

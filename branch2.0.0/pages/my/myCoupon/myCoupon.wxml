@@ -1,0 +1,52 @@
+<!-- 头部tab栏 -->
+<block wx:if="{{hasData == 1}}">
+<view class="tabbar">
+    <view data-current="1" bindtap="currentChange">
+        <view class="nouse {{currentTab==1?'active':''}}">未使用</view>
+    </view>
+    <view data-current="2" bindtap="currentChange">
+        <view class="used {{currentTab==2?'active':''}}">已使用</view>
+    </view>
+    <view data-current="3" bindtap="currentChange">
+        <view class="overdue {{currentTab==3?'active':''}}">已过期</view>
+    </view>
+</view>
+
+<!-- 详情 -->
+<view class="coupon_desc">
+    <block  wx:for="{{dataList}}" wx:key="{{index}}">
+        <view class="flex_container" bindtap='btn_goCoupon' data-appurl='{{item.app_url}}'>
+            <view class="left_price">
+                <image class="bg_img" src="{{currentTab==1?'../../../images/coupon/white_bg.png':'../../../images/coupon/gray_bg.png'}}"></image>
+                <view class="price_num" id="{{currentTab==1?'':'white'}}">
+                    <text>￥</text> <text class="big_num">{{item.money}}</text>
+                </view>
+            </view>
+            <view class="right_desc">
+                <view class="user_place">
+                    <image src="../../../images/coupon/reduce.png" class="reduce"></image> <text>满{{item.condition_money}}减{{item.money}}</text>
+                </view>
+                <view class="user_time">到期时间：{{item.end_time}}</view>
+                <view class="user_rule clearfix">
+                    <text class="fl" wx:if="{{item.shop_id!=0}}">限{{item.name}}的店使用</text>
+                    <text class="fl" wx:if="{{item.shop_id==0}}">{{item.show_sub_title}}</text>
+                    <!-- <image class="fr" src="../../../images/coupon/down.png"></image> -->
+                </view>
+                <view class="user_now" wx:if="{{currentTab==1}}" catchtap="{{item.shop_id==0?'goIndex':'goToShop'}}" data-id="{{item.shop_id}}" data-appurl='{{item.shop_app_url}}'>立即使用</view>
+                <image wx:if="{{currentTab==2}}" class="use_status" src="../../../images/coupon/used.png"></image>
+                <image wx:if="{{currentTab==3}}" class="use_status" src="../../../images/coupon/overdue.png"></image>
+            </view>
+        </view>
+    </block>
+    <!-- 空状态 -->
+    <view class='nocare' wx:if="{{isShow}}">
+        <image src='../../../images/my/nodata_icon.png'></image>
+        <text wx:if="{{currentTab==1}}">暂无可用优惠券</text>
+        <text wx:if="{{currentTab==2}}">暂无已使用优惠券</text>
+        <text wx:if="{{currentTab==3}}">暂无过期优惠券</text>
+    </view>
+</view>
+</block>
+<block wx:else>
+    <image class='loading_image' src='../../../images/index/empty.gif'></image>
+</block>

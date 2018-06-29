@@ -1,0 +1,154 @@
+/* pages/distribution/searchResult/searchResult.wxss */
+
+.back_head {
+  position: relative;
+  background: red;
+  height: 280rpx;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.back_head_view .vip_icon{
+  width: 123rpx;
+  height: 30rpx;
+  margin-left: 8rpx;
+  border-radius: 10rpx;
+}
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.back_head_view {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 60rpx;
+  height: 100%;
+  color: #fff;
+}
+
+.bg_img{
+  width: 750rpx;
+  height: 280rpx;
+}
+.back_content {
+  width: 710rpx;
+  padding: 24rpx;
+  margin: auto 20rpx;
+  background: #fff;
+  display: flex;
+  margin-top: -80rpx;
+  border-radius: 12rpx;
+  position: absolute;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+.placeholder{
+  width: 100%;
+  height: 126rpx;
+}
+.back_content_left,.back_content_right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.back_content_left{
+  border-right: 1rpx solid #f2f2f2;
+}
+
+.back_content_text {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.back_content_num {
+  font-size: 36rpx;
+  color: #333;
+  margin-top: 10rpx;
+}
+
+.list {
+  margin-top: 80rpx;
+}
+
+.detail_list {
+  padding: 30rpx 20rpx;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+
+.list_left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 26rpx;
+  color: #333;
+}
+
+.list_right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 26rpx;
+  color: #333;
+  text-align: right;
+}
+
+.left_text {
+  font-size: 24rpx;
+  color: #888;
+  margin-top: 10rpx
+}
+
+.right_text {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #e72f4b;
+  text-align: right;
+}
+
+
+.bottom_btn{
+  display:flex;
+  justify-content:center;
+  background:#e72f4b;
+  color:#fff;
+  font-size:26rpx;
+  padding: 10rpx 0;
+  border-radius:12rpx;
+  width: 690rpx;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.btn_container{
+  width: 100%;
+  background-color:#ffffff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  padding-bottom: 30rpx;
+  display: flex;
+  justify-content: center;
+}
+.go_index{
+  width: 70rpx;
+  height: 70rpx;
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+}
+.tips{
+  margin-top: 10rpx;
+  color: #fff;
+  font-size: 24rpx;
+  text-align: center;
+}

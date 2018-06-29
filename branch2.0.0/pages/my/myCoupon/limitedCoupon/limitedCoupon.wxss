@@ -1,0 +1,254 @@
+/* pages/my/myCoupon/limitedCoupon/limitedCoupon.wxss */
+page{
+    width: 100%;
+    height: 100%;
+}
+.noscroll {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* 分享蒙层 */
+.share_mask{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.46);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 666666666;
+}
+
+.img_container {
+    width: 540rpx;
+    height: 961rpx;
+    margin: 100rpx auto;
+    /* background-color: #f2f2f2; */
+    position: relative;
+  }
+  
+.ewm_img {
+    display: block;
+    width: 540rpx;
+    height: 961rpx;
+}
+.tips{
+    display: flex;
+    justify-content: center;
+    width: 540rpx;
+    color: #333;
+    font-size: 26rpx;
+    position: absolute;
+    left: 0;
+    bottom: -80rpx;
+    text-align: center;
+}
+.tips text{
+    padding: 16rpx 80rpx;
+    border-radius: 40rpx;
+    background: #fff;
+    text-align: center;
+}
+.close_mask{
+    position: absolute;
+    top: 20rpx;
+    right: 10rpx;
+    width: 50rpx;
+    height: 50rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.close_mask>image{
+    width: 50rpx;
+    height: 50rpx;
+    display: block;
+}
+.share_icon{
+    width:70rpx;
+    height:70rpx;
+    margin-top: 12rpx;
+}
+.share{
+    position: fixed;
+    top: 30rpx;
+    right: 30rpx;
+    display: flex;
+    flex-direction: column;
+    z-index: 6666;
+}
+.main_container{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.main_container .bg_img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.top_content{
+    width: 100%;
+    position: absolute;
+    top: 82rpx;
+    left: 0;
+}
+.top_content>view{
+    display: flex;
+    justify-content: center;
+}
+.shop{
+    font-size: 24rpx;
+    color: #333333;
+}
+.money{
+    font-size: 60rpx;
+    color: #e72f4b;
+    margin-top: 40rpx;
+    font-weight: 900;
+}
+.much{
+    font-size: 26rpx;
+    color: #333333;
+    margin-top: 20rpx;
+}
+.get{
+    width: 280rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    border-radius: 40rpx;
+    font-size: 28rpx;
+    background-color: #e72f4b;
+    margin: 0 auto;
+    margin-top: 50rpx;
+    color: #ffffff;
+}
+.effective_time{
+    font-size: 24rpx;
+    color: #666666;
+    margin-top: 20rpx;
+}
+.bottom_content{
+    position: absolute;
+    top: 550rpx;
+    left: 0;
+    width: 100%;
+}
+.avatar{
+    display: block;
+    width: 130rpx;
+    height: 130rpx;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+.shop_name{
+    text-align: center;
+    font-size: 26rpx;   
+    color: #333;
+    margin-top: 22rpx;
+}
+.position{
+    margin: 0 auto;
+    font-size: 25rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    margin-top: 20rpx;
+}
+.position>image{
+    margin: 6rpx;
+}
+.into_shop{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26rpx;
+    color: #e72f4b;
+    margin-top: 10rpx;
+}
+
+.desc{
+    width: 100%;
+    padding: 0 80rpx;
+    color: #333333;
+    font-size: 24rpx;
+    margin-top: 48rpx;
+}
+.gray{
+    color: #888888;
+    background-color: #dddddd;
+}
+
+.couponDetail {
+    width: 100%;
+    height: 310rpx;
+    position: fixed;
+    left: 0;
+    z-index: 99999999;
+    bottom: -310rpx;
+    transition: all 0.5s;
+  }
+  
+  .btn_views {
+    background-color: #fff;
+    display: flex;
+    width: 100%;
+    font-size: 28rpx;
+    height: 100rpx;
+    border-bottom: 1rpx solid #f2f2f2;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .button{
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+  }
+  
+  .btn_view {
+    font-size: 28rpx;
+    background-color: #fff;
+    display: flex;
+    width: 100%;
+    height: 100rpx;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10rpx;
+  }
+  
+  .btn_cancel{
+    font-size: 28rpx;
+    background-color: #fff;
+    display: flex;
+    width: 100%;
+    height: 100rpx;
+    justify-content: center;
+    align-items: center;
+  }
+  #bottom, #shopbtm, #coupon_mask,#choose_coupon {
+    bottom: 0;
+  }
+  #mask {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }

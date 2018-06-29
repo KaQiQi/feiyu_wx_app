@@ -1,0 +1,11 @@
+<template name="carousel_default">
+    <swiper class="swiper">
+        <swiper-item wx:for="{{data.data}}" wx:key="{{index}}" bindtap="clickJump" data-url="{{item.url}}">
+            <form bindsubmit="sendFormId" report-submit="true">
+                <button class="form_button" form-type="submit" open-type="getUserInfo">
+                    <image class="banner_image" src="{{item.image}}"></image>
+                </button>
+            </form>
+        </swiper-item>
+    </swiper>
+</template>

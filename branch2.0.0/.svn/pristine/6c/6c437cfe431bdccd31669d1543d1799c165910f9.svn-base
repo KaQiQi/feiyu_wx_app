@@ -1,0 +1,24 @@
+<!--pages/index/search/search.wxml-->
+
+<view class='search_view'>
+  <view class='new_send_view'>
+    <image src='../../../images/index/search.png' class='new_send_view_cover_image'></image>
+    <input focus="true" confirm-type="search" placeholder="搜索店铺昵称或ID" bindconfirm="onBindding" class='input_view' value="{{inputValue}}"></input>
+  </view>
+</view>
+
+
+<view class='result_view'>
+  <view class='result' wx:if='{{returnDataList}}' bindtap='btnIndex' data-my_home_flag='{{item.my_home_flag}}' data-my_home_id='{{item.my_home_id}}' wx:for="{{returnDataList}}" wx:key="{{index}}">
+    <image src='{{item.avatar}}' class='new_send_view_cover_image'></image>
+
+    <view class='name_id'>
+      <view class='name'>{{item.name}}</view>
+      <view class='id' wx:if="{{item.id_code}}">店铺ID:{{item.id_code}}</view>
+   
+    </view>
+  </view>
+  <view class='no_result' wx:if='{{returnDataList==null||returnDataList.length<=0}}'>
+    <text wx:if="{{result==1}}">暂无更多搜索结果</text>
+  </view>
+</view>

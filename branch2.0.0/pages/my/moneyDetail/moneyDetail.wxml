@@ -1,0 +1,24 @@
+<view>
+  <view>
+   <image src='../../../images/my/cash_detail_logo.png' class='cash_detail_logo'></image>
+   <view class='cash_detail_have_commit'>提现申请已提交</view>
+  </view>
+  <view class='alert_view'>
+    <image src='../../../images/my/cash_detail_weixin.png' class='cash_detail_wechat_logo'></image>
+    <view class='cash_detail_alert'>客服加你微信好友,微信转账发放提现</view>
+  </view>
+  <view class='cash_detail_row_one'>
+     <view class='row_one_title'>预计到账时间</view>
+     <view class='row_one_detail'>48小时之内</view>
+  </view>
+  <view class='cash_detail_row_two'>
+     <view class='row_one_title'>提现微信号</view>
+     <view class='row_one_detail'>{{wechatNum}}</view>
+  </view>
+  <view class='cash_detail_row_three'>
+     <view class='row_one_title'>提现金额</view>
+     <view class='row_one_detail'>¥{{cashMoney}}</view>
+  </view>
+  <view class="next_btn" bindtap='nextBtnClick'>{{is_add_to_company==1?'提交完成':'提交完成'}}
+  </view>
+</view>

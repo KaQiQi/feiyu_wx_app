@@ -1,0 +1,35 @@
+<!--pages/activity/vipClub/vipSendRights/vipSendRights.wxml-->
+<view wx:if="{{isShow}}">
+<view class='line'></view>
+<view class='vip_list' wx:for="{{clubData.rights}}"  wx:key="{{index}}">
+  <text>{{item.title}}</text>
+  <view class='vip_content'>
+    <image src='{{item.image}}'></image>
+    <view class='vip_text'>
+      <view class='vip_text1'>.{{item.sub_title}}</view>
+      <view class='vip_text1'>.{{item.sub_title2}}</view>
+    </view>
+  </view>
+</view>
+<view class='vip_line'></view>
+
+<view class='send_title'>
+<text>当前可赠送{{clubData.max_num}}人</text>
+</view>
+<view class='vip_friends'>
+<view class='vip_friends_item' wx:for="{{clubData.freinds}}" wx:key="{{index}}">
+<view class='friends_item'>
+<button class='button_share' open-type="{{clubData.max_num==0?'':'share'}}"></button>
+
+<image class='friends_item_image' wx:if="{{item.avater}}"  src='{{item.avater}}'></image>
+<image class='friends_item_image' wx:else src='/images/activity/invitation.png'></image>
+<image wx:if="{{item.buy_flag}}" class='order' src='/images/activity/order_icon.png'></image>
+</view>
+<text wx:if="{{item.nick_name}}">{{item.nick_name}}</text>
+<text wx:else>待邀请</text>
+</view>
+</view>
+
+
+<button class="{{clubData.max_num==0?'btn_get_no':'btn_get'}}" open-type="{{clubData.max_num==0?'':'share'}}">立即赠送</button>
+</view>

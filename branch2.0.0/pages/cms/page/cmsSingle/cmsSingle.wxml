@@ -1,0 +1,59 @@
+<!--pages/index/specialProduct/specialProduct.wxml-->
+
+<import src="../../blocks/onlyproduct/onlyproduct.wxml" />
+<import src="../../blocks/imagehead/imagehead.wxml" />
+<import src="../../blocks/textimage/textimage.wxml" />
+<import src="../../blocks/productwithheader/productwithheader.wxml" />
+  <import src="../../blocks/imagetextheader/imagetextheader.wxml" />  
+<!-- <view class="{{noscroll?'noscroll':''}}" sytle="position:relative"> -->
+<block wx:for="{{blocks}}" wx:key="{{index}}">
+  <template is="{{blocks[index].name}}" data="{{...blocks[index]}}"></template>
+</block>
+<!-- sku弹层 -->
+<view class="product_sku" id="{{bottom?'bottom':''}}">
+    <view class="brand">
+      <view class="brand_img">
+        <image src="{{images}}"/>
+      </view>
+      <view class="sku_brand_desc">
+        <text class="sku_brand_price">￥{{price}}</text>
+        <text class="sku_brand_name">{{productInfo.name}}</text>
+      </view>
+    </view>
+    <view class="spec">
+      <block wx:if="{{productInfo.product_type==2}}">
+        <text class="s_title">{{productInfo.sale_attr_names}}</text>
+        <view class="spec_desc">
+          <block wx:for="{{productSku}}" wx:key="{{index}}">
+            <text class="{{currentType == index?'active':''}}" id="{{item.stock==0?'noStock':''}}" data-id="{{index}}" bindtap="{{item.stock==0?'':'chooseType'}}" data-price="{{item.price}}" data-stock="{{item.stock}}" data-skuid="{{item.id}}" data-shopname="{{productInfo.shop_name}}" data-image="{{item.image}}">{{item.specification}}</text>
+          </block>
+        </view>
+      </block>
+  
+      <view class="shop_num">
+        <view class="fl_container">
+          <text>购买数量</text>
+        </view>
+        <view class="fr_container">
+          <text class="{{inputValue<=1?'onlyOne':''}}" bindtap="reduce">-</text>
+          <text class="num_pro">{{inputValue}}</text>
+          <text class="up" bindtap="increase" class="{{inputValue>=stock?'onlyOne':''}}">+</text>
+        </view>
+      </view>
+    </view>
+    <view class="confirm_placeholder"></view>
+    <view class="confirm {{noStock==0||productInfo.stock==0?'noStock':''}}" bindtap="confirmShop" wx:if="{{confirmShow}}">
+      <text wx:if="{{noStock==0 || productInfo.stock==0}}">已售罄</text>
+      <text wx:else>确定</text>
+    </view>
+    <view class="close" catchtap="close">
+      <image src="/images/order/delete.png"></image>
+    </view>
+</view>
+<view id="mask" wx:if="{{maskShow}}" bindtap="close">
+</view>
+<!-- </view> -->
+<view class='share'>
+    <image class="go_index" src='../../../../images/index/backIndex.png' bindtap='jump_index'></image>
+    <!-- <image src='../../images/live/shareicon.png' class="share_icon" bindtap='jump_share'></image> -->
+  </view>

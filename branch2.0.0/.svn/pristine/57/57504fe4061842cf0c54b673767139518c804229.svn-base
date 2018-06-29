@@ -1,0 +1,54 @@
+<block wx:if="{{showPage}}">
+<view class="total_detail">
+    <view class="left_content">
+        <view class="total_balance">账户余额: ¥{{data.accountBalance}}</view>
+        <view class="left_bototm">
+            <view class="recharge">累积充值: ¥{{data.plusMoney}}</view>
+            <view class="consume">累积消费: ¥{{data.minusMoney}}</view>
+        </view>
+    </view>
+  <view class="recharge_btn" bindtap='intoShare'>充值</view>
+</view>
+<view class="tabbar">
+  <view class="items" id="{{currentIndex==0?'active':''}}" data-index="0" bindtap="changeTab">全部</view>
+  <view class="items" id="{{currentIndex==1?'active':''}}" data-index="1" bindtap="changeTab">消费记录</view>
+  <view class="items" id="{{currentIndex==2?'active':''}}" data-index="2" bindtap="changeTab">充值记录</view>
+</view>
+
+<view class="records" wx:if="{{tabShow}}">
+  <view class="record_desc" wx:for="{{list}}" wx:key="{{index}}">
+    <view class="left">
+      <view class="des">{{item.desc}}</view>
+      <view class="time">{{item.add_time}}</view>
+    </view>
+    <view class="right">
+      <view class="money">{{item.money}}</view>
+      <view class="pay_type">【{{item.pay_type}}】</view>
+      <!-- <view class="small_words" wx:if="">包含代发费</view> -->
+    </view>
+  </view>
+</view>
+<view wx:if="{{!list[0]}}">
+    <view class="nothing_container">
+        <image class="no_icon" src="/images/distribution/nothing.png"></image>
+        <view class="tips">暂无记录</view>
+    </view>
+</view>
+<view id="mask" wx:if="{{maskShow}}" bindtap="closeView"></view>
+<view class="couponDetail" id="{{couponMask?'coupon_mask':''}}">
+  <view class='btn_view'>
+    <text>请选择充值方式</text>
+  </view>
+  <view class='account_balance' bindtap='btnBalanceRecharge'>
+    <text class='account'>账户收入充值</text>
+    <text class='balance'>(当前可用余额{{data.availableIncome}}元)</text>
+  </view>
+   <view class='wx_pay' bindtap='btnWxRecharge'>
+    <text class='account'>微信充值</text>
+  
+  </view>
+  <view bindtap="closeView" class='btn_cancel'>
+    <text>取消</text>
+  </view>
+</view>
+</block>

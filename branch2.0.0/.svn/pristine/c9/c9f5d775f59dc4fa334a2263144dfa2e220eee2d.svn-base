@@ -1,0 +1,214 @@
+.list_cell {
+  background-color: white;
+}
+view.adree_title.red{
+  color: #e72f4b;
+}
+.view_one {
+  height: 118rpx;
+  background-color: white;
+  border-top: 1rpx solid #f2f2f2;
+  border-bottom: 1rpx solid #f2f2f2;
+  display: flex;
+}
+
+.view_one_left {
+  margin-left:28rpx;
+  height: 118rpx;
+}
+
+.view_one_left_icon {
+  width: 70rpx;
+  height: 70rpx;
+  margin-top: 24rpx;
+}
+
+/*右边视图分两块  */
+.view_one_right {
+  margin-left: 38rpx;
+  width: 100%;
+  height: 118rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+/*物流公司  */
+.view_one_left_company {
+  margin-top: 28rpx;
+  height: 24rpx;
+  line-height: 24rpx;
+  color: #666666;
+  font-family: FZLTXHK;
+  font-size: 24rpx;
+}
+
+/*物流单号  */
+.view_one_left_num {
+  margin-top: 14rpx;
+  height: 24rpx;
+  line-height: 24rpx;
+  color: #666666;
+  font-family: FZLTXHK;
+  font-size: 24rpx;
+}
+
+.company_detail {
+  margin-top: 28rpx;
+  color: #333333;
+  font-size: 24rpx;
+  font-family: FZLTXHK;
+  height: 24rpx;
+  line-height: 24rpx;   
+}
+
+.copy_view {
+  margin-top: 54rpx;
+  margin-right: 28rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  width: 100rpx;
+  color: #444444;
+  text-align: center;
+  font-size: 24rpx;
+  font-family: FZLTXHK;
+  border: 2rpx solid #888888;
+}
+
+.white_gap_view {
+  height: 30rpx;
+  background-color: white;
+}
+
+/*地址列表cell  */
+.adress_list_cell {
+  background-color: white;
+  margin-left: 28rpx;
+  display: flex;
+  padding-top: 30rpx;
+}
+
+.cell_left {
+  height: 130rpx;
+}
+
+.icon_view {
+  position: relative;
+  margin-top:1rpx;
+  height: 129rpx;
+  width: 24rpx;
+}
+.here_icon_s {
+  width: 24rpx;
+  height: 24rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.here_icon_n {
+  margin-top:1rpx;
+  width: 24rpx;
+  height: 129rpx;
+}
+
+
+.gray_line_v {
+  margin-top: 0rpx;
+  background-color: #999999;
+  margin-left:11.5rpx;
+  width: 0.5rpx;
+  height:105rpx;
+  line-height: 105rpx;
+  text-align: center;
+}
+
+
+/*地址  */
+.cell_adress_view {
+  margin-top: 0rpx;
+  /* height: 26rpx; */
+}
+
+
+.adree_title {
+  margin-left: 15rpx;
+  color: #333333;
+  font-size: 26rpx;
+  font-family: FZLTXHK;
+  /* height: 26rpx; */
+  /* line-height: 26rpx; */
+}
+
+/*时间  */
+.time_des {
+  margin-left: 15rpx;
+  margin-top: 18rpx;
+  color: #666666;
+  font-size: 24rpx;
+  line-height: 40rpx;
+}
+
+.view_bottom {
+  height: 126rpx;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+
+.bottom_left {
+  margin-left: 28rpx;
+  height: 126rpx;
+  background-color: white;
+}
+
+.bottom_right {
+  margin-right: 28rpx;
+  height: 126rpx;
+  background-color: white;
+}
+
+.sicle_icon {
+  width: 24rpx;
+  height: 24rpx;
+  margin-top: 51rpx;
+}
+
+.au_alert {
+  margin-left: 15rpx;
+  margin-top: 50rpx;
+  font-size: 26rpx;
+  font-family: FZLTXHK;
+  line-height: 26rpx;
+  color: #333333;
+}
+
+.search {
+  width: 130rpx;
+  height: 36rpx;
+  margin-top: 45rpx;
+  font-size: 24rpx;
+  font-family: FZLTXHK;
+  color: #666666;
+  border: 2rpx solid #888888;
+  text-align: center;
+}
+
+.nodata_text {
+  margin-top: 20rpx;
+  text-align: center;
+  font-family: FZLTXHK;
+  font: 18rpx;
+  color: #666666;
+  display: block;
+}
+#first{
+  position: relative;
+}
+#first image{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24rpx;
+  height: 24rpx;
+}

@@ -1,0 +1,45 @@
+<!--pages/reviewlive/reviewlive.wxml-->
+
+<template name="hislive_default">
+  <view class='relive_title'>
+    <view class='relive_title_left'>
+      <image src='/images/index/block_icon.png'></image>
+      <text>精彩回放</text>
+    </view>
+    <view class='relive_title_right'>
+      <!-- <text>更多</text> -->
+      <!-- <image src='/images/my/right_arrow.png'></image> -->
+    </view>
+  </view>
+  <view class='living_content' bindtap='btnReviewLiving' data-app_url='{{item.app_url}}' wx:for="{{data.data}}" wx:key="{{index}}">
+    <view class='living_content_left'>
+      <image class='living_image' src='{{item.banner_image}}'></image>
+      <image class='relive_icon' src='/images/index/relive.png'></image>
+    </view>
+    <view class='living_content_right'>
+      <view class='content_left'>
+        <view class='content_top'>
+          <text>{{item.title}}</text>
+          <view class='content_mid'>
+          <image class='retext' src='/images/video/relive.png'></image>
+            <!-- <text class='retext'>回放</text> -->
+            <view class='retime'>
+              <text>{{item.h}}</text> 时
+              <text>{{item.m}}</text> 分
+              <text>{{item.i}}</text> 秒</view>
+          </view>
+
+        </view>
+        <view class='content_bot'>
+          <image wx:if="{{item.location}}" src='/images/index/location.png'></image>
+          <text>{{item.location}}</text>
+        </view>
+      </view>
+      <view class='content_right'>
+        <image src='/images/index/time.png'></image>
+        <text>{{item.start_date}}</text>
+      </view>
+    </view>
+    <!-- <view class='line'></view> -->
+  </view>
+</template>

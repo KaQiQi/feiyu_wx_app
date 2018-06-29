@@ -1,0 +1,243 @@
+<view class="{{noscroll?'noscroll':''}}" wx:if="{{dataloaded==1}}" sytle="position:relative">
+  <view class="share_mask" wx:if="{{shareMaskShow==1}}">
+    <view class="img_container_share">
+      <image src="{{share_image_url}}" class="ewm_img"></image>
+      <view class="tips" bindtap="saveImgToPhotosAlbumTap">
+        <text>保存图片</text>
+      </view>
+      <view class="close_mask" bindtap="closeMask">
+        <image src="/images/live/close.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class='share'>
+    <image class="go_index" src='/images/index/backIndex.png' bindtap='jump_index'></image>
+    <image src='/images/live/shareicon.png' class="share_icon" bindtap='jump_share'></image>
+  </view>
+  <swiper indicator-dots="{{images.length>1?true:''}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="#e72e4b" circular="true">
+    <swiper-item wx:for="{{images}}" wx:key="{{index}}">
+      <image src="{{item}}" class="slide_img" />
+    </swiper-item>
+  </swiper>
+  <view class="product_desc">
+    <view class="pro_name">{{productInfo.name}}</view>
+    <view class="pro_price">
+      <text class="sale_price">¥ {{productInfo.min_price}}</text> <text wx:if="{{productInfo.market_price_desc!=0}}">丨 </text> <text wx:if="{{productInfo.market_price_desc!=0}}" class="line_th">¥{{productInfo.market_price_desc}}</text>
+    </view>
+    <view wx:if="{{is_kilner == 1}}" class="into_price">进价: ¥ {{productInfo.fx_price}}</view>
+    <view class="sale_detail">
+      <text class="sale_num" wx:if="{{is_bought==1}}">我的库存：{{productInfo.stock_num}}</text>
+      <text class="sale_num" wx:if="{{is_bought==0}}">库存：{{productInfo.fy_stock_num}}</text>
+      <text>年份：{{productInfo.year}}</text>
+      <text class="location">产区：{{productInfo.area}}</text>
+    </view>
+  </view>
+
+  <!-- <view class="profit_detail" wx:if="{{is_kilner == 1}}">
+    <view class="pro_item" wx:for="{{productInfo.money_data}}" wx:key="{{index}}">
+      <view class="top_words">{{item.title}}</view>
+      <view class="how_money">
+        <image class="small_icon" src="/images/distribution/zuan_icon.png"></image>
+        <text>¥{{item.des}}</text>
+      </view>
+    </view>
+  </view> -->
+  <view class="profit_desc">
+    <view class="share_word">分享赚¥{{productInfo.make_money}}</view>
+    {{productInfo.fee_tips}}
+  </view>
+
+  <!-- 推荐理由 -->
+  <view class="rec_reason" wx:if="{{productInfo.product_reason}}">
+    <image class="title_img" src="/images/productDetail/reason.png"></image>
+    <view>{{productInfo.product_reason}}</view>
+  </view>
+  <!-- 图文介绍 -->
+  <view class="imgtext_desc">
+    <image class="title_img imgtext" id="mb20" src="/images/productDetail/imgtext_desc.png"></image>
+    <image class="desc_img" wx:for="{{productInfo.desc_images}}" wx:key="{{index}}" src="{{item}}" mode="widthFix"></image>
+  </view>
+
+  <view class="commonProblem"  wx:if="{{productInfo.memo_content}}">
+    <image class="title_img question" src="/images/productDetail/question.png"></image>
+    <view>{{productInfo.memo_content}}</view>
+  </view>
+  
+  <!-- 物流 -->
+  <view class="logistic" wx:if="{{productInfo.shop_info}}">
+    <image class="title_img logistic_img" src="/images/productDetail/logistic.png"></image>
+    <view class="flex_container" wx:for="{{productInfo.shop_info}}" wx:key="{{index}}" id="{{index==productInfo.shop_info.length-1?'no_border':''}}">
+      <text>{{item.title}}</text>
+      <text>{{item.desc}}</text>
+    </view>
+  </view>
+
+  <!-- 底部占位区域 -->
+  <view id="none">
+    <text></text>
+  </view>
+
+
+  <view class="bottom_btn">
+    <block wx:if="{{is_kilner==1}}">
+      <block wx:if="{{is_bought==1}}">
+        <view class="m_btn_container border_r" bindtap="shop" data-takeGoods="1">
+          <image class="b_icon" src="/images/distribution/truck_gray.png"></image>
+          <text>提货</text>
+        </view>
+        <view class="m_btn_container" bindtap="shop" data-takeGoods="0">
+          <image class="b_icon" src="/images/distribution/shopcar_gray.png"></image>
+          <text>继续囤货</text>
+        </view>
+        <view class="btn_container right_btn r_share" bindtap="jump_share">
+          <image class="btn_icon1" src="/images/distribution/Extension.png"></image>
+          <text>赚¥{{productInfo.make_money}}</text>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="btn_container w_s" bindtap="shop" data-takeGoods="0">
+          <image class="btn_icon2" src="/images/distribution/shopcar_gray.png"></image>
+          <text>囤货</text>
+        </view>
+        <view class="btn_container  right_btn w_b" bindtap="jump_share">
+          <image class="btn_icon1" src="/images/distribution/Extension.png"></image>
+          <text>赚¥{{productInfo.make_money}}</text>
+        </view>
+      </block>
+    </block>
+    <block wx:else>
+      <view class="btn_container red" bindtap="jump_share">
+          <image class="btn_icon1" src="/images/distribution/Extension.png"></image>
+          <text>赚¥{{productInfo.make_money}}</text>
+      </view>
+    </block>
+  </view>
+</view>
+<image class='loading_image' src='/images/index/empty.gif' wx:else></image>
+<!-- sku弹层 -->
+<view class="product_sku" id="{{bottom?'bottom':''}}">
+  <view class="brand">
+    <view class="brand_img">
+      <image src="{{productSku[currentIndex].image}}"/>
+    </view>
+    <view class="sku_brand_desc">
+      <text class="sku_brand_price">￥{{price}}</text>
+      <text class="sku_brand_name">{{productInfo.name}}</text>
+    </view>
+  </view>
+  <view class="spec">
+    <block wx:if="{{productInfo.product_type==2}}">
+      <text class="s_title">{{productInfo.sale_attr_names}}</text>
+      <view class="spec_desc">
+        <block wx:for="{{productSku}}" wx:key="{{index}}">
+          <text class="{{currentType == index?'active':''}}" id="{{item.stock==0?'noStock':''}}" data-id="{{index}}" bindtap="{{item.stock==0?'':'chooseType'}}" data-price="{{item.price}}" data-stock="{{item.stock}}" data-skuid="{{item.id}}" data-shopname="{{productInfo.shop_name}}" data-image="{{item.image}}" data-specification="{{item.specification}}">{{item.specification}}</text>
+        </block>
+      </view>
+    </block>
+    <view class="shop_num">
+      <view class="fl_container">
+        <text>提货数量</text>
+      </view>
+      <view class="fr_container">
+        <text class="{{inputValue<=1?'onlyOne':''}}" bindtap="reduce">-</text>
+        <text class="num_pro">{{inputValue}}</text>
+        <text class="up" bindtap="increase" class="{{inputValue>=stock?'onlyOne':''}}">+</text>
+      </view>
+    </view>
+  </view>
+  <view class="confirm_placeholder"></view>
+  <block wx:if="{{takeGoods==1}}">
+    <view class="confirm {{noStock==0||productInfo.stock_num==0?'noStock':''}}"  wx:if="{{confirmShow}}">
+      <text wx:if="{{noStock==0 || productInfo.stock_num==0}}">库存不足</text>
+      <text wx:else bindtap="confirmShop">确定</text>
+    </view>
+  </block>
+  <block wx:if="{{takeGoods==0}}">
+    <view class="confirm" wx:if="{{confirmShow}}">
+      <text wx:if="{{fy_sku[0].stock == 0}}" class="{{fy_sku[0].stock == 0?'noStock':''}}">已售罄</text>
+      <text wx:else  bindtap="confirmBuy">确定</text>
+    </view>
+  </block>
+  <view class="close" catchtap="close">
+    <image src="/images/order/delete.png"></image>
+  </view>
+</view>
+
+<!-- 蒙层 -->
+<view id="mask" wx:if="{{maskShow}}" bindtap="close">
+</view>
+
+<!-- 分享 -->
+<view class="choose_detail" id="{{itemMask?'item_mask':''}}">
+  <view class='btn_views'>
+      分享到微信好友
+    <button bindtap='onShareAppMessage' open-type='share' class="button" style='background-color: #fff;font-size: 28rpx;width:100%'></button>
+  </view>
+  <view class='btn_view' bindtap="btnShare">
+    <text>分享到朋友圈</text>
+  </view>
+  <view bindtap="close" class='btn_cancel'>
+    <text>取消</text>
+  </view>
+</view>
+<!-- <view class='share_info'>sss</view> -->
+
+<!-- 购买信息弹窗 -->
+<scroll-view class="order_info" id="{{shopbtm?'shopbtm':''}}" scroll-y>
+  <view class="order_info_title">
+    <text>确定提货</text>
+    <view class="close" bindtap="close">
+      <image src="/images/order/delete.png"></image>
+    </view>
+  </view>
+  <view class="border"></view>
+  <view class="add_address" wx:if="{{!is_setAddress}}">
+    <view class="add_click" bindtap="addAdress">
+      <image src="/images/productDetail/position.png"></image>
+      <text>请添加收货地址</text>
+    </view>
+  </view>
+  <view class='order_address_info' bindtap="addAdress" wx:if="{{is_setAddress}}">
+    <image src='/images/order/location.png' style='width:34rpx;height:36rpx'></image>
+    <view class='content'>
+      <view class='user_info'>
+        <view class='order_name'>收货人: {{buy_user_name}}</view>
+        <view class='order_phone'>{{buy_user_mobile}}</view>
+      </view>
+      <view class='order_address'> 收货地址:{{buy_user_address}}</view>
+    </view>
+    <image src='/images/order/go.png' style='width:26rpx;height:26rpx'></image>
+  </view>
+  <view class="decorate">
+    <image src="/images/productDetail/colorline.png" class="colorline"></image>
+    <view class="bg"></view>
+  </view>
+  <!-- <view class="business_info">
+    <text class="business_name">{{productInfo.shop_name}}</text>
+  </view> -->
+  <view class="order_product_desc">
+    <view class="img_left">
+        <image src="{{shopImg}}"></image>
+    </view>
+    <view class="info_right">
+      <view class="order_pro_name">{{orderInfo.product_name}}</view>
+      <view class="pro_type">规格: {{orderInfo.unit}} x {{inputValue}}</view>
+    </view>
+  </view>
+  <view class="order_freight">
+    <text>快递运费：</text>
+    <text>全国包邮</text>
+  </view>
+  <!-- <view class="user_msg">
+    <view class="msg_desc">
+      <text style="margin-top:20rpx;">买家留言：</text>
+      <input type="text" placeholder="如有特殊需要，请在这里留言哦" bindinput="getInput"></input>
+    </view>
+  </view> -->
+  <view class="placeholder"></view>
+</scroll-view>
+<view class="commit_order" wx:if="{{isCommit}}">
+  <view class="commit_btn" bindtap="commit_order">
+    <text>确定</text>
+  </view>
+</view>

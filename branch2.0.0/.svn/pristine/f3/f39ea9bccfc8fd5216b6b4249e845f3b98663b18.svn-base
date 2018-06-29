@@ -1,0 +1,44 @@
+<!--pages/distribution/searchResult/searchResult.wxml-->
+<block wx:if="{{show}}">
+<view class='back_head'>
+  <image class="bg_img" src="/images/distribution/top_bg_img.jpg"></image>
+  <view class='back_head_view'>
+    <view class="container">
+        <text>{{pageData.from_nick_name}}</text>
+        <image class="vip_icon" src="{{pageData.vip_avatar}}"></image>
+    </view>
+    <view class="tips" wx:if="{{in_wxapp==1 && is_who==0}}">用户已来小程序</view>
+  </view>
+</view>
+
+<view class='back_content'>
+  <view class='back_content_left'>
+    <text class='back_content_text'>账户返现(元)</text>
+    <text class='back_content_num'>{{pageData.total_money}}</text>
+  </view>
+  <view class='back_content_right'>
+    <text class='back_content_text'>账户积分</text>
+    <text class='back_content_num'>{{pageData.total_score}}</text>
+  </view>
+</view>
+<view class='list'>
+  <view class='detail_list' wx:for="{{pageData.money_detail}}" wx:key="{{index}}">
+    <view class='list_left'>
+      <text>{{item.desc}}</text>
+      <text class='left_text'>{{item.add_time}}</text>
+    </view>
+    <view class='list_right'>
+      <text>{{item.status}}</text>
+      <text class='right_text'>{{item.money}}</text>
+    </view>
+  </view>
+</view>
+<view class="placeholder"></view>
+  <view class="btn_container">
+      <button bindtap='onShareAppMessage' class="bottom_btn" open-type='share' wx:if="{{is_who == 0}}">邀请用户提现</button>
+      <form bindsubmit="sendFormId" report-submit="true">
+        <button bindtap='takeMoney' class="bottom_btn" form-type="submit" wx:if="{{is_who == 1}}">立即提现</button>
+      </form>
+  </view>
+  <image class="go_index" src='/images/index/backIndex.png' bindtap='jump_index'></image>
+</block>

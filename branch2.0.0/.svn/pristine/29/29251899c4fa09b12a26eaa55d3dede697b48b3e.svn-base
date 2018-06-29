@@ -1,0 +1,96 @@
+/* pages/distribution/completeInto/completeInto.wxss */
+
+
+page{
+  background: #f2f2f2;
+}
+textarea{
+  margin: 0;
+  padding: 0;
+}
+
+.complete_head image {
+  width: 100%;
+  height: 280rpx;
+  display: block;
+
+}
+
+.complete_shop_img {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #f2f2f2;
+  background: #fff;
+}
+
+.complete_shop_img text {
+  color: #333;
+  font-size: 26rpx;
+}
+
+.complete_shop_img image {
+  width: 136rpx;
+  height: 136rpx;
+  border-radius: 6rpx;
+  display: block;
+  
+}
+
+.complete_shop_name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 20rpx;
+  border-bottom: 1rpx solid #f2f2f2;
+    background: #fff;
+}
+
+.complete_shop_name text {
+  color: #333;
+  font-size: 26rpx;
+}
+
+.input_name {
+  flex: 1;
+  text-align: right;
+  color: #333;
+  font-size: 26rpx;
+}
+
+.complete_shop_instructions {
+  width: 100%;
+  height: 168rpx;
+  border-bottom: 1rpx solid #f2f2f2;
+  padding: 30rpx 20rpx;
+    background: #fff;
+}
+
+.input_name_instructions {
+  color: #333;
+  font-size: 26rpx;
+  width: 100%;
+  height: 168rpx;
+
+}
+.be_pay {
+  position: absolute;
+  bottom: 30rpx;
+  left: 0;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+}
+
+.pay_now {
+  width: 650rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 40rpx;
+  background: #ac1630;
+  text-align: center;
+  color: #fff;
+  font-size: 28rpx;
+}

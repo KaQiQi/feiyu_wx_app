@@ -1,0 +1,53 @@
+<view wx:if="{{hasData}}" class="main_container {{noscroll?'noscroll':''}}">
+    <view class="share_mask" wx:if="{{shareMaskShow==1}}">
+        <view class="img_container">
+            <image src="{{share_image_url}}" class="ewm_img"></image>
+            <view class="tips" bindtap="saveImgToPhotosAlbumTap">
+                <text>保存图片</text>
+            </view>
+            <view class="close_mask" bindtap="closeMask">
+                <image src="/images/live/close.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class='share'>
+        <image class="share_icon" src='../../../../images/index/backIndex.png' bindtap='jump_index'></image>
+        <image class="share_icon" src='../../../../images/live/shareicon.png' bindtap="intoShare"></image>
+    </view>
+    <image src="{{bg_img}}" class="bg_img"></image>
+    <view class="top_content">
+        <view class="shop">{{shop_info.name}}专用优惠券</view>
+        <view class="money">￥{{coupon_info.money}}</view>
+        <view class="much">满{{coupon_info.condition_money}}元可用</view>
+        <view class="get gray" wx:if="{{coupon_info.is_taken==1}}">已领取</view>
+        <view class="get gray" wx:elif="{{coupon_info.is_sendout==1}}">已抢完</view>
+        <view class="get" wx:else bindtap="getCoupon" data-id="{{coupon_info.id}}">立即领取</view>
+        <view class="effective_time">优惠券有效期：{{coupon_info.duration_day}}天</view>
+    </view>
+    <view class="bottom_content">
+        <image class="avatar" src="{{shop_info.avatar}}"></image>
+        <view class="shop_name">{{shop_info.name}}</view>
+        <view class="position">
+            <image src='../../../../images/order/location.png' style='width: 20rpx;height:25rpx;'></image>
+            <text class='live_netred_address'>{{shop_info.location}}</text>
+        </view>
+        <view class="into_shop" data-id="{{shop_info.id}}" data-url='{{shop_info.shop_app_url}}' bindtap="intoShop">
+            进店逛逛 >
+        </view>
+        <view class="desc">{{shop_info.desc}}</view>
+    </view>
+    <view class="couponDetail" id="{{couponMask?'coupon_mask':''}}">
+        <view class='btn_views'>
+            分享到微信好友
+            <button bindtap='onShareAppMessage' open-type='share' style='background-color: #fff;font-size: 28rpx;width:100%' class="button"></button>
+        </view>
+        <view class='btn_view' bindtap="btnShare">
+            <text>分享到朋友圈</text>
+        </view>
+        <view bindtap="close" class='btn_cancel'>
+            <text>取消</text>
+        </view>
+    </view>
+    
+</view>
+<view id="mask" wx:if="{{maskShow}}" bindtap="close"></view>

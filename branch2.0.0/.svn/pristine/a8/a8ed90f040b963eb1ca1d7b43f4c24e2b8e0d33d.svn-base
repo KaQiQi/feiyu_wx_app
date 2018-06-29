@@ -1,0 +1,29 @@
+<!--pages/distribution/payOrder/payOrder.wxml-->
+<view class='pay_order'>
+  <view>
+    <image src='{{imageSelect}}'></image>
+  </view>
+  <view class='pay_text'>
+    <text class='order_price'>¥{{price}}</text>
+    <view>
+      <text class='order_text'>{{name}}</text>
+      <text class='order_text'> {{specification}}X{{num}}</text>
+    </view>
+  </view>
+</view>
+
+<view class='pay_money'>
+  <view>
+    <image class='money_img' src='/images/distribution/money_img.png'></image>
+  </view>
+  <view class='money_view'>
+    <view class='acount'>
+      <text class='acount_pay'>账户余额支付</text>
+      <text class='acount_money'>(账户余额¥{{balance}})</text>
+    </view>
+    <image src='/images/distribution/choosed.png'></image>
+  </view>
+</view>
+
+<view class='btn_sure' bindtap='btnPay'>确定支付
+  <text class='price_text'>¥{{allPrice}}</text> </view>

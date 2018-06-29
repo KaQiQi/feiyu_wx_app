@@ -1,0 +1,32 @@
+<!--pages/activity/vipHome/getInvitation/getInvitation.wxml-->
+<view class='be_invite'>
+
+  <text>刀郎邀请你成为窖主</text>
+  <image></image>
+</view>
+
+<view class='be_rights'>
+  <view class='rights_title'>
+    <image></image>
+    <text>窖主权益</text>
+  </view>
+<view class='rights_item' wx:for="{{8}}" wx:key="{{index}}">
+    <text>{{index+1}}.购酒自用享受窖主折扣</text>
+  </view>
+  
+
+
+</view>
+
+<view class='rights_title'>
+  <image></image>
+  <text>当前已支付0/5万</text>
+</view>
+<view class='rights_item'>*微信支付单笔上限1万,需要重复支付五次</view>
+
+
+<view class='be_pay'>
+  <view class='pay_now'>立即支付1万</view>
+  <view class='pay_custom'>自定义金额支付</view>
+
+</view>

@@ -1,0 +1,57 @@
+<!--pages/live_demo/orderStatus/liveEnd.wxml-->
+<view class='page'>
+  <view class='end_living_title'>本场直播已结束</view>
+  <view class='end_living_describe'>去其他直播间逛逛吧～</view>
+  <view class='end_more_live'>
+    <view class='line_gap'></view>
+    <view class='line_center'>
+      <image class='video_icon' src='../../../images/order/cancel.png'></image>
+      <view class='more_live'>更多精彩直播</view>
+    </view>
+    <view class='line_gap'></view>
+  </view>
+  <view class='base_video'>
+    <view class='live'>
+      <view class='more_living_video'>
+        <!--图片  -->
+         <!-- <image  style='width:100%;display:block' mode='widthFix'></image>  -->
+        <view class='living_image'>
+        </view>
+        <view class='living_num'>238人观看</view>
+      </view>
+      <view class='live_bottom'>238人观看238人观看238人观看238人观看238人观看</view>
+    </view>
+    <view class='live'>
+      <view class='more_living_video'>
+        <!--图片  -->
+        <view class='living_image'></view>
+        <view class='living_num'>238人观看</view>
+      </view>
+      <view class='live_bottom'>238人观看</view>
+    </view>
+    <view class='live'>
+      <view class='more_living_video'>
+        <!--图片  -->
+        <view class='living_image'></view>
+        <view class='living_num'>238人观看</view>
+      </view>
+      <view class='live_bottom'>238人观看</view>
+    </view>
+      <view class='live'>
+      <view class='more_living_video'>
+        <!--图片  -->
+        <view class='living_image'></view>
+        <view class='living_num'>238人观看</view>
+      </view>
+      <view class='live_bottom'>238人观看</view>
+    </view>
+  </view>
+</view>
+<!-- 
+<view class='demo_list'>
+  <view class='demo'></view>
+  <view class='demo'></view>
+  <view class='demo'></view>
+  <view class='demo'></view>
+  <view class='demo'></view>
+</view> -->

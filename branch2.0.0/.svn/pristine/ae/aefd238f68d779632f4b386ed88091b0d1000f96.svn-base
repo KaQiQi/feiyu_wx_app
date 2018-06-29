@@ -1,0 +1,18 @@
+<view class="shop_container" bindtap='btnIndex' data-my_home_flag='{{item.my_home_flag}}' data-my_home_id='{{item.my_home_id}}' wx:for="{{focus_list}}" wx:key="{{index}}">
+  <view class="left_content">
+    <image class="shop_avatar" src="{{item.avatar}}"></image>
+    <view class="name_location">
+      <view class="shop_name">{{item.name}}</view>
+      <view class="location" wx:if="{{my_home_flag==1}}">
+        <image class="location_icon" src="../../../images/productDetail/location_icon_gray.png"></image>
+        <text>{{item.location}}</text>
+      </view>
+      <view class="location" wx:else>
+        <text>共{{item.product_num}}件商品</text>
+      </view>
+    </view>
+  </view>
+  <image src='../../../images/my/go.png' wx:if="{{item.is_my==0}}" class='order_go'></image>
+  <view class="right_content" wx:else>当前店铺</view>
+
+</view>

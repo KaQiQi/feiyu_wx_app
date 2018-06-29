@@ -1,0 +1,39 @@
+<!--pages/livePlayer/reviewlive/reviewlive.wxml-->
+<!--pages/reviewlive/reviewlive.wxml-->
+<view class='relive_title'>
+  <view class='relive_title_left'>
+    <image src='/images/index/block_icon.png'></image>
+    <text>精彩回放</text>
+  </view>
+  <view class='relive_title_right'>
+    <text>更多</text>
+    <image src='/images/my/right_arrow.png'></image>
+  </view>
+</view>
+<view class='living_content'>
+  <view class='living_content_left'>
+    <image class='living_image'></image>
+    <image class='live_icon' src='/images/index/video_icon.png'></image>
+  </view>
+  <view class='living_content_right'>
+    <view class='content_left'>
+      <view class='content_top'>
+        <text>啊撒送啊惊悚啊</text>
+        <view class='content_mid'>
+          <text class='retext'>回放</text>
+          <text class='retime'>05时 39分 39秒</text>
+        </view>
+
+      </view>
+      <view class='content_bot'>
+        <image src='/images/index/location.png'></image>
+        <text>英国 伦敦</text>
+      </view>
+    </view>
+    <view class='content_right'>
+      <image src='/images/index/time.png'></image>
+      <text>6/24</text>
+    </view>
+  </view>
+
+</view>

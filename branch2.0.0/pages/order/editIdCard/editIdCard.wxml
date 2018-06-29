@@ -1,0 +1,24 @@
+<!--pages/order/editIdCard/editIdCard.wxml-->
+<view class='line'></view>
+<radio-group  bindchange="checkboxChange">
+  <label class="label" wx:for="{{4}}">
+    <view class='all'>
+      <view class='id_card'>
+        <text class='id_card_text'>小杰</text>
+        <text class='id_card_text'>阿文</text>
+      </view>
+
+      <view class='id_card_bottom'>
+        <view class='id_card_left'>
+          <radio   value="{{item.name}}" checked="{{item.checked}}" />
+          <text class='card_text'>设为默认支付人</text>
+        </view>
+        <view class='id_card_right'>
+          <text class='btn_id_card'>编辑</text>
+          <text class='btn_id_card'>删除</text>
+        </view>
+      </view>
+    </view>
+  </label>
+</radio-group>
+<view class='upload' bindtap='upload_idcard'>新增支付人信息</view>

@@ -1,0 +1,21 @@
+<view class="top_tips">
+  <image class="top_icon" src="../../../../images/my/aplaying.png"></image>
+  <view class="title">提现申请已提交</view>
+</view>
+<view class="bottom_desc">
+  <view class="left">预计到账时间</view>
+  <view class="right">{{duration}}</view>
+</view>
+<view class="bottom_desc">
+  <view class="left">提现到</view>
+  <view class="right">微信零钱</view>
+</view>
+<view class="bottom_desc">
+  <view class="left">提现金额</view>
+  <view class="right">¥{{money}}</view>
+</view>
+<form bindsubmit="sendFormId" report-submit="true">
+  <button class="form_button" form-type="submit">
+    <view class="success_icon" >提现完成</view>
+  </button>
+</form>

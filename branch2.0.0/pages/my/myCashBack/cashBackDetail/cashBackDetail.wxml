@@ -1,0 +1,29 @@
+<view class="main_container">
+  <view class="cash_to">
+    <view class="left">提现到</view>
+    <view class="right">
+      <view class="top">微信零钱</view>
+      <!-- <view class="bottom">2小时内到账</view> -->
+    </view>
+  </view>
+  <view class="cash_detail">
+    <view class="cash_money">提现金额</view>
+    <!-- <view class="money_num">¥{{returnData.my_return_money}}</view> -->
+    <view class='money_view'>
+
+      <view class="money">¥</view>
+      <input type="number" bindinput="onBindding" placeholder-class="placeholder" focus="true" placeholder="" value="{{inputValue}}" class="money_num"></input>
+    </view>
+  </view>
+  <view class="main_tips">当前可提现¥{{returnData.my_return_money}}
+    <text class="all_btn" bindtap='btn_all'>全部提现</text>
+  </view>
+  <!-- <navigator url="../../myCashBack/commitSuccess/commitSuccess" hover-class="navigator-hover" open-type="navigate"> -->
+
+  <form bindsubmit="sendFormId" report-submit="true">
+    <button class="form_button" form-type="submit">
+      <view class="cashback_btn" bindtap='btn_cashback'>提现</view>
+      <!-- </navigator>  -->
+    </button>
+  </form>
+</view>

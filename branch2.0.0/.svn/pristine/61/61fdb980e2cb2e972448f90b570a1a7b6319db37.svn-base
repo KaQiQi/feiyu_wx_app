@@ -1,0 +1,52 @@
+<view class='ddd'>
+  <view class='page' wx:if='{{isShowPage==1}}'>
+
+    <view class='id_card' wx:if='{{isBindPhone==1}}' bindtap='btn_IdCard'>
+      <view class='id_card_left'>
+        <!-- <image class='id_card_left_icon' src='../../../images/order/idcard.png'></image> -->
+        <text class='id_card_left_text'>{{bind_mobile_tip}}</text>
+      </view>
+      <view style='display:flex'>
+        <text class='id_card_right_text'>立即绑定</text>
+        <image class='id_card_right' src='../../../images/my/go.png'></image>
+
+      </view>
+    </view>
+
+    <view class='img_backgroung'>
+      <image src='https://static.topshopstv.com/wxapp/img/dfh.png' style='width:100%;height:200rpx '></image>
+    </view>
+    <view class="{{isBindPhone==1? 'status_title_view': 'status_title'}}">
+      <view class='status_code'>买家已付款</view>
+      <view class='status_go'>你的包裹正装箱待发</view>
+    </view>
+
+
+    <view class='detail'>
+      <image src='/images/order/location.png' style='width:34rpx;height:36rpx;margin:auto 0;'></image>
+      <view class='detail_address'>
+        <view class='name'>收货人: {{ send_to}}</view>
+        <view class='address'> 收货地址: {{ address}}</view>
+      </view>
+    </view>
+
+    <view class='price_order'>
+      <view class='total'>
+        <view class='price'> 总价:</view>
+        <view class='cash'>¥{{total_money}}</view>
+      </view>
+      <view class='order_look'>
+        <view class='look' bindtap='lookPay' data-id='{{order_id}}'>查看订单</view>
+        <view class='look' bindtap='go_back'>继续购物</view>
+      </view>
+    </view>
+
+    <!-- <view class='detail_remind'>
+      <view class='remind_img'>
+        <image src='/images/order/location.png' style='width:34rpx;height:36rpx;margin:auto 0;'></image>
+        <view class='remind_text'>安全提示</view>
+      </view>
+      <view class='text'>逛全球好店不会通过任何非官方电话、QQ、微信与你联系，也不会要求您通过链接进行退款或者取消订单。</view>
+    </view> -->
+  </view>
+</view>

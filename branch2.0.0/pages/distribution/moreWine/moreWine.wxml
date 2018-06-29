@@ -1,0 +1,28 @@
+
+<view class="container">
+    <view class="pro_container" bindtap='btnProDetail' data-id='{{item.id}}' wx:for="{{list}}" wx:key="{{index}}" data-dataid='{{item.data_id}}' data-is_bought='{{item.is_bought}}'>
+        <view class="fixed">
+            <image class="hot_img" src="{{item.main_images}}"></image>
+            <view class="bottom_tips">
+                <!-- <button class="share_btn" data-id="{{item.id}}" data-data_id="{{item.data_id}}" open-type="share" data-name="{{item.name}}" bindtap='onShareAppMessage'></button> -->
+                <image class="extension_icon" src="/images/distribution/Extension.png"></image>
+                <view>赚{{item.profit}}</view>
+            </view>
+        </view>
+        <view class="pro_describle">{{item.name}}</view>
+        <view class="stock_desc" wx:if="{{my_wine==1}}">已售{{item.sale_num}}瓶 丨 库存{{item.stock_num}}瓶</view>
+        <view class="other_hot_price">
+            <view>
+                <text>¥ {{item.price}}</text>
+                <text class='market_money' wx:if="{{item.market_price}}">¥{{item.market_price}}</text>
+            </view>
+            <block wx:if="{{my_wine==1}}">
+                <image class="record_icon" src="/images/distribution/record_icon.png"></image>
+                <view class="record_btn" catchtap="record" data-id="{{item.id}}"></view>
+            </block>
+            <block wx:if="{{my_wine==0}}">
+                <image class="record_icon" src="/images/distribution/shop_car.png"></image>
+            </block>
+        </view>
+    </view>
+</view>

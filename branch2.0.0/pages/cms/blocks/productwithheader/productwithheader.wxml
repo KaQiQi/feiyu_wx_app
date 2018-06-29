@@ -1,0 +1,36 @@
+<template name="productwithheader_default">
+
+  <view style='padding-bottom:{{data.bottom_gap}}rpx; background-color: #f2f2f2;'>
+    <view wx:if="{{data.data.nav_image}}" class='product_info'>
+      <image src='{{data.data.nav_image}}' mode='widthFix' ></image>
+    </view>
+    <!-- <view class="products_info">
+      <view class="products_detail" wx:for="{{data.data.products}}" wx:key="{{index}}" bindtap='feiyu_btn_productdetail' data-url="{{item.app_url}}">
+        <image src="{{item.image}}" ></image>
+        <view class="pro_name">{{item.name}}</view>
+        <view class="brand_desc">{{item.name}}</view>
+        <view class="pro_price main_color">¥{{item.price}}</view>
+      </view>
+    </view> -->
+    <view class="other_products">
+      <view class="product_container" wx:for="{{data.data.products}}" wx:key="{{index}}">
+        <view class="fixed">
+          <image class="hot_img"  bindtap="clickJump" data-url="{{item.page_url}}" data-num="{{otherIndexProducts.length}}" src="{{item.image}}"></image>
+          <view class="time_container" wx:if="{{item.entity_type==1}}">
+            <image class="time_icon" src="../../../../images/index/time_icon.png"></image>
+            <text class="time_num">{{item.duration_time}}</text>
+          </view>
+        </view>
+        <view class="other_brand_name" wx:if="">
+          <text>Lady Dior</text>
+          <!-- <image class="other_live_icon" src="../../images/index/living_icon.png"></image> -->
+        </view>
+        <view class="pro_describle">{{item.title}}</view>
+        <view class="other_hot_price" bindtap='btnAddShopCar' data-entity_type='{{item.entity_type}}' data-id='{{item.id}}' data-data_id='{{item.data_id}}'>
+          <text>¥ {{item.price}}</text>
+          <image class="shopcar_icon" src="../../../../images/index/shopcar_icon.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

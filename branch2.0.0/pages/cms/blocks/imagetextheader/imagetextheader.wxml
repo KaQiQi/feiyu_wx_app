@@ -1,0 +1,13 @@
+<template name="iamgetextheader">
+<view style='margin-bottom:{{data.bottom_gap}}rpx'>
+    <view class="top_banner">
+        <image class="main_img" src="{{data.image}}"></image>
+        <view class="describe">
+            <view class="title">{{data.title}}</view>
+            <view class="sale_point">{{data.sub_title}}</view>
+        </view>
+        <view class="words_desc">{{data.info}}</view>  
+    </view>
+    <view class="palceholder"></view>
+      </view>
+</template>

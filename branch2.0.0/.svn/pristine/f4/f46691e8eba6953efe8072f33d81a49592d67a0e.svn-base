@@ -1,0 +1,255 @@
+<!--pages/storePage/anchor/anchorDetail.wxml-->
+ <view class="{{noscroll?'noscroll':''}}" sytle="position:relative"> 
+<block wx:if='{{is_show==1}}'>
+  <view class="top_banner">
+    <image src="{{shop_info.bg_image}}"></image>
+  </view>
+  <!-- 店铺描述 -->
+  <view class="store_desc">
+    <view class="shop_main">
+      <image class="store_avatar" src="{{shop_info.avatar}}"></image>
+      <view class="desc_right">
+        <view style='display:flex'>
+          <view class="shop_name">{{shop_info.name}}</view>
+          <image class='location_icon' src='../../../images/productDetail/location_icon.png'></image>
+          <view class="location">{{shop_info.location}}</view>
+        </view>
+
+      </view>
+    </view>
+  </view>
+  <!-- tab栏 -->
+  <view class="tabbar">
+    <view class="content" data-current="1" bindtap="currentChange" id="{{currentTab==1?'active':''}}">
+      <text>简介</text>
+      <view class="border {{currentTab==1?'active':''}}"></view>
+    </view>
+    <view class="content" data-current="2" bindtap="currentChange" id="{{currentTab==2?'active':''}}">
+      <text>商品</text>
+      <view class="border {{currentTab==2?'active':''}}"></view>
+    </view>
+    <view class="content" data-current="3" bindtap="currentChange" id="{{currentTab==3?'active':''}}">
+      <text>动态</text>
+      <view class="border {{currentTab==3?'active':''}}"></view>
+    </view>
+  </view>
+  <!-- 主播动态 -->
+  <block wx:if="{{currentTab==3}}">
+
+    <view wx:if="{{liveSchedules.length<=0&&netredDynamics.length<=0}}">
+      <image src='/images/index/nostatus.png' class='order_none'></image>
+      <view class='none_tips'>主播还没有动态哦...</view>
+    </view>
+
+    <view wx:else>
+      <view class="hot_live" wx:if="{{liveSchedules[0]}}">
+        <view class="top_tips">
+      <image src="../../../images/index/hot_live.png"></image>
+    </view>
+        <view class="live_detail" wx:for="{{liveSchedules}}" wx:key="{{index}}" data-id="{{item.id}}" data-app_url="{{item.app_url}}" bindtap="intoLive">
+          <view class="live_img">
+            <image src="{{item.banner_image}}"></image>
+          </view>
+          <view class="words_desc">
+            <view class="top_title">{{item.title}}</view>
+            <view class="live_status">
+              <block wx:if="{{item.live_status==1}}">
+                <view class="flex_left">
+                  <image src="../../../images/index/living.png" class="live_icon"></image>
+                  <!-- <text>直播中</text> -->
+                </view>
+                <view class="flex_right">
+                  <text>进入直播间</text>
+                  <image src="../../../images/index/go.png" class="right_icon"></image>
+                </view>
+              </block>
+              <block wx:if="{{item.live_status==0}}">
+                <view class="flex_left" wx:if="{{item.d==0 && item.m==0 &&item.h==0}}">
+                  直播即将开始，请稍后...
+                </view>
+                <view class="flex_left" wx:else>
+                  <image src="../../../images/index/pre_live.png" class="live_trailer"></image>
+                  <text class="main_color">{{item.d}}</text>天
+                  <text class="main_color">{{item.h}}</text>时
+                  <text class="main_color">{{item.m}}</text>分后开播
+                </view>
+                <view class="flex_right" catchtap="alert_btn" data-index="{{index}}" data-id="{{item.id}}" data-my_remind='{{item.my_remind}}' wx:if="{{item.my_remind==0}}">
+                  <form bindsubmit="sendFormId" report-submit="true">
+                    <button class="button" form-type="submit">
+                      <image src="../../../images/index/alert_icon.png" class="alert"></image>
+                      <text>开播提醒</text>
+                    </button>
+                  </form>
+                </view>
+                <view class="flex_right" catchtap="cancelAlert" data-index="{{index}}" data-id="{{item.id}}" wx:else>
+                  <form bindsubmit="sendFormId" report-submit="true">
+                    <button class="button" form-type="submit">
+                      <text>已提醒</text>
+                    </button>
+                  </form>
+                </view>
+              </block>
+            </view>
+          </view>
+        </view>
+        <!-- <view class="more">
+        <text>更多</text>
+        <image src="../../images/index/down_icon.png"></image>
+    </view> -->
+      </view>
+      <view style='border-bottom: 10rpx solid #f2f2f2;' wx:for="{{netredDynamics}}" wx:key="{{index0}}" wx:for-index="index0">
+        <view class="products_list_content">{{item.content}}</view>
+        <view class="products_list" wx:if="{{item.is_live==0}}">
+          <block wx:if="{{item.images_num==1}}">
+            <view class="flex_container" style='width:{{item.width}}rpx; height:{{item.height}}rpx' wx:for="{{item.medias}}" wx:key="{{index}}">
+              <image bindtap="{{item.media_type==1?'look_img':'jumpVideo'}}" data-index='{{index}}' data-pageUrl="{{item.app_url}}" data-listindex='{{index0}}' style='width:{{item.width}}rpx;height:{{item.height}}rpx;' src="{{item.image_url}}"></image>
+              <image wx:if="{{item.media_type==2}}" src="../../../images/video/big_video_icon.png" class="videos_icon"></image>
+            </view>
+          </block>
+          <block wx:else>
+            <view class="flex_container" id="{{index!=0&&(index+1)%3==0?'nomargin':''}}" wx:for="{{item.medias}}" wx:key="{{index}}">
+              <image class='img' bindtap="{{item.media_type==1?'look_img':'jumpVideo'}}" data-pageUrl="{{item.app_url}}" data-index='{{index}}' data-listindex='{{index0}}' src="{{item.image_url}}"></image>
+              <image wx:if="{{item.media_type==2}}" src="../../../images/video/big_video_icon.png" class="videos_icon"></image>
+            </view>
+
+          </block>
+        </view>
+
+        <view class="anchor_detail" wx:else>
+          <image src="https://cbu01.alicdn.com/img/ibank/2016/773/740/3316047377_932582326.310x310.jpg" class="video_bg_img"></image>
+          <image src="../../../images/video/big_video_icon.png" class="video_icon"></image>
+        </view>
+        <view class='bot_live'>
+          <text>{{item.publish_time}}</text>
+          <!-- <view class='bot_live_right'>
+        <text>{{item.like_num}}</text>
+        <image src='../../../images/productDetail/like.png'></image>
+      </view> -->
+        </view>
+      </view>
+    </view>
+
+  </block>
+
+
+  <!-- 商品详情 -->
+  <block wx:if="{{currentTab==2}}">
+    <block wx:if="{{is_currentTab2==1}}">
+      <view class="products_info" wx:if="{{dataflows.length>0}}">
+        <view class="products_detail" wx:for="{{dataflows}}" wx:key="{{index}}">
+          <image src="{{item.image}}"  data-url="{{item.page_url}}" data-index='{{index}}' bindtap='jumpProduct'  class="pro_img"></image>
+          <!-- <view class="pro_name">{{item.title}}</view> -->
+          <view class="brand_desc">{{item.title}}</view>
+
+          <view class="pro_describle">{{item.name}}</view>
+          <view class="other_hot_price" bindtap='btnAddShopCar' data-id='{{item.id}}'>
+          <text>¥ {{item.price}}</text>
+          <image class="shopcar_icon" src="../../../images/index/shopcar_icon.png"></image>
+        </view>
+
+          <!-- <view class="pro_price main_color">￥{{item.price}}</view> -->
+          <view class='live_play' wx:if="{{item.entity_type==1}}">
+            <image src='../../../images/index/video_icon.png' class='play_bg'></image>
+            <!-- <view class='live_time_play'>
+            <view class='live_time'>{{item.duration_time}}</view>
+          </view> -->
+          </view>
+        </view>
+      </view>
+      <view wx:else>
+        <image src='/images/index/nogoods.png' class='order_none'></image>
+        <view class='none_tips'>主播还没有上传商品哦..</view>
+      </view>
+    </block>
+  </block>
+
+  <!-- 简介 -->
+  <block wx:if="{{currentTab==1}}">
+    <view class='liver'>
+      <view class="liver_detail">
+        <view>所在地：{{shop_info.location==null?"":shop_info.location}}</view>
+        <view>生日：{{shop_info.birthday==null?"":shop_info.birthday}}</view>
+        <view>国籍：{{shop_info.country_name==null?"":shop_info.country_name}}</view>
+        <view>星座：{{shop_info.constellation==null?"":shop_info.constellation}}</view>
+
+      </view>
+      <view>标签：
+        <text>{{shop_info.keyword_words==null?"":shop_info.keyword_words}}</text>
+        <!-- <text>#活力#</text> -->
+      </view>
+    </view>
+    <view class="video_desc">
+      <view class="words_content" wx:if="{{shop_info.desc}}">{{shop_info.desc}}</view>
+      <!-- <view class="anchor_video">
+      <image src="https://cbu01.alicdn.com/img/ibank/2016/773/740/3316047377_932582326.310x310.jpg" class="video_bg_img"></image>
+      <image src="../../../images/video/big_video_icon.png" class="video_icon"></image>
+    </view> -->
+    </view>
+    <!-- <view class="products_list">
+    <view class="flex_container">
+      <image class='img' src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=4001899027,2777119125&fm=27&gp=0.jpg"></image>
+    </view>
+    <view class="flex_container">
+      <image class='img' src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=4001899027,2777119125&fm=27&gp=0.jpg"></image>
+    </view>
+    <view class="flex_container">
+      <image class='img' src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=4001899027,2777119125&fm=27&gp=0.jpg"></image>
+    </view>
+    <view class="flex_container">
+      <image class='img' src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=4001899027,2777119125&fm=27&gp=0.jpg"></image>
+    </view>
+    <view class="flex_container">
+      <image class='img' src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=4001899027,2777119125&fm=27&gp=0.jpg"></image>
+    </view>
+
+
+  </view> -->
+  </block>
+</block>
+<image class='loading_image' src='../../../images/index/empty.gif' wx:else></image>
+
+
+
+<!-- sku弹层 -->
+<view class="product_sku" id="{{bottom?'bottom':''}}">
+  <view class="brand">
+    <view class="brand_img">
+      <image src="{{productSku[currentIndex].image}}"/>
+    </view>
+    <view class="sc_brand_desc">
+      <text class="sc_brand_price">￥{{price}}</text>
+      <text class="sc_brand_name">{{productInfo.name}}</text>
+    </view>
+  </view>
+  <view class="spec">
+    <block wx:if="{{productInfo.product_type==2}}">
+      <text class="s_title">{{productInfo.sale_attr_names}}</text>
+      <view class="spec_desc">
+        <block wx:for="{{productSku}}" wx:key="{{index}}">
+          <text class="{{currentType == index?'active':''}}" id="{{item.stock==0?'noStock':''}}" data-id="{{index}}" bindtap="{{item.stock==0?'':'chooseType'}}" data-price="{{item.price}}" data-stock="{{item.stock}}" data-skuid="{{item.id}}" data-shopname="{{productInfo.shop_name}}" data-image="{{item.image}}">{{item.specification}}</text>
+        </block>
+      </view>
+    </block>
+
+    <view class="shop_num">
+     <view class="fl_container">
+        <text>购买数量</text>
+      </view>
+      <view class="fr_container">
+        <text class="{{inputValue<=1?'onlyOne':''}}" bindtap="reduce">-</text>
+        <text class="num_pro">{{inputValue}}</text>
+        <text class="up" bindtap="increase" class="{{inputValue>=stock?'onlyOne':''}}">+</text>
+      </view>
+    </view>
+  </view>
+  <view class="confirm {{noStock==0||productInfo.stock_num==0?'noStock':''}}" bindtap="confirmShop" wx:if="{{confirmShow}}">
+    <text wx:if="{{noStock==0 || productInfo.stock_num==0}}">已售罄</text>
+    <text wx:else>确定</text>
+  </view>
+  <view class="close" catchtap="close">
+    <image src="../../../../images/order/delete.png"></image>
+  </view>
+</view>
+<view id="mask" wx:if="{{maskShow}}" bindtap="close">
+</view>
+</view>

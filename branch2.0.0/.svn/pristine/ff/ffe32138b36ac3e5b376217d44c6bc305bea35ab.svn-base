@@ -1,0 +1,109 @@
+/* pages/live_demo/orderStatus/liveEnd.wxss */
+
+page{
+   background-color: rgb(22, 44, 55);
+} 
+
+.end_living_title {
+  color: #fefefe;
+  font-size: 42rpx;
+  padding-top: 158rpx;
+  text-align: center;
+  line-height: 50rpx;
+  height: 50rpx;
+  font-family: FZLTXHK;
+  width: 100%;
+}
+
+.end_living_describe {
+   color: #fefefe;
+  font-size: 26rpx;
+  margin-top: 38rpx;
+  text-align: center;
+  line-height: 30rpx;
+  height: 30rpx;
+  font-family: FZLTXHK;
+  width: 100%;
+}
+
+.end_more_live {
+  margin-top: 88rpx;
+  display: flex;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  height: 40rpx;
+  justify-content: space-between;
+}
+
+.line_center {
+  display: flex;
+}
+
+.more_live{
+  margin-left: 12rpx;
+  color: #eeeeee;
+  font-size: 30rpx;
+  font-family: FZLTXHK;
+}
+.line_gap {
+  left: 0;
+  height: 1rpx;
+  width: 220rpx;
+  margin: 20rpx auto;
+  background-color: #fff;
+}
+
+.video_icon {
+  margin: auto 0;
+  width: 20rpx;
+  height: 20rpx;
+}
+.live {
+  margin-top: 26rpx;
+  margin-bottom: 10rpx;
+  width: 46%;
+  height: 364rpx;
+  background-color: red;
+ /* display: table-cell; */
+ margin-right: 4%;
+}
+.more_living_video {
+  position: relative;
+}
+
+.living_image{
+  width: 330rpx;
+  height: 260rpx;
+}
+.living_num {
+  font-family: FZLTXHK;
+
+ display: flex;
+  position: absolute;
+  right: 10rpx;
+  color: #eeeeee;
+  top: 20rpx;
+  font-size: 22rpx;
+
+}
+
+.base_video {
+    overflow: hidden; 
+    padding-left: 4%;
+   
+   display: flex; 
+  flex-wrap: wrap; 
+  /* display: table; */
+  word-wrap:break-word;
+}
+
+.live_bottom{
+  background-color: white;
+  padding: 22rpx 14rpx; 
+  height: 64rpx;
+  color: #333;
+  font-size: 22rpx;
+  font-family: FZLTXHK;
+  /* margin: 22rpx 14rpx; */
+}
+

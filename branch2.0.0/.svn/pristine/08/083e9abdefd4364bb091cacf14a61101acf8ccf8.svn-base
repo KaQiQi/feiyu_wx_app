@@ -1,0 +1,183 @@
+<!--pages/order/orderDetial/detial.wxml-->
+<view style='width:100%;height:100%' wx:if='{{isShow==0}}'></view>
+
+<view wx:else>
+  <view class='order_top' bindtap='onOrderClick' data-id='{{result.id}}' >
+    <image src='../../../images/order/wait_pay.png' class='type_icon' wx:if="{{status == '-1'}}"></image>
+    <image src='../../../images/order/nosend.png' class='type_icon' wx:if="{{status == '2'}}"></image>
+    <image src='../../../images/order/cancel.png' class='type_icon' wx:if="{{status == '-2'}}"></image>
+     <image src='../../../images/order/cancel.png' class='type_icon' wx:if="{{status == '0'}}"></image>
+    <image src='../../../images/order/send.png' class='type_icon' wx:if="{{status == '8'}}"></image>
+    <image src='../../../images/order/complete.png' class='type_icon' wx:if="{{status == '11'}}"></image>
+    <image src='../../../images/order/refund.png' class='type_icon' wx:if="{{status == '13'||status == '14'}}"></image>
+    <block wx:if="{{status==-1}}">
+      <view class='order_type_detial'>
+        <view class='type_detial_title'>待支付</view>
+        <view class='type_detial_tips'>
+          <text>您的订单已提交, 请在{{clock}}内完成支付</text>
+        </view>
+        <view class='type_detial_tips'>超时订单自动取消</view>
+      </view>
+    </block>
+    <block wx:if="{{status==-2}}">
+      <view class='order_type_detial'>
+        <view class='type_detial_title'>订单关闭</view>
+        <view class='type_detial_tips'>
+          <text>支付超时，系统自动关单</text>
+        </view>
+        <view class='type_detial_tips'>{{result.last_ship_time}}</view>
+      </view>
+    </block>
+<!-- 待发货 -->
+    <view class='order_type_detial' wx:if="{{status == '2'}}" >
+      <view class='type_detial_title'>{{status_str}}</view>
+      <view class='type_detial_tips'>
+        <view class='type_detial_tips'>{{last_ship_info}}</view>
+        <view class='type_detial_tips' wx:if='{{result.last_ship_time}}'>{{result.last_ship_time}}</view>
+         <view class='type_detial_tips' wx:else></view>
+      </view>
+    </view>
+<!-- 待收货 -->
+    <view class='order_type_detial' wx:if="{{status == '8'}}" >
+      <view class='type_detial_title'>{{status_str}}</view>
+     <view class='type_detial_tips'>
+        <view class='type_detial_tips'>{{last_ship_info}}</view>
+        <view class='type_detial_tips' wx:if='{{result.last_ship_time}}'>{{result.last_ship_time}}</view>
+         <view class='type_detial_tips' wx:else></view>
+      </view>
+
+    </view>
+
+
+    <!--订单关闭 -->
+    <view class='order_type_detial' wx:if="{{status == '0'}}" >
+      <view class='type_detial_title'>{{status_str}}</view>
+      <view class='type_detial_tips'>
+        <view class='type_detial_tips'>{{last_ship_info}}</view>
+          <view class='type_detial_tips' wx:if='{{isOrder==1}}'>{{result.last_ship_time}}</view>
+         <view class='type_view' wx:else>  </view>
+      </view>
+
+
+    </view>
+<!-- 订单退款中 -->
+    <view class='order_type_detial' wx:if="{{status == '13'}}" >
+      <view class='type_detial_title'>{{status_str}}</view>
+     <view class='type_detial_tips'>
+        <view class='type_detial_tips'>{{last_ship_info}}</view>
+          <view class='type_detial_tips' wx:if='{{isOrder==1}}'>{{result.last_ship_time}}</view>
+         <view class='type_view' wx:else>  </view>
+      </view>
+
+
+    </view>
+<!-- 订单退款完成 -->
+    <view class='order_type_detial' wx:if="{{status == '14'}}" >
+       <view class='type_detial_title'>{{status_str}}</view>
+      <view class='type_detial_tips'>
+      <view class='type_detial_tips'>{{last_ship_info}}</view>
+      <view class='type_detial_tips' wx:if='{{isOrder==1}}'>{{result.last_ship_time}}</view>
+      <view class='type_view' wx:else>  </view>
+    </view>
+
+  </view>
+
+<!-- 已完成 -->
+  <view class='order_type_detial' wx:if="{{status == '11'}}" >
+      <view class='type_detial_title'>{{status_str}}</view>
+       <view class='type_detial_tips'>
+        <view class='type_detial_tips'>{{last_ship_info}}</view>
+        <view class='type_detial_tips' wx:if='{{result.last_ship_time}}'>{{result.last_ship_time}}</view>
+         <view class='type_detial_tips' wx:else></view>
+      </view>
+
+    </view> 
+
+    <image src='../../../images/order/jump.png' class='is_jump' wx:if="{{status!='-2'}}"></image>
+    <!-- <image src='../../../images/order/jump.png' class='is_jump' wx:else></image> -->
+  </view>
+
+  <view class='order_user'>
+    <image src='../../../images/order/location_g.png' class='user_location'></image>
+    <view class='user_detial'>
+      <view class='user_name_mobile'>
+        <view class='user_name'>{{result.send_to}}</view>
+        <view class='user_mobile'>{{result.send_to_mobile}}</view>
+      </view>
+      <view class='user_address'>{{result.address}}</view>
+    </view>
+  </view>
+
+  <view class='order_detial'>
+    <view class='order_shop'>
+      <view class='shop_name'  bindtap="clickJump" data-url="{{result.shop_app_url}}">{{result.shop_name}}</view>
+      <view class='order_talk'>
+        <image src='../../../images/order/wx.png'></image>
+        <text>联系客服</text>
+        <button class="contact_btn" session-from='{"shop_id": "{{shop_id}}", "shop_name": "{{shop_name}}"}'   open-type="contact" bindtap="contact"></button>
+      </view>
+    </view>
+    <!-- <navigator url="../../../pages/productDetail/productDetail" hover-class="navigator-hover" open-type="navigate"> -->
+      <view class='order_product'>
+        <!-- <view class='product_image'></view> -->
+        <image class='product_image' src='{{result.main_image}}'></image>
+        <view class='product_detial'>
+          <view class='product_name_price'>
+            <text class="order_pro_name">{{result.product_list}}</text>
+            <text wx:if='{{result.product_price}}'>¥{{result.product_price}}</text>
+          </view>
+          <view class='product_sku_id'>
+            <text >{{result.product_sku_attr}}</text>
+            <text>x{{result.num}}</text>
+          </view>
+        </view>
+      </view>
+    <!-- </navigator> -->
+    <view class='order_price'>
+      <view class='express_price' wx:if='{{result.product_total}}'>
+        <text>商品总额</text>
+        <text>¥{{result.product_total}}</text>
+      </view>
+      <view class='express_price'>
+        <text>运费</text>
+        <text>¥0.0</text>
+      </view>
+      <view class='express_price'  wx:if='{{result.discount_amount>0}}'>
+        <text>优惠金额</text>
+        <text>-¥{{result.discount_amount}}</text>
+      </view>
+      <view class='express_price' wx:if='{{result.redbag_value>0}}'>
+        <text>优惠券</text>
+        <text class="main_color">-¥{{result.redbag_value}}</text>
+      </view>
+      <view class='express_price' wx:if='{{result.coupon_value>0}}'>
+        <text>店铺优惠券</text>
+        <text class="main_color">-¥{{result.coupon_value}}</text>
+      </view>
+    </view>
+    <view class='pay_price'>
+      实付款：<text wx:if='{{result.all_total}}'>¥{{result.all_total}}</text>
+    </view>
+  </view>
+  <view class="user_msg" wx:if="{{result.customer_remark}}">
+    用户留言：<text>{{result.customer_remark}}</text>
+  </view>
+  <view class='order_num_time'>
+    <view class='order_num'>
+      <text>订单编号：{{result.order_no}}</text>
+      <view class='order_copy' data-order='{{result.order_no}}' bindtap='copyOrder'>复制</view>
+    </view>
+  </view>
+  <view class='order_time' wx:if="{{result.pay_time}}">下单时间：{{result.pay_time}}</view>
+  <view class="order_palceholder"></view>
+  <view class='order_btns'>
+   <view class='btn_s right_now_buy' bindtap='btn_sure' data-id='{{result.id}}'  wx:if="{{status==8||status==13}}">确认收货</view>
+    <view class='btn_s right_now_buy' wx:if="{{status==-1}}" bindtap="PayAtOnce">立即支付</view>
+    <view class='btn_s' wx:if="{{status==2 || status==8 || status==11}}" bindtap="toLogistic">查看物流</view>
+    <view class='btn_s' wx:if="{{shop_confirm==0 && status==2}}" bindtap="cancelOrder">取消订单</view>
+    <view class='btn_s' wx:if="{{status==-1}}" bindtap="cancelOrder">取消订单</view>
+    <view class='btn_s' bindtap='btn_refund' data-id='{{result.id}}'  wx:if="{{status==8}}">申请退款</view>
+    <!-- <view class='btn_s' wx:if="{{status==2}}">提醒发货</view> -->
+    <view class='btn_s' wx:if="{{status==-2 || status==0 || status==11 || status==14}}" bindtap="deleteOrder">删除订单</view> 
+  </view>
+</view>

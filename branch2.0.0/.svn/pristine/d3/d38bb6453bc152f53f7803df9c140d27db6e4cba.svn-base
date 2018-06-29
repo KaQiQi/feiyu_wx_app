@@ -1,0 +1,24 @@
+<!--pages/distribution/completeInto/completeInto.wxml-->
+<view wx:if="{{ishow==1}}">
+<view class='complete_head'>
+  <image src="{{banner+'?t=2'}}"></image>
+</view>
+
+<view class='complete_shop_img'>
+  <text>店铺头像</text>
+  <image src='{{avater}}' ></image>
+</view>
+
+<view class='complete_shop_name'>
+  <text>店铺名称</text>
+  <input class='input_name' value='{{shopName}}' bindinput="listenerNameInput"  placeholder='请输入店铺名称'>{{inputValue}}</input>
+</view>
+
+<view class='complete_shop_instructions'>
+  <textarea class='input_name_instructions' bindinput="listenerContentInput" placeholder='店铺描述'>{{inputContent}}</textarea>
+</view>
+
+<view class='be_pay'>
+  <view class='pay_now' bindtap='btnCreateShop'>创建店铺</view>
+</view>
+</view>

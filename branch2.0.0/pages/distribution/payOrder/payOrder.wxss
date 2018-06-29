@@ -1,0 +1,103 @@
+/* pages/distribution/payOrder/payOrder.wxss */
+
+page {
+  background: #f2f2f2;
+}
+
+.pay_order {
+  background: #fff;
+  width: 100%;
+  padding: 20rpx;
+  display: flex;
+  border-top: 1rpx solid #f2f2f2;
+  border-bottom: 12rpx solid #f2f2f2;
+}
+
+.pay_order image {
+  width: 168rpx;
+  height: 168rpx;
+  display: block;
+}
+
+.pay_text {
+  padding-left: 20rpx;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.order_price {
+  color: #333;
+  font-size: 26rpx;
+}
+
+.order_text {
+  margin-top: 12rpx;
+  color: #333;
+  font-size: 26rpx;
+}
+
+.pay_money {
+  background: #fff;
+  width: 100%;
+  display: flex;
+  padding: 30rpx 20rpx;
+}
+
+.money_img {
+  margin-top: 10rpx;
+  width: 24rpx;
+  height: 26rpx;
+  display: block;
+}
+
+.money_view {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+}
+
+.money_view image {
+  width: 28rpx;
+  height: 28rpx;
+  display: block;
+  margin-top: 10rpx;
+}
+
+.acount {
+  padding-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.acount_pay {
+  color: #333;
+  font-size: 28rpx;
+}
+
+.acount_money {
+  color: #333;
+  font-size: 22rpx;
+}
+
+.btn_sure {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 26rpx;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  font-size: 28rpx;
+  background: #ac1630;
+  align-items: center;
+}
+
+.price_text {
+  font-size: 36rpx;
+}

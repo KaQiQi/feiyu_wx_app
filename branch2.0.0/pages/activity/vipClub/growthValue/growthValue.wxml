@@ -1,0 +1,75 @@
+<block wx:if="{{hasData}}">
+  <view class="top_container" wx:if="{{type != 2}}">
+    <view class="current_value">
+      <text>当前成长值</text>:
+      <text class="color">{{vip_data.total_face_score}}</text>
+    </view>
+    <view class="des">下单补贴返现: {{vip_data.backcash}}% / 单笔上限{{vip_data.top_return_money}}元</view>
+    <view class="progress_container">
+      <view class="left_num">
+        <view>{{vip_data.face_score_min}}</view>
+        <view class="num">返现{{vip_data.backcash}}%</view>
+      </view>
+      <view class="out_con">
+          <progress percent="{{progress}}" stroke-width="1" activeColor="#e0b44f" backgroundColor="#f2f2f2" active class="progress"/> 
+      </view>
+      <view class="left_num">
+        <view>{{vip_data.face_score_max}}</view>
+        <view class="num">返现{{vip_data.next_backcash}}%</view>
+      </view>
+    </view>
+  </view>
+  <view class="center_desc" wx:if="{{type == 1 && clubData.total_money !=0}}">
+    <view class="left" >妃鱼补贴</view>
+    <view class="right">累计 :
+      <text class="main_color">{{clubData.total_money}}</text>
+    </view>
+  </view>
+  <view class="center_desc"  wx:if="{{type == 2 && clubData.total_money !=0}}">
+    <view class="left">好友消费</view>
+    <view class="right">累计 :
+      <text class="main_color">{{clubData.total_money}}</text>
+    </view>
+  </view>
+  <view class="center_desc" wx:if="{{type == 3 && clubData.total_facevalue !=0}}">
+    <view class="left">Club成长值</view>
+    <view class="right">累计 :
+      <text class="main_color" >{{clubData.total_facevalue}}</text>
+    </view>
+  </view>
+  <view class="out_container" wx:if="{{type == 3}}">
+    <view class='vip_consume' wx:for="{{clubData.detail}}" wx:key="{{index}}">
+      <!-- <view>
+        <image src="{{item.avater}}"></image>
+      </view> -->
+      <view class='consume'>
+      <view class='consume_view'>
+        <text class='vip_consume_name'>{{item.nick_name}}</text>
+        <text class='vip_consume_time'>{{item.pay_time}}</text>
+      </view>
+      <view class="vip_consume_price" id="{{item.status==0?'main_color':''}}">{{item.facevalue}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="out_container" wx:else>
+    <view class='vip_consume' wx:for="{{clubData.detail}}" wx:key="{{index}}">
+      <!-- <view>
+        <image src="{{item.avater}}"></image>
+      </view> -->
+      <view class='consume'>
+      <view class='consume_view'>
+        <text class='vip_consume_name'>{{item.nick_name}}</text>
+        <text class='vip_consume_time'>{{item.pay_time}}</text>
+      </view>
+      <view class="vip_consume_price">{{item.should_all_total}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="none_container" wx:if="{{clubData.detail.length == 0}}">
+      <image class="none_img" src="/images/index/nocare.png"></image>
+      <view class="text" wx:if="{{type == 3}}">暂无成长值，呼朋唤友加速CLUB升级!</view>
+      <view class="text" wx:if="{{type == 2}}">暂无消费，快去下单赢大奖！</view>
+      <view class="text" wx:if="{{type == 1}}">暂无补贴，呼朋唤友赚补贴！</view>  
+  </view>
+</block>
+

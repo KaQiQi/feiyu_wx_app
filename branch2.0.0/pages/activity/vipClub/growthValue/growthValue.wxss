@@ -1,0 +1,126 @@
+/* pages/activity/vipClub/growthValue/growthValue.wxss */
+
+.top_container {
+  width: 100%;
+  padding: 30rpx 20rpx 60rpx;
+  border-top: 1rpx solid #f2f2f2;
+  border-bottom: 12rpx solid #f2f2f2;
+}
+
+.color {
+  color: #e0b44f;
+}
+
+.current_value {
+  color: #333;
+  font-size: 24rpx;
+}
+
+.des {
+  color: #333;
+  font-size: 20rpx;
+  margin-top: 8rpx;
+}
+
+.progress {
+  display: block;
+  width: 440rpx;
+  margin: 0 10rpx;
+  padding-top: 15rpx;
+}
+.out_con{
+  height: 100%;
+}
+
+.progress_container {
+  display: flex;
+  color: #333;
+  font-size: 24rpx;
+  margin-top: 16rpx;
+}
+
+.center_desc {
+  width: 100%;
+  padding: 30rpx 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  font-size: 24rpx;
+  color: #333;
+}
+.out_container{
+  width: 100%;
+  padding: 0 20rpx;
+}
+.vip_consume {
+  padding: 20rpx 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-top: 1rpx solid #f2f2f2;
+}
+
+.vip_consume image {
+  width: 90rpx;
+  height: 90rpx;
+  display: block;
+  border-radius: 50%;
+}
+
+.consume {
+  justify-content: space-between;
+  display: flex;
+  width: 100%;
+}
+
+/* .consume_view {
+  padding-left: 20rpx;
+} */
+
+.vip_consume_name {
+  font-size: 26rpx;
+  color: #333;
+  display: block;
+}
+
+.vip_consume_time {
+  font-size: 22rpx;
+  color: #888;
+  display: block;
+}
+
+.vip_consume_price {
+  font-size: 26rpx;
+  color: #333;
+}
+.left_num{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+}
+.num{
+    color: #e0b44f;
+    font-size: 20rpx;
+}
+.none_container{
+  display: flex;
+  margin-top: 200rpx;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.none_img{
+  width: 210rpx;
+  height: 170rpx;
+}
+.text{
+  margin-top: 16rpx;
+  color: #333333;
+  font-size: 24rpx;
+}
+#main_color{
+  color: #e72f4b;
+}

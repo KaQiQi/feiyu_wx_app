@@ -1,0 +1,20 @@
+<!--pages/distribution/accountRecharge/accountRecharge.wxml-->
+<view class='recharge'>
+  <view class='recharge_style'>
+    <text>充值方式</text>
+    <text wx:if="{{isWxPay==0}}">账户收入</text>
+    <text wx:else>微信充值</text>
+  </view>
+  <view class='recharge_money'>充值金额</view>
+  <view class='input_view'>
+    <text>¥</text>
+    <input class='input_money' auto-focus='true' type='number' bindinput="getInputNum" value='{{inputValue}}'></input>
+  </view>
+  <view class='recharge_explain' wx:if="{{isWxPay==0}}">
+    <text class='recharge_explain_text' wx:if="{{isWxPay==0}}">当前账户可用收入{{money}}元,</text>
+    <text class='recharge_explain_money' bindtap='btnAllRecharge'>全部充值</text>
+  </view>
+  <view wx:else class='recharge_wx'>因微信单笔支付设有上限,建议单笔最高充值2000元</view>
+
+  <view class='btn_recharge' bindtap='btnRecharge'>充值</view>
+</view>

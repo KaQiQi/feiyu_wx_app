@@ -1,0 +1,354 @@
+/* pages/welfare/welfare.wxss */
+
+.welfare_view {
+  position: relative;
+}
+
+.welfare_top {
+  background-color: #222;
+  padding: 20rpx 20rpx;
+  width: 100%;
+  padding-bottom: 80rpx;
+  border-bottom-left-radius: 14rpx;
+  border-bottom-right-radius: 14rpx;
+}
+
+.welfare {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.welfare_left {
+  display: flex;
+  align-items: center;
+}
+.avatar{
+  position: relative;
+}
+
+.avatar_image {
+  width: 72rpx;
+  height: 72rpx;
+  display: block;
+  border-radius: 50%;
+}
+.vip_icon{
+  position: absolute;
+  bottom: 0;
+  right: 0rpx;
+  width: 32rpx;
+  height: 30rpx;
+  display: block;
+  background: red;
+  border-radius: 50%;
+}
+
+
+.welfare_left text {
+  color: #fff;
+  font-size: 28rpx;
+  margin-left: 20rpx;
+}
+
+.welfare_icon {
+  width: 30rpx;
+  height: 30rpx;
+  display: block;
+}
+
+.level_title {
+  display: flex;
+  justify-content: center;
+  color: #ccc;
+  margin-top: 20rpx;
+  font-size: 22rpx;
+}
+
+.top_resume_level {
+  padding: 0 80rpx 10rpx 80rpx;
+  display: flex;
+   justify-content: space-between; 
+}
+
+.level_left {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+}
+
+.level_right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.level_money {
+  color: #ccc;
+  font-size: 22rpx;
+  white-space: nowrap;
+}
+
+.level_text {
+  color: #fff;
+  font-size: 22rpx;
+  white-space: nowrap;
+}
+.progress_view{
+  width: 100%;
+  display: flex;
+  padding: 0 20rpx;
+padding-top: 6rpx;
+}
+
+.progress_left{
+  width: 16rpx;
+  height: 16rpx;
+  display: block;
+  border-radius: 50%;
+  border: 4rpx solid rgba(92, 39, 47, 0.3);
+  background: #e72f4b;
+}
+.progress_right{
+  width: 17rpx;
+  height: 17rpx;
+  display: block;
+  border-radius: 50%;
+  background: #666;
+ border: 2rpx solid #888;
+}
+
+.progress {
+  display: block;
+  width: 100%;
+  padding-top: 6rpx;
+}
+
+.welfare_num {
+  position: absolute;
+  bottom: -80rpx;
+  left: 20rpx;
+  width: 710rpx;
+  background: #fff;
+  /* height: 120rpx; */
+  padding: 22rpx 20rpx;
+  border-radius: 10rpx;
+  border: 1rpx solid #f2f2f2;
+  border-bottom: 1rpx solid #f2f2f2;
+  display: flex;
+  justify-content: space-between;
+}
+
+.welfare_back {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.line {
+  margin: auto 0;
+  background: #f2f2f2;
+  width: 1rpx;
+  height: 60rpx;
+}
+
+.welfare_score {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.money {
+  color: #333;
+  font-size: 30rpx;
+}
+
+.score {
+  margin-top: 4rpx;
+  color: #888;
+  font-size: 22rpx;
+}
+
+.red_bag {
+  background: #fff;
+  padding: 0 20rpx;
+  margin-top: 70rpx;
+}
+
+.red_title {
+  padding-top: 30rpx;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.red_title_left {
+  display: flex;
+  align-items: center;
+}
+
+.red_title_left image {
+  width: 4rpx;
+  height: 24rpx;
+  display: block;
+}
+
+.red_title_left text {
+  color: #333;
+  font-size: 24rpx;
+  margin-left: 12rpx;
+}
+
+.red_title_right {
+  display: flex;
+  align-items: center;
+}
+
+.red_title_right image {
+  width: 24rpx;
+  height: 24rpx;
+  display: block;
+}
+
+.red_title_right text {
+  color: #333;
+  font-size: 24rpx;
+  margin-left: 12rpx;
+}
+
+.getred_bag {
+  margin-top: 22rpx;
+  padding: 30rpx;
+  background-color: #fffbeb;
+  display: flex;
+  width: 100%;
+  border-radius: 10rpx;
+  align-items: center;
+  border: 1rpx solid #ffebc9;
+  justify-content: space-between;
+}
+
+.getred_bag_left {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.getred_bag_time {
+  color: #333;
+  font-size: 26rpx;
+}
+
+.red_text {
+  color: #e72f4b;
+  font-size: 26rpx;
+}
+
+.getred_bag_num {
+  color: #666;
+  margin-top: 10rpx;
+  font-size: 22rpx;
+}
+
+.welfare_prize {
+  background-color: #fff;
+  padding: 0 20rpx;
+}
+
+.prize_title {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+}
+
+.prize_title image {
+  width: 4rpx;
+  height: 24rpx;
+  display: block;
+}
+
+.prize_title text {
+  color: #333;
+  margin-left: 10rpx;
+  font-size: 24rpx;
+}
+
+.prize_view {
+  width: 100%;
+  height: 180rpx;
+  margin-bottom: 10rpx;
+}
+
+.prize_view image {
+  width: 100%;
+  border-radius: 10rpx;
+  height: 180rpx;
+  background: red;
+}
+
+.welfare_score_view {
+  background-color: #fff;
+  padding: 0 20rpx;
+  width: 100%;
+}
+
+.score_view {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* padding: 0 20rpx; */
+  padding-top: 10rpx;
+}
+
+.score_view_item {
+  width: 346rpx;
+   margin-bottom: 20rpx; 
+  padding: 0 0 20rpx;
+  background: #fff;
+  border: 1rpx solid #f2f2f2;
+}
+
+.score_view_item image {
+  width: 346rpx;
+  height: 346rpx;
+  display: block;
+  background: red;
+}
+
+.score_bottom {
+  display: flex;
+  flex-direction: column;
+  padding: 10rpx;
+}
+
+.score_name {
+  color: #333;
+  font-size: 24rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.score_price {
+  color: #666;
+  font-size: 22rpx;
+  margin: 6rpx 0;
+}
+
+.score_prize_view {
+  color: #e72f4b;
+  font-size: 24rpx;
+}
+
+.score_prize_view text {
+  color: #666;
+  font-size: 24rpx;
+}

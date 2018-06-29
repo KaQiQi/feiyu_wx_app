@@ -1,0 +1,31 @@
+<!--pages/storePage/storePage/discountPage.wxml-->
+<!-- <text>pages/storePage/storePage/discountPage.wxml</text> -->
+
+
+
+<!-- 优惠券 -->
+<view class="couponDetail">
+  <!-- <view class="couponTitle">店铺优惠券</view> -->
+
+  <view class="coupon_desc" wx:for="{{discount_list}}" wx:key="{{index}}">
+    <view class="left_content">
+      <view class="coupon_sum">
+        <text class="big_num">{{item.money}}</text>
+        <text>RMB</text>
+      </view>
+      <view class="coupon_time">
+        <text>满{{item.condition_money}}使用</text>
+        <text>有效期：{{item.duration_day}}天</text>
+      </view>
+    </view>
+    <!-- 还没领取 -->
+    <view class="right_content" bindtap='btn_getDiscount' data-id='{{item.id}}' data-position='{{index}}' data-is_taken='{{item.is_taken}}' data-limit_num='{{item.limit_num}}' data-sendout_num='{{item.sendout_num}}' wx:if="{{item.is_taken==0&&item.limit_num > item.sendout_num}}">立即领取</view>
+    <!-- 已领取 -->
+    <view id="gray" class="right_content" bindtap='btn_getDiscount' data-id='{{item.id}}' data-position='{{index}}' data-is_taken='{{item.is_taken}}' data-limit_num='{{item.limit_num}}' data-sendout_num='{{item.sendout_num}}' wx:if="{{item.is_taken==1}}">已领取</view>
+    <!-- 领完了 -->
+    <view id="gray" class="right_content" bindtap='btn_getDiscount' data-id='{{item.id}}' data-position='{{index}}' data-is_taken='{{item.is_taken}}' data-limit_num='{{item.limit_num}}' data-sendout_num='{{item.sendout_num}}' wx:if="{{item.is_taken==0 &&item.limit_num <= item.sendout_num}}">已抢完</view>
+    <image src="{{item.is_taken==0&&item.limit_num>item.sendout_num?'../../../images/productDetail/coupon_bg_red.png':'../../../images/productDetail/coupon_bg_gray.png'}}"></image>
+  </view>
+
+  <!-- <view class="finish" bindtap='btn_finish'>完成</view> -->
+</view>

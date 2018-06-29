@@ -1,0 +1,437 @@
+/* pages/activity/vipHome/vipHome.wxss */
+
+.share {
+  z-index: 999;
+  position: absolute;
+  top: 20rpx;
+  right: 40rpx;
+}
+
+.go_index {
+  width: 70rpx;
+  height: 70rpx;
+  display: flex;
+}
+
+.vip_title {
+  width: 100%;
+  padding: 24rpx 20rpx;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.vip_title image {
+  width: 52rpx;
+  height: 52rpx;
+  border-radius: 50%;
+}
+
+.vip_title text {
+  font-size: 24rpx;
+  color: #333;
+  padding-left: 12rpx;
+}
+
+.vip_card {
+  /* background: #333; */
+  height: 360rpx;
+  margin: 0 20rpx;
+  /* border-radius: 20rpx; */
+}
+
+.vip_card_bg {
+  position: relative;
+  margin: 0 20rpx;
+}
+
+.vip_card_bg image {
+  width: 100%;
+  display: block;
+  height: 360rpx;
+}
+
+.vip_card_view {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.vip_card_top {
+  position: relative;
+  width: 100%;
+  padding: 42rpx 20rpx;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.vip_level {
+  position: absolute;
+  top: 60rpx;
+  right: 0rpx;
+  font-size: 28rpx;
+  color: #e0b44f;
+}
+
+.vip_level_bg {
+  position: relative;
+}
+
+.vip_card_top .vip_level_bg_image {
+  width: 206rpx;
+  height: 60rpx;
+  display: block;
+}
+
+.vip_level_bg text {
+  /* position: absolute;
+left: 50%;
+top: 50%; */
+  background: #e0b44f;
+  height: 60rpx;
+  padding: 10rpx 20rpx;
+  border-bottom-left-radius: 60rpx;
+  border-top-left-radius: 60rpx;
+  font-size: 24rpx;
+  color: #fff;
+  /* transform: translate(-50%,-50%); */
+}
+
+.vip_card_top image {
+  width: 69rpx;
+  height: 60rpx;
+  display: block;
+}
+
+.card_title {
+  display: block;
+  font-size: 28rpx;
+  color: #e0b44f;
+  padding-left: 12rpx;
+}
+
+.card_title_small {
+  display: block;
+  font-size: 22rpx;
+  color: #e0b44f;
+  padding-left: 12rpx;
+}
+
+.vip_card_bot {
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+.card_bot {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card_bot1 {
+  font-size: 26rpx;
+  color: #fff;
+}
+
+.card_bot2 {
+  margin: 24rpx 0;
+  font-size: 26rpx;
+  color: #fff;
+}
+
+.card_bot3 {
+  border: 1rpx solid #e0b44f;
+  font-size: 22rpx;
+  color: #e0b44f;
+  padding: 10rpx 30rpx;
+  border-radius: 27rpx;
+}
+
+.vip_center {
+  margin: 30rpx 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vip_center text {
+  margin: 0 12rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.vip_left {
+  width: 49rpx;
+  height: 6rpx;
+  display: block;
+}
+
+.vip_right {
+  width: 49rpx;
+  height: 6rpx;
+  display: block;
+}
+
+.vip_rights {
+  display: flex;
+  align-items: center;
+  margin: 0 10rpx;
+}
+
+.vip_rights_item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1rpx solid #e0b44f;
+  border-radius: 10rpx;
+  margin: 0 10rpx;
+}
+
+.vip_rights_item image {
+  width: 32rpx;
+  height: 32rpx;
+  display: block;
+}
+
+.vip_rights_item text {
+  margin: 12rpx 18rpx;
+  font-size: 26rpx;
+  color: #333;
+  display: block;
+}
+
+.vip_ad {
+  margin: 30rpx 20rpx 20rpx 20rpx;
+}
+
+.vip_ad image {
+  width: 100%;
+  height: 200rpx;
+}
+
+.view_line {
+  width: 100%;
+  height: 12rpx;
+  background: #f2f2f2;
+}
+
+.vip_prize {
+  width: 100%;
+  /* height: 308rpx; */
+  display: block;
+}
+
+.vip_prize image {
+  width: 100%;
+  height: 308rpx;
+  display: block;
+}
+
+.vip_cost {
+  padding: 30rpx 10rpx 15rpx 20rpx;
+}
+
+.vip_cost text {
+  font-size: 28rpx;
+  color: #333;
+  display: flex;
+  justify-content: center;
+}
+
+.vip_grade {
+  margin: 30rpx 0;
+  display: flex;
+}
+
+.vip_grade_item {
+  width: 100%;
+  display: flex;
+}
+
+.progress {
+  display: block;
+  width: 100rpx;
+  overflow: hidden;
+  margin-right: 10rpx;
+  padding-top: 15rpx;
+}
+
+.progress_title {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #333;
+  margin-right: 10rpx;
+}
+
+.progress_title {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.awardInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1rpx solid #e0b44f;
+  width: 100rpx;
+  margin-top: 14rpx;
+  padding: 4rpx 0;
+}
+
+.vip_goods {
+  padding: 20rpx;
+  display: flex;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+
+.vip_goods_image {
+  width: 160rpx;
+  height: 160rpx;
+  display: block;
+}
+
+.vip_goods_right {
+  overflow: hidden;
+  padding: 10rpx 20rpx;
+  height: 160rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.vip_goods_name {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.vip_goods_price {
+  font-size: 24rpx;
+  color: #666;
+  margin-top: 10rpx;
+}
+
+.goods_price_bot {
+  display: flex;
+  justify-content: space-between;
+}
+
+.goods_price {
+  font-size: 26rpx;
+  color: #e0b44f;
+}
+
+.get_goods {
+  font-size: 24rpx;
+  color: #333;
+  width: 140rpx;
+  height: 42rpx;
+  background: #ddd;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.get_goods_no {
+  font-size: 24rpx;
+  color: #333;
+  width: 140rpx;
+  height: 42rpx;
+  background: #f5ca3a;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.vip_rule {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 30rpx;
+  margin-top: 30rpx;
+}
+
+.vip_rule image {
+  width: 22rpx;
+  height: 22rpx;
+  display: block;
+}
+
+.vip_rule text {
+  font-size: 24rpx;
+  color: #455a90;
+  margin-left: 12rpx;
+}
+
+.rule_mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 544rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+}
+
+.rule_title {
+  text-align: center;
+  font-size: 28rpx;
+  color: #333;
+  margin-top: 50rpx;
+  margin-bottom: 30rpx;
+}
+
+.rule_desc {
+  color: #333;
+  font-size: 24rpx;
+  margin-bottom: 20rpx;
+  padding: 0 54rpx;
+  position: relative;
+}
+
+/* .point{
+  position: absolute;
+  top: 15rpx;
+  left: 44rpx;
+} */
+
+.placeholder {
+  width: 100%;
+  height: 144rpx;
+}
+
+.confirm_btn {
+  width: 436rpx;
+  height: 80rpx;
+  font-size: 28rpx;
+  color: #333;
+  border-radius: 40rpx;
+  position: absolute;
+  bottom: 34rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5ca3a;
+}

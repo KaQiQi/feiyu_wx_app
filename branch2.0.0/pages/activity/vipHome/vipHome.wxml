@@ -1,0 +1,155 @@
+<!--pages/activity/vipHome/vipHome.wxml-->
+
+
+<view wx:if="{{isShow}}">
+  <view class='share'>
+    <image class="go_index" src='../../../images/index/backIndex.png' bindtap='jump_index'></image>
+    <!-- <image src='../../images/live/shareicon.png' class="share_icon" bindtap='jump_share'></image> -->
+  </view>
+  <view class='vip_title'>
+    <image src='{{clubData.avater}}'></image>
+    <text>{{clubData.top_title}}</text>
+  </view>
+  <view class='vip_card'>
+    <view class='vip_card_bg'>
+      <image src="{{clubData.bg_image}}"></image>
+      <view class='vip_card_view'>
+        <view class='vip_card_top'>
+          <image src='/images/activity/vip_icon.png'></image>
+          <view>
+            <text class='card_title'>{{clubData.card_name}}</text>
+            <text class='card_title_small'>有效期至{{clubData.expire_datetime}}</text>
+          </view>
+          <view class="vip_level" wx:if="{{clubData.vip_des}}" data-type='3' bindtap='lookInfo'>
+          <view class='vip_level_bg'>
+          <!-- <image class='vip_level_bg_image' src='/images/my/bgi_yellow.png'></image> -->
+          <text>{{clubData.vip_des}} ></text>
+          </view>
+          
+          </view>
+        </view>
+        <view class='vip_card_bot'>
+          <view class='card_bot'>
+            <text class='card_bot1'>返现补贴</text>
+            <text class='card_bot2'>{{clubData.feiyu_allowance_cashback}}元</text>
+            <text class='card_bot3' data-type='1' bindtap='lookInfo'>查看</text>
+          </view>
+          <view class='card_bot'>
+            <text class='card_bot1'>累积消费</text>
+            <text class='card_bot2'>{{clubData.feiyu_friend_consume}}元</text>
+            <text class='card_bot3' data-type='2' bindtap='lookInfo'>查看</text>
+          </view>
+          <view class='card_bot'>
+            <text class='card_bot1'>成长值</text>
+            <text class='card_bot2'>{{clubData.feiyu_allowance_growth}}点</text>
+            <text class='card_bot3' data-type='3' bindtap='lookInfo'>查看</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+
+  <view class='vip_center'>
+    <image class='vip_left' src='/images/activity/left_line.png'></image>
+    <text>Club权益</text>
+    <image class='vip_right' src='/images/activity/right_line.png'></image>
+  </view>
+
+  <view class='vip_rights'>
+    <view class='vip_rights_item' wx:key="{{index}}" wx:for="{{clubData.rightInfo}}" bindtap='btnClick' data-click='{{item.click}}'>
+      <image wx:if="{{index==0}}" src='/images/activity/icon_1.png'></image>
+      <image wx:elif="{{index==1}}" src='/images/activity/icon_2.png'></image>
+      <image wx:else src='/images/activity/icon_3.png'></image>
+      <view>
+        <text>{{item.title}}</text>
+        <text>{{item.des}}</text>
+      </view>
+    </view>
+    <!-- <view class='vip_rights_item'>
+      <image src='/images/activity/icon_2.png'></image>
+      <view>
+        <text>好友下单</text>
+        <text>我拿补贴</text>
+      </view>
+    </view> -->
+    <!-- <view class='vip_rights_item'>
+      <image src='/images/activity/icon_3.png'></image>
+      <view>
+        <text>好友助力</text>
+        <text>VIP升级</text>
+      </view>
+    </view> -->
+  </view>
+  <view class='vip_ad'>
+    <image bindtap='btn_VipRights' data-url='{{clubData.banner_url}}' mode='widthFix' src="{{clubData.banner_image}}"></image>
+  </view>
+
+  <view class='view_line'></view>
+
+  <view class='vip_center'>
+    <image class='vip_left' src='/images/activity/left_line.png'></image>
+    <text>赢大奖</text>
+    <image class='vip_right' src='/images/activity/right_line.png'></image>
+  </view>
+
+  <view class='vip_prize' bindtap='btnRule'>
+    <image src="{{clubData.award_image}}" mode='widthFix'></image>
+  </view>
+
+
+  <view class='vip_cost'>
+    <text wx:if="{{clubData.total_money!=0}}">您与好友累积消费{{clubData.total_money}}</text>
+    <text wx:else bindtap='btnShop' data-url='{{clubData.total_click_url}}'>{{clubData.total_des}}</text>
+
+    <view class='vip_grade'>
+      <view class='vip_grade_item' wx:for="{{clubData.awardInfo}}" wx:key="{{index}}">
+        <progress class='progress' percent="{{item.progress*100}}" stroke-width="1" activeColor="#e0b44f" backgroundColor="#f2f2f2" active />
+        <view class='progress_title'>
+          <view>{{item.title}}</view>
+          <view class='awardInfo'>{{item.des}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+  <view class='vip_goods' wx:for="{{clubData.list}}" wx:key="{{index}}">
+    <view>
+      <image class='vip_goods_image' src='{{item.image}}'></image>
+    </view>
+    <view class='vip_goods_right'>
+      <view>
+        <view class='vip_goods_name'>{{item.title}}</view>
+        <view class='vip_goods_price'>{{item.condition}}</view>
+      </view>
+      <view class='goods_price_bot'>
+        <text class='goods_price'>{{item.price}}</text>
+        <text wx:if="{{item.status==0}}" class="get_goods_no" bindtap='btnGet' data-id='{{item.product_id}}' data-title='{{item.title}}' data-index='{{index}}'>立即领取</text>
+        <text wx:if="{{item.status==-1}}" class="get_goods">立即领取</text>
+        <text wx:if="{{item.status==1}}" class="get_goods">已领取</text>
+      </view>
+    </view>
+  </view>
+  <view class='vip_rule' bindtap='btnRule'>
+    <image src='/images/activity/rule.png'></image>
+    <text>活动规则</text>
+  </view>
+</view>
+
+
+
+<view class="rule_mask" wx:if="{{isRule==1}}">
+  <view class="content">
+    <view class="rule_title" wx:if="{{isClick==0}}">活动规则</view>
+     <view class="rule_title" wx:if="{{isClick==1}}"></view>
+    <view class="rule_desc" wx:if="{{isClick==0}}" wx:key="{{index}}" wx:for="{{clubData.activity_rule}}">{{item}}
+    </view>
+    <view class="rule_desc" wx:if="{{isClick==1}}" >{{click}}
+    </view>
+
+    <view class="placeholder"></view>
+    <view class="confirm_btn" bindtap='btnCloseRule'>确定</view>
+  </view>
+</view>

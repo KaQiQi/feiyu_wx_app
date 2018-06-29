@@ -1,0 +1,478 @@
+/* pages/distribution/myProfit/myProfit.wxss */
+
+page {
+  width: 100%;
+  height: 100%;
+  background-color: #f2f2f2;
+}
+
+.ml {
+  margin-left: 20rpx;
+}
+
+.color {
+  color: #ffdda7;
+}
+
+.income_desc {
+  position: relative;
+  background-color: #ac1630;
+  width: 710rpx;
+  margin: 12rpx auto 0;
+  border-radius: 8rpx;
+}
+
+.rules {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 10rpx;
+  left: 10rpx;
+  color: #ffdda7;
+  font-size: 24rpx;
+  padding: 10rpx;
+}
+
+.rule_icon {
+  width: 22rpx;
+  height: 22rpx;
+  margin-right: 12rpx;
+}
+
+.top_container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+}
+
+.words {
+  color: #ffdda7;
+  font-size: 26rpx;
+  margin-top: 50rpx;
+}
+
+.income_money {
+  align-items: center;
+  display: flex;
+  color: #fff;
+  font-size: 58rpx;
+  margin-top: 10rpx;
+}
+
+.right_icon {
+  width: 16rpx;
+  height: 28rpx;
+  margin-left: 20rpx;
+}
+
+.center_line {
+  width: 100%;
+  background-color: #ffdda7;
+  height: 1rpx;
+  opacity: 0.2;
+}
+
+.current_level {
+  color: #ffdda7;
+  opacity: 0.6;
+  font-size: 22rpx;
+  padding: 0 50rpx;
+  padding-bottom: 16rpx;
+  margin-top: 16rpx;
+}
+
+.bottom_container {
+  width: 100%;
+  display: flex;
+}
+
+.flex_container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 30rpx 0 24rpx;
+  font-size: 24rpx;
+}
+
+.total_money {
+  font-size: 30rpx;
+  margin-top: 10rpx;
+  color: #fff;
+}
+
+.my_alcohol {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #f2f2f2;
+  padding: 0rpx 20rpx;
+  justify-content: space-between;
+}
+
+.top_title {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: #f2f2f2;
+  width: 100%;
+  padding: 30rpx 0rpx 22rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.left_border {
+  width: 4rpx;
+  height: 25rpx;
+  background-color: #ac1630;
+  margin-right: 10rpx;
+}
+
+.pro_container {
+  width: 345rpx;
+  margin-bottom: 20rpx;
+  padding: 0 0 20rpx;
+  background-color: #fff;
+}
+
+.hot_img {
+  width: 345rpx;
+  height: 345rpx;
+  display: block;
+}
+
+.other_brand_name {
+  display: flex;
+  align-items: center;
+  color: #333;
+  font-weight: 700;
+  font-size: 24rpx;
+  margin-top: 20rpx;
+}
+
+.other_brand_name>text {
+  margin-right: 6rpx;
+}
+
+.pro_describle {
+  width: 100%;
+  padding: 0 20rpx;
+  color: #333;
+  font-size: 22rpx;
+  margin-top: 20rpx;
+  overflow: hidden;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  white-space: pre-line;
+  height: 60rpx;
+}
+
+.stock_desc {
+  color: #666;
+  font-size: 22rpx;
+  padding: 0 20rpx;
+  margin-top: 10rpx;
+}
+
+.shopcar_icon {
+  width: 25rpx;
+  height: 22rpx;
+}
+
+.record_btn {
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  bottom: -10rpx;
+  right: 12rpx;
+  opacity: 0;
+}
+
+.go_index {
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+  z-index: 666;
+}
+
+.other_hot_price {
+  position: relative;
+  padding: 0 26rpx 0 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #333;
+  font-size: 24rpx;
+  margin-top: 12rpx;
+}
+
+.red_price {
+  color: #ac1630;
+}
+
+.last_container {
+  width: 345rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  /* height: 490rpx; */
+  margin-bottom: 20rpx;
+}
+
+.share_btn {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.market_money {
+  color: #888;
+  font-size: 22rpx;
+  margin-left: 16rpx;
+  text-decoration: line-through;
+}
+
+.look_more {
+  color: #333;
+  font-size: 30rpx;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 260rpx;
+  height: 320rpx;
+  border: 1rpx solid #ccc;
+}
+
+.red_border {
+  width: 50rpx;
+  height: 4rpx;
+  background-color: #ac1630;
+  margin: 20rpx 0;
+}
+
+.more_num {
+  letter-spacing: 6rpx;
+  font-size: 48rpx;
+}
+
+.fixed {
+  position: relative;
+}
+
+.bottom_tips {
+  height: 42rpx;
+  background-color: #ac1630;
+  border-radius: 0 21rpx 21rpx 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding-right: 18rpx;
+  font-size: 22rpx;
+  color: #fff;
+}
+
+.extension_icon {
+  margin: 0 10rpx;
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.right_info {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 20rpx;
+  font-size: 24rpx;
+  color: #ac1630;
+  background: none;
+  margin: 0;
+  padding: 0;
+}
+
+.right_info::after {
+  border: none;
+}
+
+.my_customer {
+  padding: 0 20rpx;
+  width: 100%;
+  background-color: #fff;
+}
+
+.info_icon {
+  width: 26rpx;
+  height: 24rpx;
+  margin-right: 12rpx;
+}
+
+.choose_item {
+  display: flex;
+  padding: 30rpx 0;
+  align-items: center;
+  font-size: 24rpx;
+  color: #333;
+}
+
+.choose_icon {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 12rpx;
+}
+
+.item_desc {
+  border-top: 1rpx solid #f2f2f2;
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 0;
+}
+
+.left_container, .right_container {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #333;
+}
+
+.avatar {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.identity_icon {
+  width: 60rpx;
+  height: 28rpx;
+  margin-left: 20rpx;
+}
+
+.share_my_shop {
+  height: 42rpx;
+  background-color: #ac1630;
+  border-radius: 21rpx 0 0 21rpx;
+  position: fixed;
+  right: -150rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  padding-right: 18rpx;
+  font-size: 22rpx;
+  color: #fff;
+  transition: all 0.5s;
+}
+
+#show {
+  right: 0;
+}
+
+.my_shop {
+  padding: 10rpx;
+  position: absolute;
+  font-size: 24rpx;
+  color: #ffdda7;
+  top: 20rpx;
+  right: 30rpx;
+  z-index: 22;
+  display: flex;
+  align-items: center;
+}
+
+.go_icon {
+  width: 8rpx;
+  height: 14rpx;
+  margin-left: 8rpx;
+}
+
+.truck_icon, .record_icon {
+  width: 25rpx;
+  height: 22rpx;
+}
+
+.my {
+  padding-bottom: 20rpx;
+}
+
+#none {
+  padding: 0;
+  border: none;
+}
+
+.rule_mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 6666;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 544rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+}
+
+.toast_img {
+  width: 545rpx;
+  height: 555rpx;
+  display: block;
+}
+
+.top_resume_level {
+  padding: 0rpx 60rpx 10rpx 60rpx;
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+.level_left {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+}
+
+.level_right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.level_money {
+  color: #ffdda7;
+  font-size: 22rpx;
+  white-space: nowrap;
+  opacity: 0.6;
+}
+
+.level_text {
+  color: #fff;
+  font-size: 22rpx;
+}
+
+.progress {
+  display: block;
+  width: 100%;
+  padding: 0 20rpx;
+  padding-top: 14rpx;
+}

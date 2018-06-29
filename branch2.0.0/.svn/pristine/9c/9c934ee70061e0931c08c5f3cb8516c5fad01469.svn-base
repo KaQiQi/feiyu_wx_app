@@ -1,0 +1,34 @@
+<!--pages/activity/vipHome/myInvitation/myInvitation.wxml-->
+<block wx:if="{{isShow}}">
+  <block wx:if="{{images.length>0}}">
+    <view class="top_big_title">
+      <view class="left_border"></view>
+      <text>窖主权益</text>
+    </view>
+    <view class="desc_detail">
+      <image wx:for="{{images}}" wx:key="{{index}}" class="desc_img" src="{{item}}"></image>
+    </view>
+  </block>
+  <view class='my_invitation'>
+    <image src="{{pageData.qrcode}}"></image>
+    <text>扫码成为窖主</text>
+    <form bindsubmit="sendFormId" report-submit="true">
+      <button class="form_button" form-type="submit">
+        <view class='save_img' bindtap="saveImgToPhotosAlbumTap">保存二维码到相册</view>
+      </button>
+    </form>   
+  </view>
+  <view class='line'></view>
+  <view class="top_big_title" wx:if="{{invitationList.length>0}}">
+    <view class="left_border"></view>
+    <text>邀请详情</text>
+  </view>
+  <view class='consume_invitation'>
+    <view class='consume_item' wx:for="{{invitationList}}" wx:key="{{index}}">
+      <image src="{{item.avater}}"></image>
+      <text class="user_name">{{item.nick_name}}</text>
+      <text class="main_color" wx:if="{{item.is_kilner == 1}}">窖主</text>
+      <text wx:else class="total_money">已付{{item.all_recharge_money}}万</text>
+    </view>
+  </view>
+</block>

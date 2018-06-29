@@ -1,0 +1,42 @@
+/* pages/h5/loginAuthorized/loginAuthorized.wxss */
+
+/* 用户没授权页面 */
+
+.btn_view {
+  /* width: 690rpx; */
+  height: 94rpx;
+  border: 1rpx solid #029400;
+  border-radius: 10rpx;
+  margin: 66rpx 30rpx;
+  color: white;
+  background-color: #09bb07;
+  font-size: 36rpx;
+  line-height: 94rpx;
+  text-align: center;
+  position: relative;
+}
+
+.page_type {
+  width: 100%;
+  height: 100%;
+}
+.notice_icon {
+  width: 200rpx;
+  height: 200rpx;
+  display: block;
+  margin: 100rpx auto 60rpx;
+}
+.notice_content {
+  /* width: 100%; */
+  font-size: 28rpx;
+  color: #333;
+  text-align: center;
+}
+.info_btn{
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}

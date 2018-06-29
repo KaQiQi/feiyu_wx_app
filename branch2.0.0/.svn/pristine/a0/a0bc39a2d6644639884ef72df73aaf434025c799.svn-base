@@ -1,0 +1,203 @@
+/*第一部分视图  */ 
+.view_one {
+  /*margin的写法注意:如果这样写导致上下左右均有默认的28rpx高度  */
+  margin:28rpx 28rpx;
+  margin-bottom:0;
+  height: 140rpx;
+  background-color: #ffffff;
+  /* border-bottom: 1rpx solid #f2f2f2; */
+}
+
+/*可提现标签  */
+.one_can_cash {
+  display: flex;
+  margin-left: 0rpx;
+  margin-top : 60rpx;
+  text-align: left;
+  color: #666666;
+  font-size: 28rpx;
+  font-family: FZLTXHK;
+}
+
+/*总共能体现的这一块  */
+.one_total {
+  display: flex;
+  height: 60rpx;
+}
+
+.one_total_money {
+  display: block;
+  margin-left: 0rpx;
+  line-height: 60rpx;
+  text-align: left;
+  color: #333333;
+  font-size: 38rpx;
+  font-family: FZLTXHK;
+}
+
+.one_gap_line {
+  margin-top: 10rpx;
+  margin-left: 28rpx;
+  margin-right: 28rpx;
+  color: #f2f2f2;
+}
+
+/*行高和高度一致的时候就会让里面的字体居中  */
+.one_instance_btn {
+  margin-left: 26rpx;
+  height: 58rpx;
+  line-height: 58rpx;
+  width:160rpx;
+  color: #e72e4b;
+  font-size: 28rpx;
+  text-align: center;
+  font-family: FZLTXHK; 
+  border: 2rpx solid #888888;
+}
+
+/*第二部分视图  */
+.view_two {
+  margin-left: 0;
+  margin-right: 0;
+  background-color:#ffffff; 
+  height: 70rpx;
+  /*父视图左右都有视图  */
+   display: flex;
+  justify-content: space-between;
+  border-top: 1rpx solid #f2f2f2;
+}
+
+/* 确认收货 提现金额标签 */
+.view_two_wait {
+  margin-left:28rpx;
+  color: #333333;
+  font-size: 24rpx;
+  font-family: FZLTXHK;
+  line-height: 70rpx;
+  height: 70rpx;
+}
+
+/* 提现具体金额标签 */
+.view_two_waitMoney {
+  margin-left:14rpx;
+  color: #e72e4b;
+  font-size: 24rpx;
+  font-family:FZLTXHK;
+  line-height: 70rpx;
+  height: 70rpx;
+}
+
+.view_two_waitSure {
+  display: flex;
+  margin-right: 28rpx;
+}
+
+
+.view_two_waitAlert {
+  margin-right: 12rpx;
+  color: #333333;
+  font-size: 24rpx;
+  font-family: FZLTXHK;
+  text-align:right;
+  line-height: 70rpx;
+  height: 70rpx;
+}
+
+.rightArrow {
+  margin-top: 23rpx;
+  margin-bottom: 23rpx;
+  margin-right: 0;
+  width: 17rpx;
+  height: 24rpx;
+}
+
+/*提现明细  */
+.back_detail_view {
+  height: 70rpx;
+  background-color: #ffffff;
+  border-bottom: 1rpx solid #f2f2f2;
+  display: flex;
+}
+
+.red_line_logo {
+  margin-left: 28rpx;
+  margin-top: 21rpx;
+  margin-bottom: 21rpx;
+  width: 4rpx;
+  height: 28rpx;
+}
+
+.back_detail_alert {
+  margin-left: 10rpx;
+  font-size: 28rpx;
+  font-family: FZLTXHK;
+  color: #333333;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+}
+
+
+/*列表cell样式  */
+.list_cell {
+  margin-left: 28rpx;
+  margin-right: 28rpx;
+  margin-top: 0;
+  margin-bottom: 0;
+  height: 102rpx;
+  border-bottom: 1rpx solid #f2f2f2;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cell_left {
+  background-color: #ffffff;
+}
+
+/*标题  */
+.cell_title_view {
+  margin-top: 0;
+}
+
+.cell_title {
+  font-size: 28rpx;
+  color: #333333;
+  font-family: FZLTXHK;
+}
+
+/*时间  */
+.cell_time_view {
+  margin-top:0  rpx;
+}
+
+.cell_time {
+  font-size: 24rpx;
+  color: #666666;
+  font-family: FZLTXHK;
+}
+
+.cell_des_view {
+  margin-top:0rpx;
+}
+
+.cell_des {
+  font-size: 24rpx;
+  font-family: FZLTXHK;
+  line-height:102rpx;
+  height:102rpx;
+}
+
+.nodata_text {
+  margin-top: 20rpx;
+  text-align: center;
+  font-family: FZLTXHK;
+  font: 18rpx;
+  color: #666666;
+  display: block;
+}
+
+
+
+
+
+

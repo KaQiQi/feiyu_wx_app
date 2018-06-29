@@ -1,0 +1,86 @@
+<!--pages/distribution/userSurvey/userSurvey.wxml-->
+<block wx:if="{{isShow==1}}">
+
+  <block wx:if="{{is_anwsered==0}}">
+    <!-- <view class='title' wx:for="{{returnDataList.sub_title}}" wx:key="{{index}}">
+      <text>{{item}}</text>
+    </view>
+    <view class='view_line'></view> -->
+<image class='image_head' src='{{returnDataList.head_img}}'></image>
+
+    <view class='image_pos'>
+      <image class='image1_right' src='{{returnDataList.bg_img1}}'></image>
+       <image class='image_left' src='{{returnDataList.bg_img2}}'></image>
+        <image class='image2_right' src='{{returnDataList.bg_img3}}'></image>
+      <view class='view_bg'>
+
+        <view class='question_list' wx:for-index="index_parent" wx:for="{{questionsList}}" wx:key="{{index}}">
+          <block wx:if="{{item.type==1}}">
+            <view class='question_list_title'>
+              <text>{{item.title}}</text>
+              <text class='view_img'>*</text>
+            </view>
+            <view class='question_input' wx:if="{{index_parent==0}}">
+              <input bindinput="onBindding" data-index='{{index_parent}}'></input>
+            </view>
+            <view class='selectValue' wx:else>
+              <input bindinput="onBindding" data-index='{{index_parent}}'></input>
+            </view>
+          </block>
+          <block wx:else>
+            <view class='question_select_title'>
+              <text>{{item.title}}</text>
+              <text class='view_img'>*</text>
+              <text class='view_text'>{{item.tip}}</text>
+            </view>
+            <view class='question_select'>
+              <view class='question_select_list' bindtap='btnSelect' data-selected='{{item.selected}}' data-index='{{index_parent}}' data-id='{{item.id}}' wx:key="{{index}}" wx:for="{{item.items}}">
+                <view style='display:flex' wx:if="{{item.input_flag==0}}">
+                  <image wx:if="{{item.selected==0}}" src='/images/distribution/select.png'></image>
+                  <image wx:else src='/images/distribution/onselect.png'></image>
+                  <text>{{item.name}}</text>
+                </view>
+                <view class='question_select_input' wx:else>
+                  <text>{{item.name}}</text>
+                  <view class='selectValue'>
+                    <input bindinput="selectValue"></input>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </block>
+        </view>
+        <form bindsubmit="sendFormId" report-submit="true">
+        <button class="form_button" form-type="submit">
+          <view class='commit' bindtap='btnCommit'>
+            <text>提交</text>
+          </view>
+        </button>
+      </form>
+      </view>
+      <!-- <view class='question_list'>
+  
+</view> -->
+
+      
+
+      <view class='bot_text'>{{returnDataList.foot_title}}</view>
+    </view>
+  </block>
+
+  <block wx:else>
+    <view class='commit_view'>
+      <image src='/images/distribution/commit.png'></image>
+      <text class='commit_view_text'>提交成功</text>
+      <text class='message'>谢谢你的参与</text>
+    </view>
+    <form bindsubmit="sendFormId" report-submit="true">
+      <button class="form_button" form-type="submit">
+        <view class='btn_go' bindtap='jumpIndex'>
+          <text>去逛逛</text>
+        </view>
+      </button>
+    </form>
+
+  </block>
+</block>

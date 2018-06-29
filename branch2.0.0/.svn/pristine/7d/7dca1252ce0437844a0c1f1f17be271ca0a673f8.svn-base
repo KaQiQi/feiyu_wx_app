@@ -1,0 +1,12 @@
+<template name="onlyproduct">
+  <view style='margin-bottom:{{data.bottom_gap}}rpx'>
+    <view class="new_products">
+      <view class="products_detail" wx:for="{{data}}" wx:key="{{index}}" bindtap="clickJump" data-url="{{item.app_url}}">
+        <image src="{{item.image}}" class="pro_img"></image>
+        <view class="pro_name">{{item.brand_name}}</view>
+        <view class="brand_desc">{{item.title}}</view>
+        <view class="pro_price main_color">{{item.price}}</view>
+      </view>
+    </view>
+  </view>
+</template>

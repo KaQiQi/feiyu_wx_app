@@ -1,0 +1,94 @@
+/* pages/activity/vipHome/getInvitation/getInvitation.wxss */
+
+.be_invite {
+  position: relative;
+  margin: 12rpx 20rpx;
+}
+
+.be_invite text {
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 40rpx;
+  background: #f2f2f2;
+  padding: 20rpx;
+  padding-left: 90rpx;
+  padding-right: 40rpx;
+  color: #666;
+  font-size: 26rpx;
+}
+
+.be_invite image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: red;
+  height: 80rpx;
+  width: 80rpx;
+  display: block;
+  border-radius: 50%;
+}
+
+.be_rights {
+  background: #f2f2f2;
+  margin: 20rpx;
+  border-radius: 10rpx;
+  padding-bottom: 10rpx;
+}
+
+.rights_title {
+  display: flex;
+  padding: 20rpx 20rpx 10rpx 20rpx;
+  align-items: center;
+}
+
+.rights_title image {
+  width: 20rpx;
+  height: 20rpx;
+  display: block;
+  background: red;
+}
+
+.rights_title text {
+  color: #666;
+  font-size: 28rpx;
+  padding: 0 12rpx;
+}
+
+.rights_item {
+  padding: 10rpx 0;
+  padding-left: 52rpx;
+  color: #666;
+  font-size: 24rpx;
+}
+
+.be_pay {
+  margin-top: 40rpx;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.pay_now {
+  width: 550rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  border-radius: 35rpx;
+  background: red;
+  text-align: center;
+  color: #fff;
+  font-size: 28rpx;
+}
+
+.pay_custom {
+  margin-top: 30rpx;
+  width: 550rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  border-radius: 35rpx;
+  background: #fff;
+  text-align: center;
+  border: 1rpx solid #f2f2f2;
+  color: red;
+  font-size: 28rpx;
+}

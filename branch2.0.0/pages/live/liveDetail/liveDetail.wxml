@@ -1,0 +1,135 @@
+<!-- 顶部轮播 -->
+<view class="topCarousel">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{banner}}">
+      <swiper-item>
+        <image wx:if="{{item.is_video==0}}" src="{{item.image}}" class="slide-image" />
+        <view  wx:if="{{item.is_video==1}}" class="v_container">
+          <image src="{{item.image}}" class="slide-image" data-url="{{item.h_app_url}}" bindtap="playVideo"/>
+          <image class="video_img"  data-url="{{item.h_app_url}}" bindtap="playVideo" src="../../../images/liveDetail/video1@2x.png"></image>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- <video wx:if="{{show}}" class="video-style" src="{{videoUrl}}" autoplay="true"></video> -->
+</view>
+
+<view class="trailer">
+  <view class="trailer_title">
+    <image src="../../../images/liveDetail/trailer.png"></image>
+    <text>{{brand.title}}</text>
+  </view>
+    <view class="trailer_body">
+      <text>#单肩斜挎包3折起#</text>
+      <text>#购物车满1000送YSL口红#</text>
+    </view>
+  <clock wx:if="{{brand.brand_descrip}}">
+      <view class="trailer_content clearfix">
+          <text class="fl">{{brand.brand_descrip}}</text>
+      </view>
+  </clock>
+</view>
+
+<view class="user">
+  <view class="userImg fl">
+    <image src="{{netred.avatar}}"></image>
+  </view>
+  <view class="user_detail fl">
+    <view class="clearfix detail-top">
+      <text class="fl left">{{netred.name}} | {{netred.adress}}</text>
+      <text data-id="{{netred.netred_id}}" class="fl follow" 
+      wx:if="{{isFollow==0}}"
+      bindtap="follow">+关注</text>
+      <!-- <view class="fl follow" wx:else="{{isFollow==1}}">已关注</view> -->
+    </view>
+    <view class="detail_bottom clearfix"><text class="fl">{{netred.slogan}}</text></view>
+  </view>
+</view>
+<!-- 商品详情 -->
+<block wx:if="{{productList}}">
+    <view class="hot_product">
+        <view class="pre_sale">
+          <image src="../../../images/live/liveproduct.png" class="live_pro_icon"></image>
+        </view>
+        <view class="product_desc clearfix" wx:for="{{productList}}">
+          <view class="product_img fl">
+            <image src="{{item.image_url}}"></image>
+          </view>
+          <view class="desc_text fl">
+            <view class="product_brand">{{item.title}}</view>
+            <view class="product_descrip">{{item.product_descrip}}</view>
+            <view class="price">专柜价: {{item.price}}</view>
+            <view class="newprice">
+              抢购价:
+              <text>￥{{item.price_market}}</text>
+            </view>
+            <view class="desc_bottom clearfix">
+              <view class="discount fl">
+                <image src="../../../images/liveDetail/rectangle@2x.png"></image>
+                <text>付10抵50</text>
+              </view>
+              <view class="book fl">{{item.button_descrip}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+</block>
+<!-- 通用券 -->
+<view class="product_coupon">
+  <view class="coupon_detail clearfix">
+    <view class="logo_img fl">
+      <image src="../../../images/liveDetail/feiyu_logo(1)@2x.png"></image>
+    </view>
+    <view class="detail_content fl">
+      <view class="deposit">
+        全场定金通用券
+      </view>
+      <view class="coupon_require">
+        商品满￥1000可用
+      </view>
+      <view class="coupon_bottom clearfix">
+        <view class="discount fl">
+          <image src="../../../images/liveDetail/rectangle@2x.png"></image>
+          <text>付10抵50</text>
+        </view>
+        <view class="payment fl">
+          支付订金
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 活动规则 -->
+<view class="activity_rules" wx:if="{{rule.image}}">
+  <image src="{{rule.image}}"></image>
+</view>
+<!-- 底部 -->
+<view class="footer">
+  <view class="collection fl">
+    <image wx:if="{{is_like_live}}" src="../../../images/liveDetail/heart.png"></image>
+    <image wx:else src="../../../images/liveDetail/donotlike.png"></image>
+    <text>{{like_num}}</text>
+  </view>
+  <block wx:if="{{btm.live_status==0||btm.live_status==2}}">
+    <view class="remind fr" wx:if="{{startRemind==0}}">
+      <text bindtap="startRemind" data-id="{{btm.id}}">开播提醒</text>
+    </view>
+    <view class="reminded fr" wx:if="{{startRemind==1}}">
+      <text bindtap="cancelRemind" data-id="{{btm.id}}">取消提醒</text>
+    </view>
+  </block>
+  <block wx:if="{{btm.live_status==1}}">
+    <view class="remind fr">
+      <text data-id="{{btm.id}}">进入直播间</text>
+    </view>
+  </block>
+  <view class="countdown fr" wx:if="{{live_status==0}}">
+    <text>{{countDown.day}} 天 {{countDown.hr}} 时 {{countDown.min}} 分 {{countDown.sec}} 秒</text>
+  </view>
+  <view class="countdown fr" wx:if="{{live_status==1}}">
+    <text>正在直播中</text>
+  </view>
+  <view class="countdown fr" wx:if="{{live_status==2}}">
+    <text>已结束</text>
+  </view>
+</view>

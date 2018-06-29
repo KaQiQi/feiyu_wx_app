@@ -1,0 +1,370 @@
+<!--pages/my/myOrder/order.wxml-->
+<block wx:if="{{hasData}}">
+<view class='order'>
+  <view class="order_tab {{currentTab==0 ? 'is_check' : ''}}" bindtap='swichNav' data-current="0">全部</view>
+  <view class="order_tab {{currentTab==1 ? 'is_check' : ''}}" bindtap='swichNav' data-current="1">待付款</view>
+  <view class="order_tab {{currentTab==2 ? 'is_check' : ''}}" bindtap='swichNav' data-current="2">待发货</view>
+  <view class="order_tab {{currentTab==3 ? 'is_check' : ''}}" bindtap='swichNav' data-current="3">待收货</view>
+  <view class="order_tab {{currentTab==4 ? 'is_check' : ''}}" bindtap='swichNav' data-current="4">已完成</view>
+</view>
+<swiper current="{{currentTab}}" class="order_content" duration="0" style="height:{{winHeight - 50}}px" bindchange="bindChange">
+  <!-- 全部 -->
+  <swiper-item>
+    <view class='order_list' wx:for='{{dataList}}' wx:if="{{dataList}}" wx:key="{{index}}">
+      <view class='order_title'>
+        <text class='order_time'>{{item.add_time}}</text>
+        <text class='order_type' wx:if="{{item.status==-1}}">待付款</text>
+        <text class='order_type' wx:if="{{item.status==2}}">待发货</text>
+        <text class='order_type' wx:if="{{item.status==8}}">待收货</text>
+        <text class='order_type' wx:if="{{item.status==11}}">已完成</text>
+        <text class='order_type' wx:if="{{item.status==0}}">订单关闭</text>
+        <text class='order_type' wx:if="{{item.status==-2}}">系统关闭</text>
+        <text class='order_type' wx:if="{{item.status==13}}">申请退款中</text>
+        <text class='order_type' wx:if="{{item.status==14}}">退款成功，退款原路返回</text>
+      </view>
+      <view class='order_product' bindtap='onDetailClick' data-id='{{item.id}}'>
+        <!-- <view class='product_image' ></view> -->
+
+        <image class='product_image' src='{{item.main_image}}'></image>
+
+        <view class='product_detial'>
+          <view class='product_name_price'>
+            <text class="order_pro_name">{{item.product_list}}</text>
+            <text>¥{{item.product_price}}</text>
+          </view>
+          <view class='product_sku_id'>
+            <text>{{item.product_sku_attr}}</text>
+            <text>x{{item.num}}</text>
+          </view>
+        </view>
+      </view>
+      <view class='product_num_price'>
+        共{{item.num}}件商品
+        <text class='padding_both'>合计:</text>
+        <text>¥{{item.product_total}}</text>
+      </view>
+      <view class='order_btns' data-id='{{item.status}}'>
+        <view style='display:flex' wx:if="{{item.status==-1}}">
+          <view class='btn_s' data-id="{{item.id}}" data-index="{{index}}" bindtap='BtnCancel'>取消订单</view>
+          <view class='btn_s right_now_buy' bindtap="PayAtOnce" data-index="{{index}}" data-id="{{item.id}}">立即付款</view>
+        </view>
+
+        <view style='display:flex' wx:if="{{item.status==2}}">
+          <!-- <view class='btn_s' data-id="{{item.id}}" data-index="{{index}}" wx:if="{{item.shop_confirm==0}}"
+           bindtap="dontBuy">取消订单</view> -->
+          <!-- <view class='btn_s'>提醒发货</view> -->
+          <view class='btn_s' bindtap="toLogistic" data-id="{{item.id}}">查看物流</view>
+        </view>
+        <view style='display:flex' wx:if="{{item.status==-2}}">
+          <view class='btn_s' data-id="{{item.id}}" data-index="{{index}}" bindtap="deleteOrder">删除订单</view>
+        </view>
+        <view style='display:flex' wx:if="{{item.status==0}}">
+          <view class='btn_s' data-id="{{item.id}}" data-index="{{index}}" bindtap="deleteOrder">删除订单</view>
+        </view>
+        <view style='display:flex' wx:if="{{item.status==14}}">
+          <view class='btn_s' data-id="{{item.id}}" data-index="{{index}}" bindtap="deleteOrder">删除订单</view>
+        </view>
+        <view style='display:flex' wx:if="{{item.status==8}}">
+          <view class='btn_s' bindtap="toLogistic" data-id="{{item.id}}">查看物流</view>
+          <view class='btn_s right_now_buy' bindtap="AllconfirmReceipt" data-id="{{item.id}}" data-index="{{index}}">确认收货</view>
+        </view>
+
+        <view style='display:flex' wx:if="{{item.status==11}}">
+          <view class='btn_s' data-id="{{item.id}}" bindtap="deleteOrder">删除订单</view>
+          <view class='btn_s' bindtap="toLogistic" data-id="{{item.id}}">查看物流</view>
+        </view>
+
+
+        <!-- <view class='btn_s right_now_buy' >立即付款</view>
+        <view class='btn_s' ">取消订单</view>
+        <view class='btn_s' ">查看物流</view>
+        <view class='btn_s' ">提醒发货</view>
+        <view class='btn_s'>删除订单</view> -->
+      </view>
+    </view>
+    <!-- 空状态 -->
+    <view wx:if="{{isShow==1 && dataloaded==1}}">
+      <image src='/images/my/none.png' class='order_none'></image>
+      <view class='none_tips'>啊哦, 您还没有相关的订单~</view>
+    </view>
+  </swiper-item>
+  <!-- 待付款 -->
+  <swiper-item>
+    <view class='order_list' wx:for='{{dataList}}' wx:if="{{dataList}}" wx:key="{{index}}">
+      <view class='order_title'>
+        <text class='order_time'>{{item.add_time}}</text>
+        <text class='order_type' wx:if="{{item.status==-1}}">待付款</text>
+        <text class='order_type' wx:if="{{item.status==2}}">待发货</text>
+        <text class='order_type' wx:if="{{item.status==8}}">待收货</text>
+        <text class='order_type' wx:if="{{item.status==11}}">已完成</text>
+        <text class='order_type' wx:if="{{item.status==0}}">交易关闭</text>
+        <text class='order_type' wx:if="{{item.status==-2}}">系统关闭</text>
+      </view>
+      <view class='order_product' bindtap='onDetailClick' data-id='{{item.id}}'>
+        <!-- <view class='product_image' src='{{item.main_image}}'></view> -->
+        <image class='product_image' src='{{item.main_image}}'></image>
+        <view class='product_detial'>
+          <view class='product_name_price'>
+            <text>{{item.product_list}}</text>
+            <text>¥{{item.product_price}}</text>
+          </view>
+          <view class='product_sku_id'>
+            <text>{{item.product_sku_attr}}</text>
+            <text>x{{item.num}}</text>
+          </view>
+        </view>
+      </view>
+      <view class='product_num_price'>
+        共{{item.num}}件商品
+        <text class='padding_both'>合计:</text>
+        <text>¥{{item.product_total}}</text>
+      </view>
+      <view class='order_btns'>
+        <!-- <view class='btn_s right_now_buy'>立即购买</view>
+        <view class='btn_s'>取消订单</view>
+        <view class='btn_s'>查看物流</view>
+        <view class='btn_s'>提醒发货</view>
+        <view class='btn_s'>删除订单</view> -->
+        <view style='display:flex' wx:if="{{item.status==-1}}">
+          <view class='btn_s' data-id="{{item.id}}" data-index="{{index}}" bindtap='noPayCancel'>取消订单</view>
+          <view class='btn_s right_now_buy' data-id="{{item.id}}" data-index="{{index}}" bindtap="payNow">立即付款</view>
+        </view>
+
+        <view style='display:flex' wx:if="{{item.status==2}}">
+          <!-- <view class='btn_s'>提醒发货</view> -->
+          <view class='btn_s' bindtap="toLogistic" data-id="{{item.id}}">查看物流</view>
+        </view>
+        <view style='display:flex' wx:if="{{item.status==-2}}">
+          <view class='btn_s' data-id="{{item.id}}" bindtap="deleteOrder">删除订单</view>
+        </view>
+        <view style='display:flex' wx:if="{{item.status==0}}">
+          <view class='btn_s' data-id="{{item.id}}" data-index="{{index}}" bindtap="deleteOrder">删除订单</view>
+        </view>
+        <view style='display:flex' wx:if="{{item.status==8}}">
+          <view class='btn_s' bindtap="toLogistic" data-id="{{item.id}}">查看物流</view>
+          <view class='btn_s right_now_buy'>确认收货</view>
+        </view>
+
+        <view style='display:flex' wx:if="{{item.status==11}}">
+          <view class='btn_s' data-id="{{item.id}}" bindtap="deleteOrder">删除订单</view>
+          <view class='btn_s' bindtap="toLogistic" data-id="{{item.id}}">查看物流</view>
+        </view>
+      </view>
+    </view>
+    <!-- 空状态 -->
+    <view wx:if="{{isShow==1 && dataloaded==1}}">
+      <image src='/images/my/none.png' class='order_none'></image>
+      <view class='none_tips'>啊哦, 您还没有相关的订单~</view>
+    </view>
+  </swiper-item>
+  <!-- 待发货 -->
+  <swiper-item>
+    <view class='order_list' wx:for='{{dataList}}' wx:if="{{dataList}}" wx:key="{{index}}">
+      <view class='order_title'>
+        <text class='order_time'>{{item.add_time}}</text>
+        <text class='order_type' wx:if="{{item.status==-1}}">待付款</text>
+        <text class='order_type' wx:if="{{item.status==2}}">待发货</text>
+        <text class='order_type' wx:if="{{item.status==8}}">待收货</text>
+        <text class='order_type' wx:if="{{item.status==11}}">已完成</text>
+        <text class='order_type' wx:if="{{item.status==0}}">交易关闭</text>
+        <text class='order_type' wx:if="{{item.status==-2}}">系统关闭</text>
+      </view>
+      <view class='order_product' bindtap='onDetailClick' data-id='{{item.id}}'>
+        <!-- <view class='product_image' src='{{item.main_image}}'></view> -->
+        <image class='product_image' src='{{item.main_image}}'></image>
+        <view class='product_detial'>
+          <view class='product_name_price'>
+            <text>{{item.product_list}}</text>
+            <text>¥{{item.product_price}}</text>
+          </view>
+          <view class='product_sku_id'>
+            <text>{{item.product_sku_attr}}</text>
+            <text>x{{item.num}}</text>
+          </view>
+        </view>
+      </view>
+      <view class='product_num_price'>
+        共{{item.num}}件商品
+        <text class='padding_both'>合计:</text>
+        <text>¥{{item.product_total}}</text>
+      </view>
+      <view class='order_btns'>
+        <!-- <view class='btn_s right_now_buy'>立即购买</view>
+        <view class='btn_s'>取消订单</view>
+        <view class='btn_s'>查看物流</view>
+        <view class='btn_s'>提醒发货</view>
+        <view class='btn_s'>删除订单</view> -->
+        <view style='display:flex' wx:if="{{item.status==-1}}">
+          <!-- <view class='btn_s' data-id="{{item.id}}" data-index="{{index}}" bindtap='BtnCancel'>取消订单</view> -->
+          <view class='btn_s right_now_buy'>立即付款</view>
+        </view>
+
+        <view style='display:flex' wx:if="{{item.status==2}}">
+          <!-- <view class='btn_s' data-id="{{item.id}}" data-index="{{index}}" wx:if="{{item.shop_confirm==0}}"
+          bindtap="dontBuy">取消订单</view> -->
+          <!-- <view class='btn_s'>提醒发货</view> -->
+          <view class='btn_s' bindtap="toLogistic" data-id="{{item.id}}">查看物流</view>
+        </view>
+        <view style='display:flex' wx:if="{{item.status==-2}}">
+          <view class='btn_s' data-id="{{item.id}}" bindtap="deleteOrder">删除订单</view>
+        </view>
+        <view style='display:flex' wx:if="{{item.status==0}}">
+          <view class='btn_s' data-id="{{item.id}}" data-index="{{index}}" bindtap="deleteOrder">删除订单</view>
+        </view>
+        <view style='display:flex' wx:if="{{item.status==8}}">
+          <view class='btn_s' bindtap="toLogistic" data-id="{{item.id}}">查看物流</view>
+          <view class='btn_s right_now_buy'>确认收货</view>
+        </view>
+
+        <view style='display:flex' wx:if="{{item.status==11}}">
+          <view class='btn_s' data-id="{{item.id}}" bindtap="deleteOrder">删除订单</view>
+          <view class='btn_s' bindtap="toLogistic" data-id="{{item.id}}">查看物流</view>
+        </view>
+      </view>
+    </view>
+    <!-- 空状态 -->
+    <view wx:if="{{isShow==1 && dataloaded==1}}">
+      <image src='/images/my/none.png' class='order_none'></image>
+      <view class='none_tips'>啊哦, 您还没有相关的订单~</view>
+    </view>
+  </swiper-item>
+  <!-- 待收货 -->
+  <swiper-item>
+    <view class='order_list' wx:for='{{dataList}}' wx:if="{{dataList}}" wx:key="{{index}}">
+      <view class='order_title'>
+        <text class='order_time'>{{item.add_time}}</text>
+        <text class='order_type' wx:if="{{item.status==-1}}">待付款</text>
+        <text class='order_type' wx:if="{{item.status==2}}">待发货</text>
+        <text class='order_type' wx:if="{{item.status==8}}">待收货</text>
+        <text class='order_type' wx:if="{{item.status==11}}">已完成</text>
+        <text class='order_type' wx:if="{{item.status==0}}">交易关闭</text>
+        <text class='order_type' wx:if="{{item.status==-2}}">系统关闭</text>
+      </view>
+      <view class='order_product' bindtap='onDetailClick' data-id='{{item.id}}'>
+        <!-- <view class='product_image' src='{{item.main_image}}'></view> -->
+        <image class='product_image' src='{{item.main_image}}'></image>
+        <view class='product_detial'>
+          <view class='product_name_price'>
+            <text>{{item.product_list}}</text>
+            <text>¥{{item.product_price}}</text>
+          </view>
+          <view class='product_sku_id'>
+            <text>{{item.product_sku_attr}}</text>
+            <text>x{{item.num}}</text>
+          </view>
+        </view>
+      </view>
+      <view class='product_num_price'>
+        共{{item.num}}件商品
+        <text class='padding_both'>合计:</text>
+        <text>¥{{item.product_total}}</text>
+      </view>
+      <view class='order_btns'>
+        <!-- <view class='btn_s right_now_buy'>立即购买</view>
+        <view class='btn_s'>取消订单</view>
+        <view class='btn_s'>查看物流</view>
+        <view class='btn_s'>提醒发货</view>
+        <view class='btn_s'>删除订单</view> -->
+        <view style='display:flex' wx:if="{{item.status==-1}}">
+          <view class='btn_s' data-id="{{item.id}}" bindtap='BtnCancel'>取消订单</view>
+          <view class='btn_s right_now_buy'>立即付款</view>
+        </view>
+
+        <view style='display:flex' wx:if="{{item.status==2}}">
+          <!-- <view class='btn_s'>提醒发货</view> -->
+          <view class='btn_s' bindtap="toLogistic" data-id="{{item.id}}">查看物流</view>
+        </view>
+        <view style='display:flex' wx:if="{{item.status==-2}}">
+          <view class='btn_s right_now_buy' bindtap="confirmReceipt" data-index="{{index}}" data-id="{{item.id}}">确认收货</view>
+        </view>
+        <view style='display:flex' wx:if="{{item.status==0}}">
+          <view class='btn_s' data-id="{{item.id}}" data-index="{{index}}" bindtap="deleteOrder">删除订单</view>
+        </view>
+        <view style='display:flex' wx:if="{{item.status==8}}">
+          <view class='btn_s' bindtap="toLogistic" data-id="{{item.id}}">查看物流</view>
+          <view class='btn_s right_now_buy' bindtap="confirmReceipt" data-index="{{index}}" data-id="{{item.id}}">确认收货</view>
+        </view>
+
+        <view style='display:flex' wx:if="{{item.status==11}}">
+          <view class='btn_s' data-id="{{item.id}}" bindtap="deleteOrder">删除订单</view>
+          <view class='btn_s' bindtap="toLogistic" data-id="{{item.id}}">查看物流</view>
+        </view>
+      </view>
+    </view>
+    <!-- 空状态 -->
+    <view wx:if="{{isShow==1  && dataloaded==1}}">
+      <image src='/images/my/none.png' class='order_none'></image>
+      <view class='none_tips'>啊哦, 您还没有相关的订单~</view>
+    </view>
+  </swiper-item>
+  <!-- 已完成 -->
+  <swiper-item>
+    <view class='order_list' wx:for='{{dataList}}' wx:if="{{dataList}}" wx:key="{{index}}">
+      <view class='order_title'>
+        <text class='order_time'>{{item.add_time}}</text>
+        <text class='order_type' wx:if="{{item.status==-1}}">待付款</text>
+        <text class='order_type' wx:if="{{item.status==2}}">待发货</text>
+        <text class='order_type' wx:if="{{item.status==8}}">待收货</text>
+        <text class='order_type' wx:if="{{item.status==11}}">已完成</text>
+        <text class='order_type' wx:if="{{item.status==0}}">交易关闭</text>
+        <text class='order_type' wx:if="{{item.status==-2}}">系统关闭</text>
+      </view>
+      <view class='order_product' bindtap='onDetailClick' data-id='{{item.id}}'>
+        <!-- <view class='product_image' src='{{item.main_image}}'></view> -->
+        <image class='product_image' src='{{item.main_image}}'></image>
+        <view class='product_detial'>
+          <view class='product_name_price'>
+            <text>{{item.product_list}}</text>
+            <text>¥{{item.product_price}}</text>
+          </view>
+          <view class='product_sku_id'>
+            <text>{{item.product_sku_attr}}</text>
+            <text>x{{item.num}}</text>
+          </view>
+        </view>
+      </view>
+      <view class='product_num_price'>
+        共{{item.num}}件商品
+        <text class='padding_both'>合计:</text>
+        <text>¥{{item.product_total}}</text>
+      </view>
+      <view class='order_btns'>
+        <!-- <view class='btn_s right_now_buy'>立即购买</view>
+        <view class='btn_s'>取消订单</view>
+        <view class='btn_s'>查看物流</view>
+        <view class='btn_s'>提醒发货</view>
+        <view class='btn_s'>删除订单</view> -->
+        <view style='display:flex' wx:if="{{item.status==-1}}">
+          <view class='btn_s' data-id="{{item.id}}" bindtap='BtnCancel'>取消订单</view>
+          <view class='btn_s right_now_buy'>立即付款</view>
+        </view>
+
+        <view style='display:flex' wx:if="{{item.status==2}}">
+          <!-- <view class='btn_s'>提醒发货</view> -->
+          <view class='btn_s' bindtap="toLogistic" data-id="{{item.id}}">查看物流</view>
+        </view>
+        <view style='display:flex' wx:if="{{item.status==-2}}">
+          <view class='btn_s' data-id="{{item.id}}">删除订单</view>
+        </view>
+<view style='display:flex' wx:if="{{item.status==0}}">
+          <view class='btn_s' data-id="{{item.id}}" data-index="{{index}}">删除订单</view>
+        </view>
+        <view style='display:flex' wx:if="{{item.status==8}}">
+          <view class='btn_s' bindtap="toLogistic" data-id="{{item.id}}">查看物流</view>
+          <!-- <view class='btn_s right_now_buy'>确认收货</view> -->
+        </view>
+
+        <view style='display:flex' wx:if="{{item.status==11}}">
+          <view class='btn_s' data-id="{{item.id}}" data-index="{{index}}" bindtap="deleteOrderFinish">删除订单</view>
+          <view class='btn_s' bindtap="toLogistic" data-id="{{item.id}}">查看物流</view>
+        </view>
+      </view>
+    </view>
+    <!-- 空状态 -->
+    <view wx:if="{{isShow==1  && dataloaded==1}}">
+      <image src='/images/my/none.png' class='order_none'></image>
+      <view class='none_tips'>啊哦, 您还没有相关的订单~</view>
+    </view>
+  </swiper-item>
+</swiper>
+</block>

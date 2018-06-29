@@ -1,0 +1,61 @@
+/* pages/order/idCard/idCard.wxss */
+page{
+  background: #f2f2f2
+}
+.idcard{
+
+  background: #fff;
+  display: flex;
+  border-top: 1rpx solid #f2f2f2;
+  padding: 40rpx 30rpx; 
+align-items: center;
+}
+.idcard_name{
+  font-size: 28rpx;
+  color: #333;
+  width: 160rpx;
+
+}
+.idcard_name_input{
+  font-size: 28rpx;
+  color: #333;
+  margin-left: 40rpx;
+}
+.upload{
+  margin: 48rpx 30rpx;
+  background: #e72e4b;
+  color: #fff;
+  font-size: 28rpx;
+  border-radius: 10rpx;
+  padding: 26rpx 0;
+  text-align: center;
+}
+.id_card{
+  display: flex;
+  padding: 0 30rpx;
+  background-color: #fffbe2;
+  height: 76rpx;
+  line-height: 76rpx;
+  justify-content: space-between;
+}
+.id_card_left{
+  display: flex;
+
+}
+.id_card_left_icon{
+  width: 26rpx;
+  height: 26rpx;
+  margin: auto 0;
+}
+.id_card_left_text{
+  font-size: 26rpx;
+  color: #e3281b;
+  padding-left: 12rpx;
+}
+.id_card_right{
+  width: 17rpx;
+  height: 24rpx;
+  display: block;
+  margin: auto 0;
+
+}

@@ -1,0 +1,2 @@
+<!--pages/h5/webview/webview.wxml-->
+<web-view src="{{path}}" bindmessage="btnMessage" ></web-view>

@@ -1,0 +1,99 @@
+/* pages/activity/vipClub/vipGetRights/vipGetRights.wxss */
+
+.line {
+  width: 100%;
+  border-bottom: 1rpx solid #f2f2f2;
+  margin-bottom: 10rpx;
+}
+
+.vip_get {
+  margin:  20rpx 30rpx;
+  display: flex;
+  align-items: center;
+}
+
+.vip_get image {
+  border-radius: 50%;
+  width: 90rpx;
+  height: 90rpx;
+  display: block;
+  margin: auto 0;
+}
+.vip_get text{
+  font-size: 30rpx;
+  color: #333;
+  margin-left: 20rpx;
+}
+
+.vip_list {
+  width: 100%;
+  padding: 10rpx 20rpx;
+}
+
+.vip_list text {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.vip_content {
+  margin: 10rpx 0;
+  width: 100%;
+  height: 120rpx;
+  display: flex;
+  background: #faf7ee;
+}
+
+.vip_content image {
+    width: 138rpx;
+  height: 106rpx;
+  display: block;
+  margin: auto 58rpx;
+
+}
+
+.vip_text {
+  height: 120rpx;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.vip_text1 {
+  font-size: 24rpx;
+  color: #333;
+  padding: 2rpx;
+}
+
+.vip_line {
+  width: 100%;
+  background: #f2f2f2;
+  height: 12rpx;
+}
+
+.btn_get{
+ margin: 30rpx;
+ margin-top: 100rpx;
+  width: 690rpx;
+  background: #f5ca3a;
+  height: 80rpx;
+  color: #333;
+  font-size: 28rpx;
+  text-align: center;
+  line-height: 80rpx;
+  border-radius: 40rpx;
+}
+
+.bot_icon{
+  position: fixed;
+  bottom: 60rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 750rpx;
+  display: flex;
+  justify-content: center;
+}
+.bot_icon image{
+   width: 750rpx;
+   height: 110rpx;
+   display: block;
+}

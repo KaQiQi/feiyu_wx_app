@@ -1,0 +1,38 @@
+<block wx:if="{{show}}">
+<view class="product_container">
+    <view class="img">
+        <image class="product_img" src="{{topData.main_images}}"></image>
+    </view>
+    <view class="desc_content">
+        <view class="pro_name">{{topData.name}}</view>
+        <view class="pro_price">
+            <text class="sale_price">售价 ¥{{topData.min_price}}</text>
+             / <text>进价 ¥{{topData.fx_price}}</text>
+        </view>
+        <view class="stock_desc">已售{{topData.sale_num}}瓶 丨 库存{{topData.stock_num}}瓶</view>
+    </view>
+</view>
+
+<view class="tabbar">
+    <view class="items" id="{{currentIndex == 0?'active':''}}" data-index="0" bindtap="changeTab">全部</view>
+    <view class="items" id="{{currentIndex == -1?'active':''}}" data-index="-1" bindtap="changeTab">售货</view>
+    <view class="items" id="{{currentIndex == 1?'active':''}}" data-index="1" bindtap="changeTab">进货</view>
+</view>
+<view class="records">
+    <view class="record_desc" wx:for="{{list}}" wx:key="{{index}}">
+        <view class="left">
+            <view class="des">{{item.desc}}</view>
+            <view class="time">{{item.add_time}}</view>
+        </view>
+        <view class="right">
+            <view class="money {{item.type==1?'red':''}}">{{item.num}}瓶</view>
+        </view>
+    </view>
+</view>
+<view wx:if="{{!list[0]}}">
+    <view class="nothing_container">
+        <image class="no_icon" src="/images/distribution/nothing.png"></image>
+        <view class="tips">暂无记录</view>
+    </view>
+</view>
+</block>

@@ -1,0 +1,20 @@
+<template name="imageheader">
+<view style='margin-bottom:{{data.bottom_gap}}rpx'>
+  <view class="top_banner">
+    <image class="main_img" src="{{data.image}}"></image>
+    <view class="describe">
+      <view class="title">{{data.title}}</view>
+      <view class="sale_point">{{data.sub_title}}</view>
+    </view>
+    <view class="words_desc">{{data.info}}</view>
+  </view>
+  <view class="palceholder"></view>
+  </view>
+</template>
+
+
+<template name="imageheader_default">
+  <view>
+    <image  class='imageheader' src='https://static.topshopstv.com/h5/page/cmstest/cms_1.png?v=1.0.0'></image>
+  </view>
+</template>

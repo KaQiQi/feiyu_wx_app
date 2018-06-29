@@ -1,0 +1,51 @@
+<template name="livedata_default">
+    <view class="hot_live">
+        <view class="live_detail"  wx:for="{{data.data}}" wx:key="{{index}}" data-id="{{item.id}}" bindtap="jump_live" data-url="{{item.app_url}}">
+        <view class="lives_container">
+        <view class="live_img">
+            <image src="{{item.banner_image}}"></image>
+        </view>
+        <view class="live_words_desc">
+            <view class="top_title">{{item.title}}</view>
+            <view class="live_status">
+            <block wx:if="{{item.live_status==1}}">
+                <view class="flex_left">
+                <image src="../../../../images/index/living.png" class="live_icon"></image>
+                </view>
+                <view class="flex_right">
+                <!-- <text>进入直播间</text> -->
+                <image src="../../../../images/index/right_red.png" class="right_icon"></image>
+                </view>
+            </block>
+            <block wx:if="{{item.live_status==0}}">
+                <view class="flex_left" wx:if="{{item.d==0 && item.m==0 &&item.h==0}}">
+                直播即将开始，请稍后...
+                </view>
+                <view class="flex_left" wx:else>
+                <image src="../../../../images/index/pre_live.png" class="live_trailer"></image>
+                <text class="main_color">{{item.d}}</text>天
+                <text class="main_color">{{item.h}}</text>时
+                <text class="main_color">{{item.m}}</text>分后开播
+                </view>
+                <view class="flex_right" catchtap="alert_btn" data-index="{{index}}" data-id="{{item.id}}" data-my_remind='{{item.my_remind}}' wx:if="{{item.my_remind==0}}">
+                <form bindsubmit="sendFormId" report-submit="true">
+                    <button class="button" form-type="submit">
+                    <image src="../../../../images/index/alert_icon.png" class="alert"></image>
+                    <text>开播提醒</text>
+                    </button>
+                </form>
+                </view>
+                <view class="flex_right" catchtap="cancelAlert" data-index="{{index}}" data-id="{{item.id}}" wx:else>
+                <form bindsubmit="sendFormId" report-submit="true">
+                    <button class="button" form-type="submit">
+                    <text>已提醒</text>
+                    </button>
+                </form>
+                </view>
+            </block>
+            </view>
+        </view>
+    </view>
+    </view>
+  </view>
+</template>

@@ -1,0 +1,65 @@
+/* pages/distribution/rules/rules.wxss */
+
+.image {
+  width: 100%;
+  display: block;
+}
+
+.go_index {
+  width: 70rpx;
+  height: 70rpx;
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+}
+
+.invite {
+  position: fixed;
+  bottom: 0rpx;
+  width: 100%;
+  background-color: #fff;
+  padding-bottom: 10rpx;
+}
+.palce{
+  width: 100%;
+  height: 100rpx;
+}
+
+.invite view {
+  color: #fff;
+  font-size: 28rpx;
+  width: 690rpx;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  background: #ac1630;
+  padding: 20rpx;
+  border-radius: 50rpx;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+
+.top text {
+  margin-left: 14rpx;
+  color: #333;
+  font-size: 28rpx;
+}
+
+.top_image1 {
+  width: 90rpx;
+  height: 90rpx;
+  display: block;
+  border-radius: 50%;
+}
+
+.top_image2 {
+  margin-left: 4rpx;
+  width: 140rpx;
+  height: 34rpx;
+  display: block;
+}

@@ -1,0 +1,67 @@
+<block wx:if="{{show}}">
+<view class="order_info">
+    <view class="border"></view>
+    <view class="add_address" wx:if="{{!is_setAddress}}">
+        <view class="add_click" bindtap="addAdress">
+            <image src="/images/productDetail/position.png"></image>
+            <text>请添加收货地址</text>
+        </view>
+    </view>
+    <view class='order_address_info' bindtap="addAdress" wx:if="{{is_setAddress}}">
+        <image src='/images/order/location.png' style='width:34rpx;height:36rpx'></image>
+        <view class='content'>
+            <view class='user_info'>
+                <view class='order_name'>收货人: {{buy_user_name}}</view>
+                <view class='order_phone'>{{buy_user_mobile}}</view>
+            </view>
+            <view class='order_address'> 收货地址:{{buy_user_address}}</view>
+        </view>
+        <image src='/images/order/go.png' style='width:26rpx;height:26rpx'></image>
+    </view>
+    <view class="decorate">
+        <image src="/images/productDetail/colorline.png" class="colorline"></image>
+        <view class="bg"></view>
+    </view>
+    <view class="order_product_desc">
+        <view class="pro_img_con">
+            <image src="{{orderInfo.main_image}}"></image>
+        </view>
+        <view class="right_container">
+            <view class="brand_name">{{orderInfo.name}}</view>
+            <text class="shop_num">X{{num}}</text>
+            <text class="shop_s_price">￥{{orderInfo.ori_price}}</text>
+            <text class="pro_type">{{orderInfo.product_sku_attr}}</text>
+        </view>
+    </view>
+    <view class="server_container">
+        <view class="server_item" wx:if="{{orderInfo.coupon_left_text}}">
+            <view>{{orderInfo.coupon_left_text}}</view>
+            <view class="main_color">{{orderInfo.coupon_right_text}}</view>
+        </view>
+        <view class="server_item" wx:if="{{orderInfo.coupon_left_text_g}}">
+            <view>{{orderInfo.coupon_left_text_g}}</view>
+            <view class="main_color">{{orderInfo.coupon_right_text_g}}</view>
+        </view>
+        <view class="server_item">
+            <view>快递运费：</view>
+            <view>全国包邮</view>
+        </view>
+    </view>
+    <view class="user_msg">
+        <view class="t_c">
+            <view class="t_title">买家留言：</view>
+        </view>
+        <input type="text" placeholder="如有特殊需要，请在这里留言哦" bindinput="getInput" class="input"></input>
+    </view>
+    <!-- <view class="placeholder"></view> -->
+</view>
+<view class="commit_order">
+    <view class="order_price">
+        <text class="price_title">总价:</text>
+        <text class="order_red">{{orderInfo.price}}</text>
+    </view>
+    <view class="commit_btn" bindtap="commit_order">
+        <text>提交订单</text>
+    </view>
+</view>
+</block>

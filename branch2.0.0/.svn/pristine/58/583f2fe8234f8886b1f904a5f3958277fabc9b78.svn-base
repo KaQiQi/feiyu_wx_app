@@ -1,0 +1,69 @@
+<!--页面的结构  -->
+<view class='live_gap' wx:if="{{my_return_money>0}}">
+</view>
+
+<!--视图第一部分  -->
+<view class='view_one'>
+
+  <text class='one_can_cash' wx:if="{{my_return_money>0}}">可提现</text>
+  <view class='one_total'>
+    <text class='one_total_money' wx:if="{{my_return_money>0}}">¥{{my_return_money}}
+    </text>
+    <text class='one_instance_btn' wx:if="{{my_return_money>0}}" bindtap='instanceMoneyBtnClick' data-id='{{my_return_money}}'>立即提现
+    </text>
+  </view>
+
+</view>
+
+<!--第二部分视图-->
+<view class='view_two' wx:if="{{freez_return_money>0}}">
+  <!--左边  -->
+  <view>
+   <text class='view_two_wait'>确认收货,提现金额</text>
+   <text class='view_two_waitMoney'>+ {{4}}元</text>
+  </view>
+
+  <!-- 右边 -->
+  <view class='view_two_waitSure' bindtap='sureReceiveBtnClick'>
+    <text class='view_two_waitAlert'>确认收货</text>
+    <image src='../../../images/my/right_arrow.png' class='rightArrow'></image>
+  </view>
+
+</view>
+
+<!--间隔视图  -->
+<view class='live_gap' wx:if="{{freez_return_money>0 || my_return_money>0}}">
+</view>
+
+<!--返现明细提示视图  -->
+<view class='back_detail_view' wx:if="{{returnMoneyDetails}}">
+   <image src='../../../images/my/welfare_redline.png' class='red_line_logo'></image>
+   <text class='back_detail_alert'>我的返现</text>
+</view>
+
+<!-- 列表  -->
+<view wx:for="{{returnMoneyDetails}}" wx:key='list_cell' wx:for-item="item" wx:for-index="itemIdx">
+    <view class='list_cell'>
+      <view class='cell_left'>
+        <view class='cell_title_view'>  
+           <text class='cell_title'>{{item.desc}}</text> 
+        </view>
+        
+        <view class='cell_time_view'>
+           <text class='cell_time'>{{item.add_time}}</text> 
+        </view> 
+      </view>
+
+       <view class='cell_des_view'>
+         <text class='cell_des'>{{item.status+item.money}}</text>
+       </view>
+
+      
+    </view>
+</view>
+
+<!-- 空状态下的提示  -->
+<view wx:if="{{freez_return_money == 0 && my_return_money == 0 && hasReq == true}}">
+    <image src='../../../images/my/nodata_icon.png' class='nodata_icon'></image>
+    <text class='nodata_text'>还没有返现哦!</text>
+</view>

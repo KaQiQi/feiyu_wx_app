@@ -1,0 +1,118 @@
+.pro_container {
+    width: 345rpx;
+    margin-bottom: 20rpx;
+    padding: 0 0 20rpx;
+    background-color: #fff;
+}
+.container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #f2f2f2;
+    padding: 0rpx 20rpx;
+    justify-content: space-between;
+}
+.fixed {
+    position: relative;
+}
+.hot_img {
+    width: 345rpx;
+    height: 345rpx;
+    display: block;
+}
+
+.other_brand_name {
+    display: flex;
+    align-items: center;
+    color: #333;
+    font-weight: 700;
+    font-size: 24rpx;
+    margin-top: 20rpx;
+}
+
+.other_brand_name>text {
+    margin-right: 6rpx;
+}
+
+.pro_describle {
+    width: 100%;
+    padding: 0 20rpx;
+    color: #333;
+    font-size: 22rpx;
+    margin-top: 20rpx;
+    overflow:hidden;
+    display:-webkit-box;
+    word-break:break-all;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+    text-overflow:ellipsis;
+    white-space:pre-line;
+    height: 60rpx;
+}
+.market_money {
+    color: #888;
+    font-size: 22rpx;
+    margin-left: 16rpx;
+    text-decoration: line-through;
+  }
+.stock_desc{
+    color: #666666;
+    font-size: 22rpx;
+    padding: 0 20rpx;
+    margin-top: 10rpx;
+}
+.shopcar_icon {
+    width: 25rpx;
+    height: 22rpx;
+}
+
+.other_hot_price {
+    position: relative;
+    padding: 0 26rpx 0 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #ac1630;
+    font-weight: 700;
+    font-size: 24rpx;
+    margin-top: 12rpx;
+}
+.share_btn{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+.bottom_tips{
+    height: 42rpx;
+    background-color: #ac1630;
+    border-radius: 0 21rpx 21rpx 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    padding-right: 18rpx;
+    font-size: 22rpx;
+    color: #fff;
+}
+.extension_icon{
+    margin: 0 10rpx;
+    width: 24rpx;
+    height: 24rpx;
+}
+
+.record_btn{
+    width: 50rpx;
+    height: 50rpx;
+    position: absolute;
+    bottom: -10rpx;
+    right: 12rpx;
+    opacity: 0;
+}
+.truck_icon,.record_icon{
+    width: 25rpx;
+    height: 22rpx;
+}

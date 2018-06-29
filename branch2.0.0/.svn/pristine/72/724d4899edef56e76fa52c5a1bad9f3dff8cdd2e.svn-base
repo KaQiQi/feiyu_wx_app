@@ -1,0 +1,177 @@
+<!--pages/my/my.wxml-->
+<view class='my_page'>
+  <!--顶部个人信息模块  -->
+  <!-- <view style='height:50rpx;background:#e72f4b;'></view>
+  <view class='my_msg'>
+    <view class='my_userinfo'>
+      <image src='{{avater}}' class='my_avater'></image>
+      <view class='my_name_grow'>
+        <text class='my_name'>{{nick_name}}</text>
+        <view class='user_grow'>
+          <image src='../../images/my/bgi_yellow.png' class='grow_up'></image>
+          <view class='grow_go'>
+            <text>成长值{{current_face_score}}</text>
+            <image src='../../images/my/go_w.png' class='go_icon'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='my_info'>
+      <view class='my_info_s'>
+        <view class='my_info_detial'>{{vip_name}}</view>
+        <view class='my_info_name'>我的VIP等级</view>
+      </view>
+      <view class='my_info_s'>
+        <view class='my_info_detial'>{{backcash}}%</view>
+        <view class='my_info_name'>消费返现</view>
+      </view>
+      <view class='my_info_s'>
+        <view class='my_info_detial'>{{face_score_max-current_face_score}}点</view>
+        <view class='my_info_name'>升级还需成长值</view>
+      </view>
+    </view>
+  </view> -->
+  <view class='my_top'>
+    <image src='../../images/my/background_image.png' class='my_background' mode='widthFix'></image>
+    <view class='my_datial'>
+      <view class='my_avater_new'>
+        <image src='{{avatar}}' bindtap="login"></image>
+      </view>
+      <text class='my_name'>{{nick_name}}</text>
+    </view>
+
+  </view>
+  <!--订单  -->
+  <view class='my_order'>
+      <form bindsubmit="sendFormId" report-submit="true">
+        <button class="form_button" form-type="submit">
+          <view class='my_order_all' bindtap='lookPay' data-id='0'>
+            <text class='my_order_title'>我的订单</text>
+            <view class='order_all'>
+              <text class='see_all_order'>查看全部订单</text>
+              <image src='../../images/my/go.png' class='order_go'></image>
+            </view>
+          </view>
+          <view class='order_type_s'>
+            <view class='order_type' bindtap='lookPay' data-id='-1'>
+              <view class='wait_icon'>
+                <image src='../../images/my/wait_pay.png'></image>
+              </view>
+              <text class='wait_title'>待付款</text>
+            </view>
+            <view class='order_type' bindtap='lookPay' data-id='2'>
+              <view class='wait_icon'>
+                <image src='../../images/my/wait_car.png'></image>
+              </view>
+              <text class='wait_title'>待发货</text>
+            </view>
+            <view class='order_type' bindtap='lookPay' data-id='8'>
+              <view class='wait_icon'>
+                <image src='../../images/my/wait_join.png'></image>
+              </view>
+              <text class='wait_title'>待收货</text>
+            </view>
+              <view class='order_type' bindtap='lookPay' data-id='11'>
+              <view class='wait_icon'>
+                <image src='../../images/my/finish.png'></image>
+              </view>
+              <text class='wait_title'>已完成</text>
+            </view> 
+            <view class='order_type'  bindtap='btn_refund' data-id='13'>
+              <view class='wait_icon'>
+                <image src='../../images/my/pay_call.png'></image>
+              </view>
+              <text class='wait_title'>退款/售后</text>
+            </view>
+          </view>
+        </button>
+      </form>
+    
+  </view>
+
+<!--我的相关信息列表  -->
+  <view class='my_msg_list'>
+    <form bindsubmit="sendFormId" report-submit="true">
+      <button class="form_button" form-type="submit">
+        <view class='msg_list' bindtap="myCoupon">
+          <view class='msg_list_left'>
+            <image src='../../images/my/my_coupon.png' class='my_icon'></image>
+            <text class='list_title'>我的优惠券</text>
+          </view>
+          <view class='order_all'>
+            <image src='../../images/my/go.png' class='order_go'></image>
+          </view>
+        </view>
+        <view class='msg_list' bindtap="myAddress">
+          <view class='msg_list_left'>
+            <image src='../../images/my/my_address.png' class='my_icon'></image>
+            <text class='list_title'>我的收货地址</text>
+          </view>
+          <view class='order_all'>
+            <image src='../../images/my/go.png' class='order_go'></image>
+          </view>
+        </view>
+        <view class='msg_list' bindtap="myFocus">
+          <view class='msg_list_left'>
+            <image src='../../images/my/changeshop.png' class='my_icon'></image>
+            <text class='list_title'>切换店铺</text>
+          </view>
+          <view class='order_all'>
+            <image src='../../images/my/go.png' class='order_go'></image>
+          </view>
+        </view>
+        <view class='msg_list' bindtap="myPhone">
+          <view class='msg_list_left'>
+            <image src='../../images/my/phone_icon.png' class='my_icon'></image>
+            <text wx:if="{{!mobile}}" class='list_title'>绑定手机号</text>
+            <text wx:if="{{mobile}}" class='list_title'>更换手机号</text>
+          </view>
+          <view class='order_all'>
+            <image src='../../images/my/go.png' class='order_go'></image>
+          </view>
+        </view>
+        <!-- wx:if="{{show_return_money==0}}" -->
+        <view class='msg_list'  bindtap="myCashBack" wx:if="{{show_return_money==1}}">
+          <view class='msg_list_left'>
+            <image src='../../images/my/my_cash.png' class='my_icon'></image>
+            <text class='list_title'>我的返现</text>
+          </view>
+          <view class='order_all'>
+          <text class="text_color">{{return_money}}</text>
+            <image src='../../images/my/go.png' class='order_go'></image>
+          </view>
+        </view>
+        <view class='msg_list'  bindtap="myScoreBack" wx:if="{{show_return_money==1}}">
+          <view class='msg_list_left'>
+            <image src='../../images/my/point.png' class='my_icon'></image>
+            <text class='list_title'>我的积分</text>
+          </view>
+          <view class='order_all'>
+          <text class="text_color">{{return_score}}</text>
+            <image src='../../images/my/go.png' class='order_go'></image>
+          </view>
+        </view>
+   <view class='msg_list'  bindtap="btn_myQuery" wx:if="{{show_shop_query==1}}">
+          <view class='msg_list_left'>
+            <image src='../../images/my/search.png' class='my_icon'></image>
+            <text class='list_title'>店铺搜索</text>
+          </view>
+          <view class='order_all'>
+          <text class="text_color"></text>
+            <image src='../../images/my/go.png' class='order_go'></image>
+          </view>
+        </view>
+      </button>
+    </form>
+    
+    <!-- <view class='msg_list' bindtap="toGroup">
+      <view class='msg_list_left'>
+        <image src='../../images/my/my_coupon.png' class='my_icon'></image>
+        <text class='list_title'>我的拼团</text>
+      </view>
+      <view class='order_all'>
+        <image src='../../images/my/go.png' class='order_go'></image>
+      </view>
+    </view> -->
+  </view>
+</view>

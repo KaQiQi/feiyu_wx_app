@@ -1,0 +1,60 @@
+<!--pages/activity/vipHome/getInvitation/getInvitation.wxml-->
+
+<block wx:if="{{isShow==1}}">
+  <image class="go_index" src='/images/index/backIndex.png' bindtap='jump_index'></image>
+  <view class='be_invite'>
+    <image class='be_invite_image' src='{{resultData.inviter_avatar}}'></image>
+    <text>{{resultData.inviter_name_desc}}</text>
+    <image class='kilner_img' src='/images/distribution/kilner.png'></image>
+  </view>
+
+
+  <view class="top_big_title">
+    <view class="left_border"></view>
+    <text>窖主权益</text>
+  </view>
+  <view class="desc_detail">
+    <image class="desc_img" src="{{item+'?t=8'}}" wx:key="{{index}}" wx:for="{{resultData.images}}"></image>
+  </view>
+
+  <!-- <view class='be_rights'>
+    <view class='rights_title'>
+      <image></image>
+      <text>窖主权益</text>
+    </view>
+    <view class='rights_item' wx:for="{{8}}" wx:key="{{index}}">
+      <text>{{index+1}}.购酒自用享受窖主折扣</text>
+    </view>
+  </view> -->
+  <view class='line'></view>
+
+  <view class="pay_big_title">
+    <view class="left_border"></view>
+    <text>{{resultData.kilner_recharge_desc}}</text>
+  </view>
+  <!-- <view class='rights_title'>
+    <image></image>
+    <text>请选择支付金额</text>
+  </view> -->
+  <view class='pay'>
+    <text class='pay_view'>单笔充值金额:</text>
+    <view class='pay_value' bindtap='btnSelect' data-index='{{index}}' data-money='{{item.money}}' wx:key="{{index}}" wx:for="{{pay_info}}">
+      <image wx:if="{{item.selected==1}}" src='/images/distribution/choosed.png'></image>
+      <image wx:else src='/images/shopCar/no_choose.png'></image>
+      <text class="{{item.selected==1?'pay_value_text':'pay_value_text_no'}}">{{item.show}}</text>
+    </view>
+  </view>
+
+  <view class='pay_intro' wx:if="{{pay_info.length==1&&resultData.total_money==pay_info[0].money}}"></view>
+  <view class='pay_intro' wx:else>(因微信单笔支付设置上限,请多笔支付)</view>
+  <view class='be_pay'>
+    <view class='pay_text'>{{invitee_pay_desc}}</view>
+    <view class='pay_now' bindtap="{{is_auth?'btnPay':''}}">立即充值</view>
+    <button class="info_btn" open-type="getUserInfo" wx:if="{{is_auth==0}}" bindgetuserinfo="setInfo"></button>
+    <!-- <view class='pay_custom'>自定义金额支付</view> -->
+  </view>
+</block>
+
+<block wx:else>
+    <image class='loading_image' src='/images/index/empty.gif'></image>
+</block>

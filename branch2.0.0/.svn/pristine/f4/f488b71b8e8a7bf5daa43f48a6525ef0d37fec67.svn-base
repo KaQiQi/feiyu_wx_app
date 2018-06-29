@@ -1,0 +1,141 @@
+/* pages/my/myCoupon/myCoupon.wxss */
+/* 头部tab */
+.tabbar{
+    width: 100%;
+    padding: 32rpx 0 24rpx;
+    display: flex;
+}
+.tabbar>view{
+    flex:1;
+    color: #999999;
+    font-size: 28rpx;
+}
+.tabbar .nouse,.tabbar .used,.tabbar .overdue{
+    width: 120rpx;
+    margin: 0 auto;
+    text-align: center;
+    padding:8rpx 0;
+}
+.tabbar .active{
+    color: #e72f4b;
+    border-bottom: 5rpx solid #e72f4b;
+}
+
+
+.coupon_desc{
+    width: 100%;
+    padding: 0 30rpx 30rpx;
+    border-top: 1px solid #f2f2f2;
+}
+.flex_container{
+    margin-top: 20rpx;
+    width: 100%;
+    display: flex;
+}
+.coupon_desc  .left_price{
+    width: 242rpx;
+    height: 190rpx;
+    position: relative;
+}
+.left_price .bg_img{
+    width: 242rpx;
+    height: 190rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.left_price .price_num{
+    color: #e72f4b;
+    font-size: 38rpx;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 666;
+}
+.big_num{
+    font-size: 56rpx;
+    margin-left: 10rpx;
+}
+
+.right_desc{
+    width: 448rpx;
+    height: 190rpx;
+    border: 1px solid #f2f2f2;
+    font-size: 22rpx;
+    padding: 20rpx;
+    color: #333;
+    position: relative;
+}
+
+.user_rule{
+    padding: 12rpx 20rpx;
+    width: 100%;
+    border-top: 1px dashed #f2f2f2;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.user_rule image{
+    width: 24rpx;
+    height: 24rpx;
+    display: block;
+    margin-top: 1px;
+}
+.user_time,.user_rule{
+    color: #999;
+}
+.user_time{
+    margin-top: 20rpx;
+}
+.user_now{
+    position: absolute;
+    right: 20rpx;
+    bottom: 66rpx;
+    box-sizing: border-box;
+    color: #e72f4b;
+    width: 120rpx;
+    padding: 4rpx 0;
+    font-size: 22rpx;
+    border-radius: 22rpx;
+    text-align: center;
+    border: 1px solid #e72f4b;
+}
+.reduce{
+    width: 76rpx;
+    height: 30rpx;
+    vertical-align: middle;
+    margin-right: 10rpx;
+}
+.user_place{
+   display: flex;
+   align-items: center;
+}
+#white{
+    color: #ffffff;
+}
+.use_status{
+    position: absolute;
+    width: 80rpx;
+    height: 80rpx;
+    top: 52rpx;
+    right: 20rpx;
+}
+
+/* 空状态 */
+.nocare{
+    width: 100%;
+    margin-top: 260rpx;
+    text-align: center;
+}
+.nocare image{
+    width: 226rpx;
+    height: 208rpx;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 30rpx;
+}
+.nocare text{
+    color: #333333;
+    font-size: 28rpx;
+}
