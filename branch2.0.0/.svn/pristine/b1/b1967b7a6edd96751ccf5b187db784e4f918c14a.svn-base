@@ -1,0 +1,55 @@
+<view class="top_title">
+    <view class="left_border"></view>
+    <text>抽奖商品</text>
+</view>
+<view class="product_desc" wx:for="{{3}}" wx:key="{{index}}">
+    <view class="left_img">
+        <image class="pro_img" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=531802361,2350051751&fm=27&gp=0.jpg"></image>
+    </view>
+    <view class="right_desc">
+        <view class="brand_name">iphone4乔布斯诈尸纪念版</view>
+        <view class="count">
+            <view>已参与
+                <text class="main_color">5</text>次</view>
+            <view>剩
+                <text class="main_color">5</text>次开奖</view>
+        </view>
+        <progress percent="" stroke-width="8" percent="67" color="#09BB07" activeColor="#e72f4b"></progress>
+        <view class="draw_rule">
+            <view>20分/次</view>
+            <view class="draw_btn" bindtap="startDraw">立即抽奖</view>
+        </view>
+    </view>
+</view>
+
+<view class="model" wx:if="{{showModel}}">
+    <view class="pop_up">
+        <image class="close_icon" src="/images/order/delete.png" bindtap="closeModel"></image>
+        <view class="product_desc">
+            <view class="m_left_img">
+                <image class="m_pro_img" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=531802361,2350051751&fm=27&gp=0.jpg"></image>
+            </view>
+            <view class="right_desc">
+                <view class="brand_name">iphone4乔布斯诈尸纪念版</view>
+                <view class="time_no">期号: 10086</view>
+            </view>
+        </view>
+        <view class="choose_desc">
+            <view class="text_tips">购买次数 <text>【次数越高中奖率越高】</text></view>
+            <view class="choose_num">
+                <view class="reduce" bindtap="reduce">-</view>
+                <input type="num" class="num_value" value="{{num}}" bindinput="getValue"></input>
+                <view class="increase" bindtap="increase">+</view>
+            </view>
+            <view class="choose_item">
+                <view data-num="4" bindtap="chooseNum">4</view>
+                <view data-num="6" bindtap="chooseNum">6</view>
+                <view data-num="8" bindtap="chooseNum">8</view>
+                <view class="no_margin">包尾</view>
+            </view>
+            <view class="total_score">共20积分</view>
+            <view class="placeholder"></view>
+            <view class="confirm_btn" bindtap="confirm">确认</view>
+        </view>
+    </view>
+</view>

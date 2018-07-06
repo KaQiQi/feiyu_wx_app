@@ -1,0 +1,115 @@
+<!--pages/welfare/welfare.wxml-->
+
+<block wx:if='{{is_auth==1}}'>
+  <view class='welfare_view'>
+    <view class='welfare_top'>
+      <view class='welfare'>
+        <view class='welfare_left'>
+          <view class='avatar'>
+            <image class='avatar_image' src='{{welfareData.header.avater}}'></image>
+            <image class='vip_icon' src='{{welfareData.header.vip_avatar}}'></image>
+          </view>
+          <text>{{welfareData.header.nick_name}}</text>
+        </view>
+        <image class='welfare_icon' src='/images/activity/ruler.png'></image>
+      </view>
+      <view class='level_title'>{{welfareData.header.sub_title_2}}</view>
+      <view class='top_resume_level'>
+        <view class='level_left'>
+          <!-- <text class='level_money'>{{pageData.dashi_min}}</text>
+      <text class='level_text'>{{pageData.dashi_name}}</text> -->
+          <text class='level_text'>{{welfareData.header.vip_name}}</text>
+          <text class='level_money'>返现5%</text>
+        </view>
+        <view class='progress_view'>
+          <text class='progress_left'></text>
+          <progress class='progress' activeColor='#e72f4b' backgroundColor='#cccccc' percent='{{progress}}' stroke-width="1" active></progress>
+          <text class='progress_right'></text>
+        </view>
+
+        <view class='level_right'>
+          <text class='level_text'>{{welfareData.header.next_vip_name}}</text>
+          <text class='level_money'>返现9%</text>
+          <!-- <text class='level_money'>{{pageData.kilner_min}}</text>
+          <text class='level_text'>{{pageData.kilner_name}}</text> -->
+        </view>
+      </view>
+
+      <view class='welfare_num'>
+
+        <view class='welfare_back'>
+          <text class='money'>1990</text>
+          <text class='score'>账户返现(元)</text>
+        </view>
+        <view class='line'></view>
+        <view class='welfare_score'>
+          <text class='money'>374.3</text>
+          <text class='score'>账户积分</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='red_bag'>
+    <view class='red_title'>
+      <view class='red_title_left'>
+        <image src='/images/index/block_icon.png'></image>
+        <text>现金红包</text>
+      </view>
+      <view class='red_title_right'>
+        <image src='/images/index/alert_icon.png'></image>
+        <text>提现我</text>
+      </view>
+    </view>
+    <view class='getred_bag'>
+      <view class='getred_bag_left'>
+        <text class='getred_bag_time'>每天20 23点抢<text class='red_text'>现金红包</text></text>
+        <text class='getred_bag_num'>上期总计红包40个,28秒被抢完</text>
+      </view>
+      <view class='getred_bag_right'></view>
+    </view>
+  </view>
+  <view class='welfare_prize'>
+    <view class='prize_title'>
+      <image src='/images/index/block_icon.png'></image>
+      <text>积分抽奖</text>
+    </view>
+    <view class='prize_view' wx:for="{{1}}" wx:key='{{index}}'>
+      <image></image>
+    </view>
+  </view>
+
+  <view class='welfare_score_view'>
+    <view class='prize_title'>
+      <image src='/images/index/block_icon.png'></image>
+      <text>积分兑换</text>
+    </view>
+    <view class='score_view'>
+      <view class='score_view_item' bindtap='btnRechange' wx:for="{{6}}" wx:key='{{index}}'>
+        <image></image>
+        <view class='score_bottom'>
+          <text class='score_name'>[金牌]何时咖喱大大的何时咖喱大大的</text>
+          <text class='score_price'>售价:40.2 | 剩余39份</text>
+          <view class='score_prize_view'>8000
+            <text>积分</text>
+          </view>
+        </view>
+      </view>
+
+    </view>
+
+
+  </view>
+</block>
+
+<view class='page_type' wx:else>
+
+  <view class='view_icon'>
+    <image class='notice_icon' src='/images/index/notice.png'></image>
+  </view>
+
+  <!-- <view class='view_content'> -->
+  <view class='notice_content'>开启【用户信息】才能查看福利社页面</view>
+  <!-- </view> -->
+
+  <button class='btn_view' open-type="{{is_auth?'':'getUserInfo'}}" bindgetuserinfo="setInfo">开启用户信息</button>
+</view>

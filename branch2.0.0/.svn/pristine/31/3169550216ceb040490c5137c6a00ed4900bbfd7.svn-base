@@ -1,0 +1,110 @@
+<!--pages/welfare/productDetail/productDetail.wxml-->
+<view class="{{noscroll?'noscroll':''}}" wx:if="{{dataloaded==1}}" sytle="position:relative">
+  <view class="share_mask" wx:if="{{shareMaskShow==1}}">
+    <view class="img_container_share">
+      <image src="{{share_image_url}}" class="ewm_img"></image>
+      <view class="tips" bindtap="saveImgToPhotosAlbumTap">
+        <text>保存图片</text>
+      </view>
+      <view class="close_mask" bindtap="closeMask">
+        <image src="/images/live/close.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class='welfare_icon'>
+    <view class='welfare_bg'>
+      <image src='/images/activity/welfare_icon.png'></image>
+      <text>仅剩{{productInfo.stock}}件</text>
+    </view>
+  </view>
+  
+  <swiper indicator-dots="{{images.length==1?false:true}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="#e72e4b" circular="true">
+    <swiper-item wx:for="{{images}}" wx:key="{{index}}">
+      <image src="{{item}}" class="slide_img" />
+    </swiper-item>
+  </swiper>
+  <view class="product_desc">
+    <view class="pro_name">{{productInfo.name}}</view>
+    <view class="pro_price">
+      <text>{{productInfo.score}}</text>／¥{{productInfo.price}}</view>
+    <view class="sale_detail" wx:if="">
+      <text class="sale_num">销量：{{productInfo.sale_num}}</text>
+      <text>快递：0</text>
+      <text class="location">税费：0</text>
+    </view>
+  </view>
+
+  <!-- 优惠券"-->
+  <!-- <view class="getCoupon" wx:if="{{coupon_count != 0}}" bindtap="couponShow" data-id="{{productInfo.shop_id}}">
+    <view class="cou_left">
+      <block wx:for="{{productInfo.copuons}}" wx:key="{{index}}">
+        <view class="small_coupon" wx:if="{{index<3}}">{{item.condition_money}}减{{item.money}}</view>
+      </block>
+    </view>
+    <view class="into">
+      <text>领券</text>
+    </view>
+  </view> -->
+
+  <!-- 推荐理由 -->
+  <view class="rec_reason" wx:if="{{productInfo.product_reason}}">
+    <image class="title_img" src="/images/productDetail/reason.png"></image>
+    <view>{{productInfo.product_reason}}</view>
+  </view>
+  <!-- <view class="product_guarantee">
+    <image class="title_img guarantee" src="/images/productDetail/red_title.png"></image>
+    <view class="guarantee_content" wx:for="{{productInfo.ensure_info}}" wx:key="{{index}}">
+      <view class="main_color">{{item.title}}</view>
+      <view>{{item.desc}}</view>
+    </view>
+  </view> -->
+  <!-- 物流 -->
+  <view class="logistic" wx:if="{{productInfo.shop_info}}">
+    <image class="title_img logistic_img" src="/images/productDetail/logistic.png"></image>
+    <view class="flex_container" wx:for="{{productInfo.shop_info}}" wx:key="{{index}}" id="{{index==productInfo.shop_info.length-1?'no_border':''}}">
+      <text>{{item.title}}</text>
+      <text>{{item.desc}}</text>
+    </view>
+  </view>
+  <!-- 图文介绍 -->
+  <view class="imgtext_desc">
+    <image class="title_img imgtext" id="mb20" src="/images/productDetail/imgtext_desc.png"></image>
+    <image class="desc_img" wx:for="{{productInfo.desc_images}}" wx:key="{{index}}" src="{{item}}" mode="widthFix"></image>
+  </view>
+
+  <view class="commonProblem" wx:if="{{productInfo.memo_content}}">
+    <image class="title_img question" src="/images/productDetail/question.png"></image>
+    <view>{{productInfo.memo_content}}</view>
+  </view>
+
+
+
+
+  <!-- 底部占位区域 -->
+  <view id="none">
+    <text></text>
+  </view>
+
+
+  <view class="btm_shop">
+    <view class="shop_index" catchtap="btnBuy" data-num='{{stock_num}}'>
+      <image class="btm_icon" src="/images/shopCar/small_shopcar.png"></image>
+      <text>购买:¥{{productInfo.price}}</text>
+    </view>
+    <view class="btn" catchtap="btnRechange">
+      <text class='score_num'>{{productInfo.score}}</text>
+      <text class='score_ex'>{{productInfo.score_desc}}</text>
+    </view>
+  </view>
+</view>
+<image class='loading_image' src='/images/index/empty.gif' wx:else></image>
+
+
+
+
+
+
+
+
+
+

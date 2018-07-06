@@ -1,0 +1,251 @@
+/* pages/integralDraw/integralDraw.wxss */
+page{
+    width: 100%;
+    height: 100%;
+    background-color: #f2f2f2;
+}
+.top_title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #f2f2f2;
+    width: 100%;
+    padding: 30rpx 20rpx 22rpx;
+    font-size: 28rpx;
+    color: #666666;
+}
+.top_desc{
+    width: 750rpx;
+    height: 130rpx;
+    position: relative;
+}
+.my_score{
+    font-size: 28rpx;
+    color: #ffffff;
+    position: absolute;
+    bottom: 20rpx;
+    left: 32rpx;
+}
+.record{
+    width: 142rpx;
+    height: 42rpx;
+    border-radius: 21rpx 0 0 21rpx;
+    position: absolute;
+    color: #e72f4b;
+    font-size: 24rpx;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.top_img{
+    width: 750rpx;
+    height: 130rpx;
+    display: block;
+}
+
+.left_border {
+    width: 4rpx;
+    height: 28rpx;
+    background-color: #e72f4b;
+    margin-right: 10rpx;
+}
+
+.product_desc {
+    width: 100%;
+    padding: 20rpx;
+    display: flex;
+    margin-bottom: 12rpx;
+    background-color: #ffffff;
+    border-bottom: 1rpx solid #f2f2f2;
+}
+
+.left_img {
+    width: 250rpx;
+    height: 250rpx;
+    margin-right: 20rpx;
+}
+
+.pro_img {
+    width: 250rpx;
+    height: 250rpx;
+    display: block;
+}
+
+.right_desc {
+    width: 100%;
+    overflow: hidden;
+    padding: 10rpx 0;
+}
+
+.brand_name {
+    font-size: 28rpx;
+    color: #333333;
+}
+.m_brand_name{
+    margin-top: 30rpx;
+    font-size: 28rpx;
+    color: #333333;
+}
+.count {
+    display: flex;
+    justify-content: space-between;
+    color: #888888;
+    font-size: 24rpx;
+    margin-bottom: 16rpx;
+    margin-top: 30rpx;
+}
+
+progress {
+    border-radius: 8rpx;
+    overflow: hidden;
+    margin-bottom: 30rpx;
+}
+
+.draw_rule {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #888888;
+    font-size: 24rpx;
+}
+.draw_container{
+    padding: 10rpx 0;
+}
+
+.draw_btn {
+    width: 126rpx;
+    height: 38rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22rpx;
+    color: #e72f4b;
+    border: 1rpx solid #e72f4b;
+    border-radius: 6rpx;
+}
+
+.time_no{
+    font-size: 22rpx;
+    color: #888888;
+    margin-top: 15rpx;
+}
+.m_left_img{
+    width: 180rpx;
+    height: 180rpx;
+    margin-right: 20rpx;
+}
+.m_pro_img{
+    width: 180rpx;
+    height: 180rpx;
+}
+.mask{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.pop_up{
+    width: 100%;
+    background-color: #ffffff;
+    position: fixed;
+    bottom: -700rpx;
+    left: 0;
+    transition: all 0.5s;
+}
+#show{
+    bottom: 0rpx;
+}
+.icon_view{
+    position: absolute;
+    top: 0rpx;
+    right: 0rpx;
+    padding: 20rpx 30rpx;
+}
+.close_icon{
+    width: 26rpx;
+    height: 26rpx;
+    display: block; 
+}
+.text_tips{
+    width: 100%;
+    text-align: center;
+    font-size: 22rpx;
+    color: #333333;
+    margin-top: 30rpx;
+}
+.choose_num{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20rpx;
+}
+.choose_num>view{
+    width: 100rpx;
+    height: 60rpx;
+    border: 1rpx solid #dddddd;
+    font-size: 36rpx;
+    color: #333333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.choose_num .num_value{
+    border: 0;
+    width: 258rpx;
+    height: 60rpx;
+    border-top: 1rpx solid #dddddd;
+    border-bottom: 1rpx solid #dddddd;
+    color: #e72f4b;
+    font-size: 36rpx;
+    text-align: center;
+}
+.choose_item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30rpx;
+}
+.choose_item>view{
+    width: 92rpx;
+    height: 60rpx;
+    background-color: #f2f2f2;
+    font-size: 22rpx;
+    color: #333333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 30rpx;
+}
+.choose_item .no_margin{
+    margin-right: 0;
+}
+.total_score{
+    margin-top: 30rpx;
+    font-size: 28rpx;
+    color: #e72f4b;
+    text-align: center;
+}
+.placeholder{
+    width: 100%;
+    height: 120rpx;
+}
+.confirm_btn{
+    width: 710rpx;
+    height: 80rpx;
+    background-color: #e72f4b;
+    font-size: 28rpx;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8rpx;
+    position: absolute;
+    bottom: 20rpx;
+    left: 20rpx;
+}

@@ -1,0 +1,48 @@
+<view class="tabbar">
+    <view class="content" id="active" data-current="{{index}}">
+        <text>全部</text>
+        <view class="border active"></view>
+    </view>
+    <view class="content" data-current="{{index}}">
+        <text>已揭晓</text>
+        <view class="border"></view>
+    </view>
+    <view class="content" data-current="{{index}}">
+        <text>进行中</text>
+        <view class="border"></view>
+    </view>
+</view>
+<view class="placeholder"></view>
+
+<view class="product_desc">
+    <view class="top_time">
+        <view class="left">抽奖时间 : <text class="time">2017-09-09:35:45</text></view>
+        <view class="status">待领取</view>
+    </view>
+    <view class="pro_info">
+        <view class="left_img">
+            <image class="pro_img" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1782216503,2355699877&fm=27&gp=0.jpg"></image>
+        </view>
+        <view class="right_des">
+            <view>手表手表 apple</view>
+            <view class="time_no">期号:23434534</view>
+            <view>参与抽奖 <text class="main_color">2</text>次 </view>
+        </view>
+    </view>
+
+    <view class="add_address" wx:if="">添加收货地址</view>
+
+    <view class='order_address_info' bindtap="addAdress" wx:if="is_setAddress">
+        <image src='/images/order/location.png' class="location_icon"></image>
+        <view class='address_content'>
+            <view class='user_info'>
+                <view class='order_name'>收货人: eeee</view>
+            </view>
+            <view class='order_address'>收货地址: 2222222</view>
+        </view>
+    </view>
+    <view class="wl_info">
+        <view class="top_info">你提交了订单 请等待系统确认</view>
+        <view class="time_info">2018-08-09 13:56</view>
+    </view>
+</view>

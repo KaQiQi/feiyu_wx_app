@@ -1,0 +1,20 @@
+<view class="top_tips">
+    <text class="time_no">期号:00007</text>
+    <text>即将揭晓,正在倒计时...</text>
+</view>
+<view class="desc_container" wx:for="{{3}}" wx:key="{{index}}">
+    <view class="tips">
+        <text class="time_no">期号:00007</text>
+        <text>揭晓时间: 2018-09-08:58:32</text>
+    </view>
+    <view class="user_detail">
+        <view class="avatar">
+            <image class="avatar_img" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2643396362,3350779838&fm=27&gp=0.jpg"></image>
+        </view>
+        <view class="right_desc">
+            <view>中奖者: 大*哥</view>
+            <view>中奖号: 1000000002</view>
+            <view>本期参与: 2次</view>
+        </view>
+    </view>
+</view>

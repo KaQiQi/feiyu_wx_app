@@ -1,0 +1,62 @@
+<!-- 已到账 -->
+<block wx:if="{{model == 1 && show==1}}">
+    <view class="total_detail" wx:if="{{pageData.already2Account!=0}}">
+        <view class="left_content">
+            <view class="total_balance">已到账: ¥{{pageData.already2Account}}</view>
+            <view class="left_bototm">
+                <view class="recharge">可提现: ¥{{pageData.can_withdraw}}</view>
+                <view class="consume">已提现: ¥{{pageData.total_withdraw_money}}</view>
+            </view>
+        </view>
+        <view class="recharge_btn" bindtap='takeMoney'>提现</view>
+    </view>
+    <view class="records">
+        <view class="record_desc" wx:for="{{pageData.data}}" wx:key="{{index}}">
+        <view class="left">
+            <view class="des">{{item.product_info}}</view>
+            <view class="nick_name">{{item.nick_name}}</view>
+            <view class="nick_name" wx:if="{{item.entity_type<5}}">数量:{{item.stock_num}}</view>
+            <view class="time">{{item.add_time}}</view>
+        </view>
+        <view class="right">
+            <view class="money">{{item.money}}</view>
+            <view class="small_words" wx:if="{{item.desc}}">{{item.desc}}</view>
+            <view class="small_words" wx:if="{{item.detail_price}}">{{item.detail_price}}</view>
+            <view class="small_words" wx:if="{{item.status_des}}">{{item.status_des}}</view>
+        </view>
+        </view>
+    </view>
+    <view class="nothing_container" wx:if="{{!pageData.data[0]}}">
+        <image class="no_icon" src="/images/distribution/nothing.png"></image>
+        <view class="tips">暂无记录</view>
+    </view>
+    
+</block>
+<!-- 未到账 -->
+<block wx:if="{{model == 2 && show==1}}">
+    <view class="total_detail" wx:if="{{pageData.waiting2Account != 0}}">
+        <view class="left_content">
+            <view class="total_balance">待到账: ¥{{pageData.waiting2Account}}</view>
+        </view>
+    </view>
+    <view class="records">
+        <view class="record_desc" wx:for="{{pageData.data}}" wx:key="{{index}}">
+        <view class="left">
+            <view class="des">{{item.product_info}}</view>
+            <view class="nick_name">{{item.nick_name}}</view>
+            <view class="nick_name" wx:if="{{item.entity_type<5}}">{{item.stock_num}}</view>
+            <view class="time">{{item.add_time}}</view>
+        </view>
+        <view class="right">
+            <view class="money">{{item.money}}</view>
+            <view class="small_words" wx:if="{{item.desc}}">{{item.desc}}</view>
+            <view class="small_words" wx:if="{{item.detail_price}}">{{item.detail_price}}</view>
+            <view class="small_words" wx:if="{{item.status_des}}">{{item.status_des}}</view>
+        </view>
+        </view>
+    </view>
+    <view class="nothing_container" wx:if="{{!pageData.data[0]}}">
+        <image class="no_icon" src="/images/distribution/nothing.png"></image>
+        <view class="tips">暂无记录</view>
+    </view>
+</block>

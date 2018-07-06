@@ -1,0 +1,176 @@
+<view wx:if="{{hasData}}">
+<view class="top_tips" bindtap='myPhone' wx:if="{{!mobile && is_auth}}">
+    <view class='tips_left'>
+        <image class='tips_icon_left' src='/images/order/idcard.png'></image>
+        <text class="tips_words">绑定手机号查看返现</text>
+    </view>
+    <view class="tips_right">
+        <text class='bind_btn'>立即绑定</text>
+        <image class='tips_icon' src='/images/index/go.png'></image>
+    </view>
+</view>
+<view class="top_container">
+    <image class="top_bgc" src="/images/my/top_bgc.png"></image>
+    <view class="user_info">
+        <view class="info_left">
+            <view class="avatar_container" wx:if="{{is_auth}}">
+                <image class="avatar" src="{{avatar}}"></image>
+                <image class="vip_icon" src="{{myPageData.vip_url}}" wx:if="{{vip_level!=-1}}"></image>
+            </view>
+            <view class="avatar_container" wx:else>
+                <image class="avatar" src="{{avatar}}"></image>
+                <!-- <image class="vip_icon" src="{{myPageData.vip_url}}" wx:if="{{vip_level!=-1}}"></image> -->
+                <button class="info_btn" open-type="{{is_auth?'':'getUserInfo'}}" bindgetuserinfo="setInfo"></button>
+            </view>
+            <text class='my_name'>{{nick_name}}</text>
+            <image src="{{myPageData.vip_text_url}}" class="vip_text" wx:if="{{is_auth}}" />
+        </view>
+        <view class="info_right" bindtap="myFocus" wx:if="{{favorite_count>1 && is_auth}}">
+            <image class="change_icon" src="/images/my/change-shop.png"></image>
+            <text class='change_title'>切换店铺</text>
+        </view>
+    </view>
+</view>
+
+<!-- 我的订单 -->
+<view class="my_title"  bindtap="{{is_auth?'lookPay':''}}" data-id='0'>
+    <view class="title_l">我的订单</view>
+    <view class="look_all">
+        <text>查看全部</text>
+        <image class="right_icon" src="/images/index/go.png"></image>
+    </view>
+    <button class="info_btn" open-type="{{is_auth?'':'getUserInfo'}}" bindgetuserinfo="setInfo" data-id='0'></button>
+</view>
+<view class='my_order'>
+    <form bindsubmit="sendFormId" report-submit="true">
+      <button class="form_button" form-type="submit">
+        <view class='order_type_s'>
+          <view class='order_type' bindtap="{{is_auth?'lookPay':''}}" data-id='-1'>
+            <view class='wait_icon'>
+              <image src='../../images/my/wait_pay.png'></image>
+            </view>
+            <text class='wait_title'>待付款</text>
+            <button class="info_btn" open-type="{{is_auth?'':'getUserInfo'}}" bindgetuserinfo="setInfo" data-id='-1'></button>
+          </view>
+          <view class='order_type' bindtap="{{is_auth?'lookPay':''}}" data-id='2'>
+            <view class='wait_icon'>
+              <image src='../../images/my/wait_car.png'></image>
+            </view>
+            <text class='wait_title'>待发货</text>
+            <button class="info_btn" open-type="{{is_auth?'':'getUserInfo'}}" bindgetuserinfo="setInfo" data-id='2'></button>
+          </view>
+          <view class='order_type' bindtap="{{is_auth?'lookPay':''}}" data-id='8'>
+            <view class='wait_icon'>
+              <image src='../../images/my/wait_join.png'></image>
+            </view>
+            <text class='wait_title'>待收货</text>
+            <button class="info_btn" open-type="{{is_auth?'':'getUserInfo'}}" bindgetuserinfo="setInfo" data-id='8'></button>
+          </view>
+          <view class='order_type' bindtap="{{is_auth?'lookPay':''}}" data-id='11'> 
+            <view class='wait_icon'>
+                <image src='../../images/my/finish.png'></image>
+            </view>
+            <text class='wait_title'>已完成</text>
+            <button class="info_btn" open-type="{{is_auth?'':'getUserInfo'}}" bindgetuserinfo="setInfo" data-id='11'></button>
+          </view> 
+          <view class='order_type' bindtap="{{is_auth?'btn_refund':''}}" data-id='13'>
+            <view class='wait_icon'>
+              <image src='../../images/my/pay_call.png'></image>
+            </view>
+            <text class='wait_title'>退款/售后</text>
+            <button class="info_btn" open-type="{{is_auth?'':'getUserInfo'}}" bindgetuserinfo="setInfo" data-id='13'></button>
+          </view>
+        </view>
+      </button>
+    </form>
+</view>
+<!-- 优惠券 -->
+<block wx:if="{{is_auth}}">
+<view class="my_title t_coupon" bindtap="myCoupon">
+    <view class="title_l">我的优惠券</view>
+    <view class="look_all">
+        <text>查看全部</text>
+        <image class="right_icon" src="/images/index/go.png"></image>
+    </view>
+</view>
+<scroll-view scroll-x="true" class="scroll_container" wx:if="{{myCoupons[0]}}">
+    <view class="coupon_desc" wx:for="{{myCoupons}}" wx:key="{{index}}" data-id="{{item.coupon_id}}" bindtap="{{item.shop_id==0?'go_next':'couDetail'}}" data-url="{{item.app_url}}">
+        <image src="/images/my/coupon_bg.png" class="coupon_bg"></image>
+        <view class="coupon_use_desc">
+            <view class="c_money">¥ {{item.money}}</view>
+            <view class="c_time">{{item.left}}</view>
+        </view>
+    </view>
+</scroll-view>
+</block>
+
+<view class="server">我的服务</view>
+<view class="item_container">
+    <view class="item_detail" bindtap="{{is_auth?'myCashBack':''}}" wx:if="{{myPageData.is_feiyu==1}}">
+        <image class="item_icon" src="../../images/my/mycashback.png"></image>
+        <view class="item_name">我的返现</view>
+        <view class="show_num" wx:if="{{myPageData.show_return_money==1 && is_auth}}">¥{{return_money}}</view>
+        <button class="info_btn" open-type="{{is_auth?'':'getUserInfo'}}" bindgetuserinfo="setInfo"></button>
+    </view>
+    <view class="item_detail" bindtap="{{is_auth?'myScoreBack':''}}" wx:if="{{myPageData.is_feiyu==1}}">
+        <image class="item_icon" src="/images/my/my_score.png"></image>
+        <view class="item_name">我的积分</view>
+        <view class="show_num" wx:if="{{myPageData.show_return_money==1 && is_auth}}">{{return_score}}</view>
+        <button class="info_btn" open-type="{{is_auth?'':'getUserInfo'}}" bindgetuserinfo="setInfo"></button>
+    </view>
+    <view class="item_detail" bindtap="{{is_auth?'myPhone':''}}">
+        <image class="item_icon" src="/images/my/bindphone.png"></image>
+        <text wx:if="{{!mobile}}" class='item_name'>绑定手机</text>
+        <text wx:else class='item_name'>更换手机</text>
+        <button class="info_btn" open-type="{{is_auth?'':'getUserInfo'}}" bindgetuserinfo="setInfo"></button>
+    </view>
+    <view class="item_detail" bindtap="{{is_auth?'myAddress':''}}">
+        <image class="item_icon" src="/images/my/address.png"></image>
+        <view class="item_name">我的地址</view>
+        <button class="info_btn" open-type="{{is_auth?'':'getUserInfo'}}" bindgetuserinfo="setInfo"></button>
+    </view>
+       <view class="item_detail" wx:if="{{myPageData.is_feiyu==1}}" bindtap="jump_club">
+        <image class="item_icon" src="/images/my/my_club.png"></image>
+        <view class="item_name">Club会员</view>
+        <!-- <button class="info_btn" open-type="{{is_auth?'':'getUserInfo'}}" bindgetuserinfo="setInfo"></button> -->
+    </view>   
+        <view class="item_detail" wx:if="{{myPageData.is_feiyu==1}}" data-appurl='{{myPageData.my_group_appurl}}'bindtap="{{is_auth?'jump_group':''}}">
+        <image class="item_icon"  src="/images/my/my_group.png"></image>
+        <view class="item_name">我的拼团</view>
+        <button class="info_btn" open-type="{{is_auth?'':'getUserInfo'}}" bindgetuserinfo="setInfo"></button>
+    </view>
+    <view class="item_detail" data-create_shop='{{myPageData.create_shop}}' bindtap="{{is_auth?'myProfit':''}}" wx:if="{{myPageData.is_kilner==1 || myPageData.is_kilner==2||myPageData.is_kilner==3}}">
+        <image class="item_icon"  src="/images/my/kilner.png"></image>
+        <view class="item_name">我的收益</view>
+        <button class="info_btn" open-type="{{is_auth?'':'getUserInfo'}}" bindgetuserinfo="setInfo"></button>
+    </view>  
+
+     <view class="item_detail" data-kilner_charge='{{myPageData.kilner_charge}}' bindtap="{{is_auth?'mykilner_charge':''}}" wx:if="{{myPageData.kilner_charge==1}}">
+        <image class="item_icon"  src="/images/my/kilner.png"></image>
+        <view class="item_name">我的收益</view>
+        <button class="info_btn" open-type="{{is_auth?'':'getUserInfo'}}" bindgetuserinfo="setInfo"></button>
+    </view>  
+
+
+     <view class="item_detail" bindtap="{{is_auth?'btnSearch':''}}" wx:if="{{myPageData.can_search==1}}">
+        <image class="item_icon"  src="/images/my/search_icon.png"></image>
+        <view class="item_name">查询返现</view>
+        <button class="info_btn" open-type="{{is_auth?'':'getUserInfo'}}" bindgetuserinfo="setInfo"></button>
+    </view> 
+       <view class="item_detail" wx:if="{{is_waa==0}}" bindtap="{{is_auth?'btnTest':''}}" >
+        <image class="item_icon"  src="/images/my/kilner.png"></image>
+        <view class="item_name">尝家计划</view>
+        <button class="info_btn" open-type="{{is_auth?'':'getUserInfo'}}" bindgetuserinfo="setInfo"></button>
+    </view>     
+</view>
+
+<view class="invitation_btn" wx:if="{{myPageData.can_get_kilner==1}}" data-appurl='pages/distribution/myInvitation/myInvitation' bindtap="{{is_auth?'jump_distribution':''}}">
+    <image class="invitation_icon" src="/images/my/invitation_btn.png"></image>
+    <button class="info_btn" open-type="{{is_auth?'':'getUserInfo'}}" bindgetuserinfo="setInfo"></button>
+</view>
+</view>
+
+
+<!-- <view class='parent'  style='width:750rpx;height:400rpx;background:red;overflow:hidden'>
+  <view class='child' style='width:350rpx;height:200rpx;background:yellow;margin-top:100rpx;'></view>
+</view> -->

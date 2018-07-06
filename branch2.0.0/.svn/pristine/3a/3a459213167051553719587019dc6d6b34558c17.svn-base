@@ -1,0 +1,23 @@
+<view class="top_tips">
+    <image class="tips_img" src="{{data.bg_image}}"></image>
+</view>
+<view class="out_container">
+    <view class="top_content">
+        <view class="brand_name">{{data.product_title}}</view>
+        <view class="time_no">
+            <text>期号: </text>
+            <text class="main_color"> {{data.issue_code}}</text>
+        </view>
+    </view>
+    <view class="top_content no_border">
+        <view class="brand_name">参与抽奖{{data.buy_num}}次</view>
+        <view class="time_no">
+            <text>抽奖号: </text>
+            <text class="main_color" wx:for="{{data.buy_codes}}" wx:key="{{index}}">{{item}}</text>
+        </view>
+        <view class="btn_container">
+            <view bindtap="goDraw">继续抽奖</view>
+            <view>抽奖记录</view>
+        </view>
+    </view>
+</view>

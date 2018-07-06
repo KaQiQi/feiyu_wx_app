@@ -1,0 +1,29 @@
+function getUseragent () {
+  var version = "";
+  var model = "";
+  var system = "";
+  var language = "";
+  var SDKVersion = "";
+  wx.getSystemInfo({
+    success: function (res) {
+      version = res.version;
+      model = res.model;
+      system = res.system;
+      language = res.language;
+      SDKVersion = res.SDKVersion;
+    }
+  })
+  var value = wx.getStorageSync('token');
+  if (!value){
+    value=0;
+  }
+
+    var c = "topshopstv://2.2.4(" + model + ";" + system + ";" + language + ";" + "ID:3-" + value + "-" + SDKVersion + "-wxapp)";
+
+  
+  return c;
+};
+
+module.exports = {
+  getUseragent: getUseragent
+}

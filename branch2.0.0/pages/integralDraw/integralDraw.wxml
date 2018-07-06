@@ -1,0 +1,64 @@
+<block wx:if="{{show}}">
+<view class="top_desc">
+    <image class="top_img" src="{{data.bg_image}}"></image>
+    <view class="my_score">{{data.score}}</view>
+    <view class="record">抽奖记录 ></view>
+</view>
+<view class="top_title">
+    <view class="left_border"></view>
+    <text>抽奖商品</text>
+</view>
+<view class="product_desc" wx:for="{{data.lotto_products}}" wx:key="{{index}}" data-id="{{item.id}}" bindtap="proDetail">
+    <view class="left_img">
+        <image class="pro_img" src="{{item.main_image}}"></image>
+    </view>
+    <view class="right_desc">
+        <view class="brand_name">{{item.product_title}}</view>
+        <view class="count">
+            <view>总需
+                <text class="main_color">{{item.need_num}}</text>次</view>
+            <view>剩余
+                <text class="main_color">{{item.also_need}}</text>次</view>
+        </view>
+        <progress percent="" stroke-width="8" percent="{{item.precent}}" color="#09BB07" activeColor="#e72f4b"></progress>
+        <view class="draw_rule">
+            <view>100积分/次</view>
+            <view class="draw_container" catchtap="startDraw" data-id="{{item.id}}" data-index="{{index}}">
+                <view class="draw_btn">立即抽奖</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="mask" wx:if="{{showModel}}"></view>
+<view class="model">
+    <view class="pop_up" id="{{showModel?'show':''}}">
+        <view class="icon_view" bindtap="closeModel">
+            <image class="close_icon" src="/images/order/delete.png"></image>
+        </view>
+        <view class="product_desc">
+            <view class="m_left_img">
+                <image class="m_pro_img" src="{{popupData.main_image}}"></image>
+            </view>
+            <view class="right_desc">
+                <view class="m_brand_name">{{popupData.product_title}}</view>
+                <view class="time_no">期号: {{popupData.issue_code}}</view>
+            </view>
+        </view>
+        <view class="choose_desc">
+            <view class="text_tips">购买次数 <text>【次数越高中奖率越高】</text></view>
+            <view class="choose_num">
+                <view class="reduce" bindtap="reduce">-</view>
+                <view class="num_value" >{{num}}</view>
+                <view class="increase" bindtap="increase">+</view>
+            </view>
+            <view class="choose_item">
+                <view data-num="{{item}}" bindtap="chooseNum" wx:for="{{btnNum}}" wx:key="{{index}}">{{item}}</view>
+                <view class="no_margin" data-num="-1" bindtap="chooseNum">包尾</view>
+            </view>
+            <view class="total_score">共{{num*100}}积分</view>
+            <view class="placeholder"></view>
+            <view class="confirm_btn" bindtap="confirm">确认</view>
+        </view>
+    </view>
+</view>
+</block>

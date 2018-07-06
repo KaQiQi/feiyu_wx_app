@@ -1,0 +1,108 @@
+/* pages/distribution/JoinMembers/JoinMembers.wxss */
+
+.head_img image {
+  width: 750rpx;
+  height: 280rpx;
+  display: block;
+}
+
+.common_title {
+  padding: 20rpx;
+  display: flex;
+  align-items: center;
+  background: #f2f2f2;
+}
+
+.common_title image {
+  width: 3rpx;
+  height: 24rpx;
+}
+
+.common_title text {
+  color: #333;
+  font-size: 26rpx;
+  margin-left: 12rpx;
+}
+
+.join_method text {
+  color: #333;
+  width: 100%;
+  display: inline-block;
+  font-size: 24rpx;
+  padding: 16rpx 20rpx;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+
+.recommended {
+  background: #f2f2f2;
+}
+
+.recommended {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 20rpx;
+  background-color: #f2f2f2;
+}
+
+.recommended_item {
+  width: 345rpx;
+  margin-bottom: 20rpx;
+  padding: 0 0 20rpx;
+  background: #fff;
+}
+
+.recommended_item_img {
+  width: 345rpx;
+  height: 345rpx;
+  display: block;
+}
+
+.title_describle {
+  color: #333;
+  font-size: 24rpx;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  padding: 10rpx;
+}
+
+.recommended_price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10rpx 16rpx 10rpx;
+  height: 30rpx;
+}
+
+.price {
+  color: #e72f4b;
+  font-size: 26rpx;
+}
+
+.market {
+  text-decoration: line-through;
+  color: #888;
+  font-size: 22rpx;
+  margin-left: 10rpx;
+}
+.recommended_price image{
+  width: 24rpx;
+  height: 24rpx;
+  display: block;
+}
+.join_ruler{
+  width: 750rpx;
+  height: 602rpx;
+  display: block;
+}
+.go_index{
+  width: 70rpx;
+  height: 70rpx;
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+}
+

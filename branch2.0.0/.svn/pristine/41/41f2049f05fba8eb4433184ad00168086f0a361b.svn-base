@@ -1,0 +1,166 @@
+<!--pages/distribution/myProfit/myProfit.wxml 我的收益-->
+<block wx:if="{{showPage}}">
+  <view class="my_shop" catchtap='jump_index' wx:if="{{is_kilner == 1}}">我的店铺
+    <image class="go_icon" src="/images/distribution/small_right.png"></image>
+  </view>
+  <view class="my_shop" catchtap='go_index' wx:else>返回首页
+    <image class="go_icon" src="/images/distribution/small_right.png"></image>
+  </view>
+  <!-- <image class="go_index" src='/images/index/backIndex.png' bindtap='go_index' wx:else></image> -->
+  <view class="income_desc">
+    <view bindtap='btnRuler'>
+      <view class="rules">
+        <image class="rule_icon" src="/images/distribution/Exclamatory_mark.png"></image>
+        <text>规则</text>
+      </view>
+    </view>
+    <view class="top_container">
+      <view class="words">总收入</view>
+      <view class="income_money"  catchtap='incomeDetail'>
+        <text>{{pageData.total_income}}</text>
+        <image class="right_icon" src="/images/distribution/top-right.png"></image>
+      </view>
+      <view class="current_level" catchtap='btnLevel' wx:if="{{is_kilner == 1}}">当前等级:窖主</view>
+      <view class="current_level" catchtap='btnLevel' wx:if="{{is_kilner == 2}}">{{pageData.rank_des}}</view>
+      <view class="current_level" wx:if="{{is_kilner == 3}}">{{pageData.rank_des}}</view>
+    </view>
+    <view class='top_resume_level' catchtap='btnLevel' wx:if="{{is_kilner!=1}}">
+      <view class='level_left'>
+        <!-- <text class='level_money'>{{pageData.dashi_min}}</text>
+      <text class='level_text'>{{pageData.dashi_name}}</text> -->
+        <text class='level_text'>{{pageData.left_name}}</text>
+        <text class='level_money'>{{pageData.left_des}}</text>
+      </view>
+      <progress class='progress' activeColor='#ffdda7' backgroundColor='#bd3541' percent="{{is_kilner==1||is_kilner==2?100:'progress'}}" stroke-width="2" active></progress>
+      <view class='level_right'>
+        <text class='level_text'>{{pageData.right_name}}</text>
+        <text class='level_money'>{{pageData.right_des}}</text>
+        <!-- <text class='level_money'>{{pageData.kilner_min}}</text>
+          <text class='level_text'>{{pageData.kilner_name}}</text> -->
+      </view>
+    </view>
+    <view class="center_line"></view>
+    <view class="bottom_container">
+      <view class="flex_container" bindtap="jump_next" data-id="1">
+        <view class="color">已到账</view>
+        <view class="total_money">{{pageData.already2Account}}</view>
+      </view>
+      <view class="flex_container" bindtap="jump_next" data-id="2">
+        <view class="color">待到账</view>
+        <view class="total_money">{{pageData.waiting2Account}}</view>
+      </view>
+      <view class="flex_container" bindtap='getConsumeDetail' wx:if="{{is_kilner==1}}">
+        <view class="color">账户余额</view>
+        <view class="total_money">{{pageData.balance}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="my_alcohol" wx:if="{{is_kilner == 1 && myList.data.length>0}}">
+    <view class="top_title">
+      <view class="left_border"></view>
+      <text>我的酒窖</text>
+    </view>
+    <view class="pro_container" wx:for="{{myList.data}}" wx:key="{{index}}" data-id="{{item.id}}" data-n="{{item.data_id}}" bindtap="productDetail" data-is_bought="1">
+      <view class="fixed">
+        <image class="hot_img" src="{{item.main_images}}"></image>
+        <view class="bottom_tips" catchtap="stop">
+          <!-- <button class="share_btn" data-id="{{item.id}}" data-data_id="{{item.data_id}}" open-type="share" data-name="{{item.name}}" bindtap='onShareAppMessage'></button> -->
+          <image class="extension_icon" src="/images/distribution/Extension.png"></image>
+          <view>赚{{item.profit}}</view>
+        </view>
+      </view>
+      <view class="pro_describle">{{item.name}}</view>
+      <view class="stock_desc">已售{{item.sale_num}} 丨 库存{{item.stock_num}}</view>
+      <view class="other_hot_price">
+        <view>
+          <text class="red_price">¥{{item.price}}</text>
+          <text class='market_money' wx:if="{{item.market_price}}">¥{{item.market_price}}</text>
+        </view>
+        <!-- <image class="shopcar_icon" src="/images/distribution/shop_car.png"></image>
+            <image class="truck_icon" src="/images/distribution/Truck.png"></image> -->
+        <block wx:if="{{is_kilner == 1}}">
+          <image class="record_icon" src="/images/distribution/record_icon.png"></image>
+          <view class="record_btn" catchtap="record" data-id="{{item.id}}"></view>
+        </block>
+        <image wx:else class="shopcar_icon" src="/images/distribution/shop_car.png"></image>
+      </view>
+    </view>
+    <view class="last_container my" bindtap="lookMore" data-mywine="1" wx:if="{{myList.totalCount>3}}">
+      <view class="look_more">
+        <text class="more_num">+{{myList.totalCount}}</text>
+        <view class="red_border"></view>
+        <text>查看更多</text>
+      </view>
+    </view>
+  </view>
+  <view class="my_alcohol" wx:if="{{fyList.data.length>0}}">
+    <view class="top_title">
+      <view class="left_border"></view>
+      <text wx:if="{{is_kilner == 1}}">酒库</text>
+      <text wx:else>{{pageData.kilner_name}}</text>
+    </view>
+    <view class="pro_container" wx:for="{{fyList.data}}" wx:key="{{index}}" wx:if="{{index<3}}" data-id="{{item.id}}" bindtap="productDetail" data-n="{{item.data_id}}" data-is_bought="0">
+      <view class="fixed">
+        <image class="hot_img" src="{{item.main_images}}"></image>
+        <view class="bottom_tips" catchtap="stop">
+          <!-- <button class="share_btn" data-id="{{item.id}}" data-data_id="{{item.data_id}}" open-type="share" data-name="{{item.name}}" bindtap='onShareAppMessage'></button> -->
+          <image class="extension_icon" src="/images/distribution/Extension.png"></image>
+          <view>赚{{item.profit}}</view>
+        </view>
+      </view>
+      <view class="pro_describle">{{item.name}}</view>
+      <view class="other_hot_price">
+        <view>
+          <text class="red_price">¥{{item.price}}</text>
+          <text class='market_money' wx:if="{{item.market_price}}">¥{{item.market_price}}</text>
+        </view>
+        <image class="shopcar_icon" src="/images/distribution/shop_car.png"></image>
+      </view>
+    </view>
+    <view class="last_container" bindtap="lookMore" data-mywine="0" data-title="{{pageData.kilner_name}}">
+      <view class="look_more">
+        <text class="more_num">+{{fyList.totalCount}}</text>
+        <view class="red_border"></view>
+        <text>查看更多</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 我的客户Customer -->
+  <block wx:if="">
+    <view class="top_title">
+      <view class="left_border ml"></view>
+      <text>我的客户</text>
+      <button class="right_info" open-type='share' >
+        <image class="info_icon" src="/images/distribution/friends.png"></image>
+        <text>邀请好友分销</text>
+      </button>
+    </view>
+    <view class="my_customer">
+      <view class="choose_item" bindtap="choose">
+        <image class="choose_icon" src="/images/shopCar/{{selected?'choosed.png':'no_choose.png'}}"></image>
+        <view class="text">过滤已加入分销的客户</view>
+      </view>
+      <view class="item_desc" wx:for="{{myCustomer}}" wx:key="{{index}}">
+        <view class="left_container">
+          <image class="avatar" src="{{item.avater}}"></image>
+          <view class="name">{{item.nick_name}}</view>
+          <image class="identity_icon" wx:if="{{item.is_kilner==1}}" src="/images/distribution/main_pe.png"></image>
+          <image class="identity_icon" wx:if="{{item.is_kilner==2}}" src="/images/distribution/main_pe1.png"></image>
+          <image class="identity_icon" wx:if="{{item.is_kilner==3}}" src="/images/distribution/main_pe2.png"></image>
+        </view>
+        <view class="right_container">{{item.money}}</view>
+      </view>
+    </view>
+  </block>
+  <view class="rule_mask" bindtap='btnClose' wx:if="{{isToast==1}}">
+    <view class="content">
+      <image src='{{pageData.toast_img}}' class='toast_img' catchtap='btnCreate'></image>
+    </view>
+  </view>
+</block>
+<!-- <view class="share_my_shop" id="{{show?'show':''}}" bindtap="shareMyShop">
+    <image class="extension_icon" src="/images/distribution/Extension.png"></image>
+    <text>分享我的店铺</text>
+</view> -->
+<!-- {{pageData.toast_img}} -->

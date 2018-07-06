@@ -1,0 +1,39 @@
+<!--pages/distribution/JoinMembers/JoinMembers.wxml-->
+<block wx:if="{{isShow}}">
+  <image class="go_index" src='/images/index/backIndex.png' bindtap='jump_index'></image>
+  <view class='head_img'>
+    <image src='{{planData.head_img}}'></image>
+  </view>
+  <view class='common_title'>
+    <image src='/images/index/block_icon.png'></image>
+    <text>加入方式</text>
+  </view>
+
+  <view class='join_method'>
+    <text wx:for="{{planData.join_way}}" wx:key="{{index}}">{{item}}</text>
+  </view>
+  <view class='common_title'>
+    <image src='/images/index/block_icon.png'></image>
+    <text>推荐专区</text>
+  </view>
+
+  <view class='recommended'>
+    <view class='recommended_item' wx:for="{{planData.products}}" wx:key="{{index}}" bindtap='btnBuy' data-spu_id='{{item.spu_id}}'  data-data_id='{{item.data_id}}' >
+      <image class='recommended_item_img' src='{{item.product_image}}'></image>
+      <view class='title_describle'>{{item.product_name}}</view>
+      <view class='recommended_price'>
+        <view>
+          <text class='price'>￥{{item.price}}</text>
+          <text class='market'>￥{{item.market_price}}</text>
+        </view>
+        <image src='/images/index/cart.png'></image>
+      </view>
+    </view>
+  </view>
+  <view class='common_title'>
+    <image src='/images/index/block_icon.png'></image>
+    <text>尝客权益</text>
+  </view>
+
+  <image class='join_ruler' src='{{planData.bottom_img}}'></image>
+</block>

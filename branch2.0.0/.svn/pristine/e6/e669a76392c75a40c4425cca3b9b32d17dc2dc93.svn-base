@@ -1,0 +1,316 @@
+<!--pages/welfare/productDetail/productDetail.wxml-->
+<view class="{{noscroll?'noscroll':''}}" wx:if="{{dataloaded==1}}" sytle="position:relative">
+  <view class="share_mask" wx:if="{{shareMaskShow==1}}">
+    <view class="img_container_share">
+      <image src="{{share_image_url}}" class="ewm_img"></image>
+      <view class="tips" bindtap="saveImgToPhotosAlbumTap">
+        <text>保存图片</text>
+      </view>
+      <view class="close_mask" bindtap="closeMask">
+        <image src="/images/live/close.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class='welfare_icon'>
+    <view class='welfare_bg'>
+      <image src='/images/activity/welfare_icon.png'></image>
+      <text>仅剩{{productInfo.stock_num}}件</text>
+    </view>
+  </view>
+  <view class='share'>
+    <image class="go_index" src='/images/index/backIndex.png' bindtap='jump_index'></image>
+    <image src='/images/live/shareicon.png' class="share_icon" bindtap='jump_share'></image>
+  </view>
+  <swiper indicator-dots="{{images.length==1?false:true}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="#e72e4b" circular="true">
+    <swiper-item wx:for="{{images}}" wx:key="{{index}}">
+      <image src="{{item}}" class="slide_img" />
+    </swiper-item>
+  </swiper>
+  <view class="product_desc">
+    <view class="pro_name">{{productInfo.name}}</view>
+    <view class="pro_price">
+      <text>{{productInfo.score}}</text>积分／¥{{productInfo.price}}</view>
+    <view class="sale_detail" wx:if="">
+      <text class="sale_num">销量：{{productInfo.sale_num}}</text>
+      <text>快递：0</text>
+      <text class="location">税费：0</text>
+    </view>
+  </view>
+
+  <!-- 优惠券"-->
+  <!-- <view class="getCoupon" wx:if="{{coupon_count != 0}}" bindtap="couponShow" data-id="{{productInfo.shop_id}}">
+    <view class="cou_left">
+      <block wx:for="{{productInfo.copuons}}" wx:key="{{index}}">
+        <view class="small_coupon" wx:if="{{index<3}}">{{item.condition_money}}减{{item.money}}</view>
+      </block>
+    </view>
+    <view class="into">
+      <text>领券</text>
+    </view>
+  </view> -->
+
+  <!-- 推荐理由 -->
+  <view class="rec_reason" wx:if="{{productInfo.product_reason}}">
+    <image class="title_img" src="/images/productDetail/reason.png"></image>
+    <view>{{productInfo.product_reason}}</view>
+  </view>
+  <!-- <view class="product_guarantee">
+    <image class="title_img guarantee" src="/images/productDetail/red_title.png"></image>
+    <view class="guarantee_content" wx:for="{{productInfo.ensure_info}}" wx:key="{{index}}">
+      <view class="main_color">{{item.title}}</view>
+      <view>{{item.desc}}</view>
+    </view>
+  </view> -->
+  <!-- 物流 -->
+  <view class="logistic" wx:if="{{productInfo.shop_info}}">
+    <image class="title_img logistic_img" src="/images/productDetail/logistic.png"></image>
+    <view class="flex_container" wx:for="{{productInfo.shop_info}}" wx:key="{{index}}" id="{{index==productInfo.shop_info.length-1?'no_border':''}}">
+      <text>{{item.title}}</text>
+      <text>{{item.desc}}</text>
+    </view>
+  </view>
+  <!-- 图文介绍 -->
+  <view class="imgtext_desc">
+    <image class="title_img imgtext" id="mb20" src="/images/productDetail/imgtext_desc.png"></image>
+    <image class="desc_img" wx:for="{{productInfo.desc_images}}" wx:key="{{index}}" src="{{item}}" mode="widthFix"></image>
+  </view>
+
+  <view class="commonProblem" wx:if="{{productInfo.memo_content}}">
+    <image class="title_img question" src="/images/productDetail/question.png"></image>
+    <view>{{productInfo.memo_content}}</view>
+  </view>
+
+
+
+
+  <!-- 底部占位区域 -->
+  <view id="none">
+    <text></text>
+  </view>
+
+
+  <view class="btm_shop">
+    <view class="shop_index" catchtap="shop">
+      <image class="btm_icon" src="/images/shopCar/small_shopcar.png"></image>
+      <text>购买:¥{{productInfo.price}}</text>
+    </view>
+    <view class="btn" catchtap="btnRechange" data-can_buy='{{productInfo.can_buy}}'>
+      <text class='score_num'>{{productInfo.score}}积分</text>
+      <text class='score_ex'>限VIP{{productInfo.min_level}}及以上兑换</text>
+    </view>
+  </view>
+</view>
+<image class='loading_image' src='/images/index/empty.gif' wx:else></image>
+<!-- sku弹层 -->
+<view class="product_sku" id="{{bottom?'bottom':''}}">
+  <view class="brand">
+    <view class="brand_img">
+      <image src="{{productSku[currentIndex].image}}" />
+    </view>
+    <view class="sku_brand_desc">
+      <text class="sku_brand_price">￥{{price}}</text>
+      <text class="sku_brand_name">{{productInfo.name}}</text>
+    </view>
+  </view>
+  <view class="spec">
+    <block wx:if="{{productInfo.product_type==2}}">
+      <text class="s_title">{{productInfo.sale_attr_names}}</text>
+      <view class="spec_desc">
+        <block wx:for="{{productSku}}" wx:key="{{index}}">
+          <text class="{{currentType == index?'active':''}}" id="{{item.stock==0?'noStock':''}}" data-id="{{index}}" bindtap="{{item.stock==0?'':'chooseType'}}" data-price="{{item.price}}" data-stock="{{item.stock}}" data-skuid="{{item.id}}" data-shopname="{{productInfo.shop_name}}"
+            data-image="{{item.image}}">{{item.specification}}</text>
+        </block>
+      </view>
+    </block>
+
+    <view class="shop_num">
+      <view class="fl_container">
+        <text>购买数量</text>
+      </view>
+      <view class="fr_container">
+        <text class="{{inputValue<=1?'onlyOne':''}}" bindtap="reduce">-</text>
+        <text class="num_pro">{{inputValue}}</text>
+        <text class="up" bindtap="increase" class="{{inputValue>=stock?'onlyOne':''}}">+</text>
+      </view>
+    </view>
+  </view>
+  <view class="confirm_placeholder"></view>
+  <view class="confirm {{allNone == 0?'noStock':''}}" bindtap="{{allNone==1?'confirmShop':''}}" wx:if="{{confirmShow}}">
+    <text wx:if="{{allNone == 0}}">已售罄</text>
+    <text wx:else>确定</text>
+  </view>
+  <view class="close" catchtap="close">
+    <image src="/images/order/delete.png"></image>
+  </view>
+</view>
+
+<!-- 优惠券弹层 -->
+<!-- <view class="couponDetail" id="{{couponMask?'coupon_mask':''}}">
+  <view class="couponTitle">店铺优惠券</view>
+  <view class="coupon_desc">
+    <view class="left_content">
+      <view class="coupon_sum">
+        <text class="big_num">10</text><text>RMB</text>
+      </view>
+      <view class="coupon_time"><text>满200使用</text> <text>有效期：7天</text></view>
+    </view>
+    <view class="right_content">立即领取</view>
+    <image src="../../images/productDetail/coupon_bg_red.png"></image>
+  </view>
+  <view class="finish" bindtap="close">完成</view>
+</view> -->
+<!-- 优惠券 -->
+<view class="couponDetail" id="{{couponMask?'coupon_mask':''}}">
+  <scroll-view scroll-y class="scroll-view">
+    <view class="couponTitle">店铺优惠券</view>
+    <view class="coupon_desc" wx:for="{{discount_list}}" wx:key="{{index}}">
+      <view class="left_content">
+        <view class="coupon_sum">
+          <text class="big_num">{{item.money}}</text>
+          <text>RMB</text>
+        </view>
+        <view class="coupon_time">
+          <text>满{{item.condition_money}}使用</text>
+          <text>有效期：{{item.duration_day}}天</text>
+        </view>
+      </view>
+      <!-- 还没领取 -->
+      <view class="right_content" bindtap='btn_getDiscount' data-id='{{item.id}}' data-position='{{index}}' data-is_taken='{{item.is_taken}}' data-limit_num='{{item.limit_num}}' data-sendout_num='{{item.sendout_num}}' wx:if="{{item.is_taken==0&&item.limit_num>item.sendout_num}}">立即领取</view>
+
+      <!-- 已领取 -->
+      <view id="gray" class="right_content" bindtap='btn_getDiscount' data-id='{{item.id}}' data-position='{{index}}' data-is_taken='{{item.is_taken}}' data-limit_num='{{item.limit_num}}' data-sendout_num='{{item.sendout_num}}' wx:elif="{{item.is_taken==1&&item.limit_num>item.sendout_num}}">已领取</view>
+      <!-- 领完了 -->
+      <view id="gray" class="right_content" bindtap='btn_getDiscount' data-id='{{item.id}}' data-position='{{index}}' data-is_taken='{{item.is_taken}}' data-limit_num='{{item.limit_num}}' data-sendout_num='{{item.sendout_num}}' wx:else>已抢完</view>
+      <image src="{{item.is_taken==0&&item.limit_num>item.sendout_num?'/images/productDetail/coupon_bg_red.png':'/images/productDetail/coupon_bg_gray.png'}}"></image>
+    </view>
+  </scroll-view>
+  <view class="finish" bindtap='close'>完成</view>
+</view>
+
+<!-- 选择优惠券 -->
+<!-- <view class="couponDetail" id="choose_coupon">
+  <scroll-view scroll-y class="scroll-view">
+    <view class="couponTitle">店铺优惠券</view>
+    <view class="container_flex">
+      <view class="c_price">￥50</view>
+      <view class="c_line"></view>
+      <view class="c_des">满300可用/6天后过期</view>
+      <image src="../../images/productDetail/red_success.png" class="c_icon"></image>
+    </view>
+    <view class="container_flex">
+      <view class="c_price">￥50</view>
+      <view class="c_line"></view>
+      <view class="c_des">满300可用/6天后过期</view>
+      <image src="../../images/productDetail/red_success.png" class="c_icon"></image>
+    </view>
+    <view class="container_flex">
+      <view class="c_price">￥50</view>
+      <view class="c_line"></view>
+      <view class="c_des">满300可用/6天后过期</view>
+      <image src="../../images/productDetail/red_success.png" class="c_icon"></image>
+    </view>
+  </scroll-view>
+  <view class="finish" bindtap='close'>关闭</view>
+</view> -->
+<!-- 蒙层 -->
+<view id="mask" wx:if="{{maskShow}}" bindtap="close">
+</view>
+
+<!-- 分享 -->
+<view class="choose_detail" id="{{itemMask?'item_mask':''}}">
+  <view class='btn_views'>
+    分享到微信好友
+    <button bindtap='onShareAppMessage' open-type='share' class="button" style='background-color: #fff;font-size: 28rpx;width:100%'></button>
+  </view>
+  <view class='btn_view' bindtap="btnShare">
+    <text>分享到朋友圈</text>
+  </view>
+  <view bindtap="close" class='btn_cancel'>
+    <text>取消</text>
+  </view>
+</view>
+<!-- <view class='share_info'>sss</view> -->
+
+<!-- 购买信息弹窗 -->
+<scroll-view class="order_info" id="{{shopbtm?'shopbtm':''}}" scroll-y>
+  <view class="order_info_title">
+    <text>确认订单</text>
+    <view class="close" bindtap="close">
+      <image src="/images/order/delete.png"></image>
+    </view>
+  </view>
+  <view class="border"></view>
+  <view class="add_address" wx:if="{{!is_setAddress}}">
+    <view class="add_click" bindtap="addAdress">
+      <image src="/images/productDetail/position.png"></image>
+      <text>请添加收货地址</text>
+    </view>
+  </view>
+  <view class='order_address_info' bindtap="addAdress" wx:if="{{is_setAddress}}">
+    <image src='/images/order/location.png' style='width:34rpx;height:36rpx'></image>
+    <view class='content'>
+      <view class='user_info'>
+        <view class='order_name'>收货人: {{buy_user_name}}</view>
+        <view class='order_phone'>{{buy_user_mobile}}</view>
+      </view>
+      <view class='order_address'> 收货地址:{{buy_user_address}}</view>
+    </view>
+    <image src='/images/order/go.png' style='width:26rpx;height:26rpx'></image>
+  </view>
+  <view class="decorate">
+    <image src="/images/productDetail/colorline.png" class="colorline"></image>
+    <view class="bg"></view>
+  </view>
+  <view class="business_info">
+    <text class="business_name">{{productInfo.shop_name}}</text>
+    <!-- <view class="contact">
+       <image src="../../images/productDetail/contact.png"></image>
+       <text class="contact_business">联系商家</text>
+     </view> -->
+  </view>
+  <view class="order_product_desc">
+    <image src="{{shopImg}}"></image>
+    <text>{{orderInfo.name}}</text>
+    <text class="shop_num">X{{inputValue}}</text>
+    <text class="pro_type">{{orderInfo.product_sku_attr}}</text>
+  </view>
+
+  <view class='msg_list' wx:if='{{orderInfo.member_coupon_id}}'>
+    <view class='msg_list_left'>
+      <!-- <image src='../../images/order/youhui.png' class='youhui_icon'></image> -->
+      <text class='text_title'>{{orderInfo.coupon_left_text}}</text>
+    </view>
+    <view class='order_all'>
+      <text class='go_title'>{{orderInfo.coupon_right_text}}</text>
+      <!-- <image src='../../images/my/go.png' class='order_go'></image> -->
+    </view>
+  </view>
+
+  <view class="paytoshop" wx:if="{{need_procurement==1}}" bindtap="choose_btn">
+    <view class="user_choose">
+      <image src="/images/shopCar/{{isChoose?'choosed':'no_choose'}}.png" class="choose_icon"></image>
+      <text>直接支付采购金到商家</text>
+    </view>
+    <text class='check_text'>采购金直接进入商家账户,若发生纠纷平台不提供维权</text>
+  </view>
+  <view class="order_freight">
+    <text>快递运费：</text>
+    <text>全国包邮</text>
+  </view>
+  <view class="user_msg">
+    <view class="msg_desc">
+      <text style="margin-top:20rpx;">买家留言：</text>
+      <input type="text" placeholder="如有特殊需要，请在这里留言哦" bindinput="getInput"></input>
+    </view>
+  </view>
+  <view class="placeholder"></view>
+</scroll-view>
+<view class="commit_order" wx:if="{{isCommit}}">
+  <view class="order_price">
+    <text class="price_title">总价:</text>
+    <text class="order_red">{{orderInfo.price}}</text>
+  </view>
+  <view class="commit_btn" bindtap="commit_order">
+    <text>提交订单</text>
+  </view>
+</view>

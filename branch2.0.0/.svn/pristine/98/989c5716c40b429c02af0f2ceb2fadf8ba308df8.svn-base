@@ -1,0 +1,37 @@
+<!--pages/distribution/JoinMembers/JoinMembers.wxml-->
+<view class='head_img'>
+  <image></image>
+</view>
+<view class='common_title'>
+  <image src='/images/index/block_icon.png'></image>
+  <text>加入方式</text>
+</view>
+
+<view class='join_method'>
+  <text>方式一: 在推荐专区选购一款400元礼包</text>
+  <text>方式一: 妃鱼海外购购买红酒累计消费满298元</text>
+</view>
+<view class='common_title'>
+  <image src='/images/index/block_icon.png'></image>
+  <text>推荐专区</text>
+</view>
+
+<view class='recommended'>
+  <view class='recommended_item' wx:for="{{3}}">
+    <image class='recommended_item_img'></image>
+    <view class='title_describle'>妃鱼海外购购买红酒累计消费满298元</view>
+    <view class='recommended_price'>
+      <view>
+        <text class='price'>￥200</text>
+        <text class='market'>￥268</text>
+      </view>
+      <image src='/images/index/cart.png'></image>
+    </view>
+  </view>
+</view>
+<view class='common_title'>
+  <image src='/images/index/block_icon.png'></image>
+  <text>尝客权益</text>
+</view>
+
+<image class='join_ruler'></image>
